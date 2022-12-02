@@ -1,0 +1,4 @@
+firebase --version
+firebase login
+firebase init
+firebase deploy

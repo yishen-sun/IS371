@@ -1,0 +1,127 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- bulma CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
+    />
+
+    <!-- font awesome cdn -->
+    <script
+      src="https://kit.fontawesome.com/8a80b728dc.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Google Charts</title>
+  </head>
+
+  <body>
+    <!-- navigation bar -->
+    <div class="navbar is-warning">
+      <div class="navbar-brand">
+        <div class="navbar-item">
+          <!-- logo -->
+          <a>
+            <img
+              src="https://img.stackshare.io/service/1651/ma2jqJKH_400x400.png"
+              alt="Site Logo"
+            />
+          </a>
+        </div>
+        <div class="navbar-burger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+      <div class="navbar-menu">
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <a id="signupbtn" class="loggedout">Sign-Up</a>
+          </div>
+          <div class="navbar-item">
+            <a id="signinbtn" class="loggedout">Sign In</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- section and container to add padding and margin -->
+
+    <div class="section">
+      <div class="container">
+        <div class="columns">
+          <!-- pie chart column -->
+          <div class="column has-background-warning-light is-3" id="pie">
+            <h1 class="title has-background-grey-lighter p-2">Pie Chart</h1>
+            <!-- label 1 -->
+            <div class="field">
+              <label class="label">Label 1 and Value 1</label>
+              <div class="control">
+                <input
+                  class="input"
+                  type="text"
+                  placeholder="Text input"
+                  id="pl1"
+                />
+                <input
+                  class="input"
+                  type="text"
+                  placeholder="Value input"
+                  id="pv1"
+                />
+              </div>
+            </div>
+            <!-- label 2 -->
+            <div class="field">
+              <label class="label">Label 2 and Value 1</label>
+              <div class="control">
+                <input
+                  class="input"
+                  type="text"
+                  placeholder="Text input"
+                  id="pl2"
+                />
+                <input
+                  class="input"
+                  type="text"
+                  placeholder="Value input"
+                  id="pv2"
+                />
+              </div>
+            </div>
+            <!-- submit button -->
+            <div class="field is-grouped">
+              <div class="control">
+                <button class="button is-link" id="submit">Submit</button>
+              </div>
+              <div class="control">
+                <button class="button is-link is-light">Cancel</button>
+              </div>
+            </div>
+          </div>
+          <!-- chart will display here -->
+          <div class="column is-6" id="chart">
+            <h1 class="has-text-centered">Chart will display here</h1>
+          </div>
+          <!-- bar chart column -->
+          <div class="column has-background-warning-light is-3" id="bar">
+            <h1 class="title has-background-grey-lighter p-2">Bar Chart</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- footer -->
+    <div class="footer has-background-grey-lighter">
+      <div class="content has-text-centered">
+        <p>Copyrights policy</p>
+        <a href="http://www.facebook.com"><i class="fab fa-facebook-f"></i></a>
+        <a href="http://www.twitter.com"><i class="ml-2 fab fa-twitter"></i></a>
+      </div>
+    </div>
+    <!-- include your javascript file here -->
+    <script src="app.js"></script>
+  </body>
+</html>

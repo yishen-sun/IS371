@@ -1,0 +1,1798 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- This file was created with the aha Ansi HTML Adapter. https://github.com/theZiz/aha -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta
+      http-equiv="Content-Type"
+      content="application/xml+xhtml; charset=UTF-8"
+    />
+    <title>MySQLTuner</title>
+  </head>
+  <body style="color: white; background-color: black">
+    <pre>
+ &gt;&gt;  MySQLTuner 2.0.9
+	 * Jean-Marie Renouard &lt;jmrenouard@gmail.com&gt;
+	 * Major Hayden &lt;major@mhtx.net&gt;
+ &gt;&gt;  Bug reports, feature requests, and downloads at http://mysqltuner.pl/
+ &gt;&gt;  Run with '--help' for additional options and output filtering
+[<span style="color:lime;">OK</span>] You have the latest version of MySQLTuner (2.0.9)
+[<span style="color:lime;">OK</span>] Logged in using credentials from Debian maintenance account.
+[<span style="color:lime;">OK</span>] Currently running supported MySQL version 5.7.40-0ubuntu0.18.04.1
+[<span style="color:lime;">OK</span>] Operating on 64-bit architecture
+ 
+-------- System Linux Recommendations --------------------------------------------------------------
+Look for related Linux system recommendations
+[<span style="color:#3333FF;">--</span>] Ubuntu 18.04.6 LTS
+[<span style="color:#3333FF;">--</span>] Machine type          : Physical machine
+[<span style="color:#3333FF;">--</span>] Internet              : Connected
+[<span style="color:#3333FF;">--</span>] Number of Core CPU : 20
+[<span style="color:#3333FF;">--</span>] Operating System Type : GNU/Linux
+[<span style="color:#3333FF;">--</span>] Kernel Release        : 4.15.0-169-generic
+[<span style="color:#3333FF;">--</span>] Hostname              : node-0.tuner-g4.uwmadison744-f22-pg0.wisc.cloudlab.us
+[<span style="color:#3333FF;">--</span>] Network Cards         : 
+[<span style="color:#3333FF;">--</span>] 	eno1: flags=4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu 1500
+[<span style="color:#3333FF;">--</span>] 	        inet 128.105.144.159  netmask 255.255.252.0  broadcast 128.105.147.255
+[<span style="color:#3333FF;">--</span>] 	--
+[<span style="color:#3333FF;">--</span>] 	lo: flags=73&lt;UP,LOOPBACK,RUNNING&gt;  mtu 65536
+[<span style="color:#3333FF;">--</span>] 	        inet 127.0.0.1  netmask 255.0.0.0
+[<span style="color:#3333FF;">--</span>] Internal IP           : 128.105.144.159 
+[<span style="color:#3333FF;">--</span>] HTTP client found: /usr/bin/curl
+[<span style="color:#3333FF;">--</span>] External IP           :   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current,                                  Dload  Upload   Total   Spent    Left  Speed, 
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+100    15  100    15    0     0    384      0 --:--:-- --:--:-- --:--:--   394, 128.105.144.159
+[<span style="color:#3333FF;">--</span>] Name Servers          : 128.104.222.9, 128.104.222.8
+[<span style="color:#3333FF;">--</span>] Logged In users       : 
+[<span style="color:#3333FF;">--</span>] 	yishen   pts/0        2022-10-29 12:13 (10.140.2.70)
+[<span style="color:#3333FF;">--</span>] 	shutao   pts/1        2022-10-29 12:14 (10.140.254.54)
+[<span style="color:#3333FF;">--</span>] 	yishen   pts/2        2022-10-29 13:20 (10.140.2.70)
+[<span style="color:#3333FF;">--</span>] 	shutao   pts/4        2022-10-29 13:26 (10.140.254.54)
+[<span style="color:#3333FF;">--</span>] Ram Usages in Mb      : 
+[<span style="color:#3333FF;">--</span>] 	              total        used        free      shared  buff/cache   available
+[<span style="color:#3333FF;">--</span>] 	Mem:         192091        1257      189440          13        1393      189483
+[<span style="color:#3333FF;">--</span>] 	Swap:          3071           0        3071
+[<span style="color:#3333FF;">--</span>] Load Average          : 
+[<span style="color:#3333FF;">--</span>] 	top - 13:46:49 up  1:37,  4 users,  load average: 0.16, 0.06, 0.05
+[<span style="color:#3333FF;">--</span>] System Uptime         : 
+[<span style="color:#3333FF;">--</span>] 	 13:46:49 up  1:37,  4 users,  load average: 0.16, 0.06, 0.05
+[<span style="color:#3333FF;">--</span>] User process except mysqld used 531M RAM.
+[<span style="color:#3333FF;">--</span>] Other user process except mysqld used less than 15% of total physical memory 0.28% (531M / 187G)
+ 
+-------- Filesystem Linux Recommendations ----------------------------------------------------------
+[<span style="color:#3333FF;">--</span>] mount point / is using 24 % total space (3.52 GB / 15.62 GB)
+[<span style="color:#3333FF;">--</span>] mount point /groups/uwmadison744-f22-PG0/assignment-group4 is using 1 % total space (384.00 KB / 10.00 GB)
+[<span style="color:#3333FF;">--</span>] mount point /proj/uwmadison744-f22-PG0 is using 15 % total space (14.22 GB / 100.00 GB)
+[<span style="color:#3333FF;">--</span>] mount point /share is using 4 % total space (1.94 GB / 49.95 GB)
+[<span style="color:#3333FF;">--</span>] mount point / is using 13 % of max allowed inodes
+[<span style="color:#3333FF;">--</span>] mount point /groups/uwmadison744-f22-PG0/assignment-group4 is using 1 % of max allowed inodes
+[<span style="color:#3333FF;">--</span>] mount point /proj/uwmadison744-f22-PG0 is using 1 % of max allowed inodes
+[<span style="color:#3333FF;">--</span>] mount point /share is using 1 % of max allowed inodes
+ 
+-------- Kernel Information Recommendations --------------------------------------------------------
+[<span style="color:#3333FF;">--</span>] Information about kernel tuning:
+[<span style="color:#3333FF;">--</span>] 	fs.aio-max-nr = 65536
+[<span style="color:#3333FF;">--</span>] 	fs.aio-nr = 2661
+[<span style="color:#3333FF;">--</span>] 	fs.file-max = 19633179
+[<span style="color:#3333FF;">--</span>] 	sunrpc.tcp_fin_timeout = 15
+[<span style="color:#3333FF;">--</span>] 	sunrpc.tcp_max_slot_table_entries = 65536
+[<span style="color:#3333FF;">--</span>] 	sunrpc.tcp_slot_table_entries = 2
+[<span style="color:#3333FF;">--</span>] 	vm.swappiness = 60
+[<span style="color:red;">!!</span>] Swappiness is &gt; 10, please consider having a value lower than 10
+[<span style="color:#3333FF;">--</span>] TCP slot entries is &gt; 100.
+[<span style="color:red;">!!</span>] Max running total of the number of events is &lt; 1M, please consider having a value greater than 1M
+ 
+-------- Log file Recommendations ------------------------------------------------------------------
+[<span style="color:lime;">OK</span>] Log file /var/log/mysql/error.log exists
+[<span style="color:#3333FF;">--</span>] Log file: /var/log/mysql/error.log (35K)
+[<span style="color:lime;">OK</span>] Log file /var/log/mysql/error.log is not empty
+[<span style="color:lime;">OK</span>] Log file /var/log/mysql/error.log is smaller than 32 Mb
+[<span style="color:lime;">OK</span>] Log file /var/log/mysql/error.log is readable.
+[<span style="color:red;">!!</span>] /var/log/mysql/error.log contains 31 warning(s).
+[<span style="color:lime;">OK</span>] /var/log/mysql/error.log doesn't contain any error.
+[<span style="color:#3333FF;">--</span>] 5 start(s) detected in /var/log/mysql/error.log
+[<span style="color:#3333FF;">--</span>] 1) 2022-10-29T18:09:05.565371Z 0 [Note] /usr/sbin/mysqld: ready for connections.
+[<span style="color:#3333FF;">--</span>] 2) 2022-10-29T17:56:06.652911Z 0 [Note] /usr/sbin/mysqld: ready for connections.
+[<span style="color:#3333FF;">--</span>] 3) 2022-10-29T17:47:36.107582Z 0 [Note] /usr/sbin/mysqld: ready for connections.
+[<span style="color:#3333FF;">--</span>] 4) 2022-10-29T17:47:33.333372Z 0 [Note] mysqld: ready for connections.
+[<span style="color:#3333FF;">--</span>] 5) 2022-10-29T17:47:30.485821Z 0 [Note] mysqld: ready for connections.
+[<span style="color:#3333FF;">--</span>] 4 shutdown(s) detected in /var/log/mysql/error.log
+[<span style="color:#3333FF;">--</span>] 1) 2022-10-29T18:05:44.520397Z 0 [Note] /usr/sbin/mysqld: Shutdown complete
+[<span style="color:#3333FF;">--</span>] 2) 2022-10-29T17:53:11.854655Z 0 [Note] /usr/sbin/mysqld: Shutdown complete
+[<span style="color:#3333FF;">--</span>] 3) 2022-10-29T17:47:34.951696Z 0 [Note] mysqld: Shutdown complete
+[<span style="color:#3333FF;">--</span>] 4) 2022-10-29T17:47:32.352707Z 0 [Note] mysqld: Shutdown complete
+ 
+-------- Storage Engine Statistics -----------------------------------------------------------------
+[<span style="color:#3333FF;">--</span>] Status: <span style="color:lime;">+ARCHIVE </span><span style="color:lime;">+BLACKHOLE </span><span style="color:lime;">+CSV </span><span style="color:red;">-FEDERATED </span><span style="color:lime;">+InnoDB </span><span style="color:lime;">+MEMORY </span><span style="color:lime;">+MRG_MYISAM </span><span style="color:lime;">+MyISAM </span><span style="color:lime;">+PERFORMANCE_SCHEMA </span>
+[<span style="color:#3333FF;">--</span>] Data in InnoDB tables: 528.0K (Tables: 9)
+[<span style="color:lime;">OK</span>] Total fragmented tables: 0
+ 
+-------- Analysis Performance Metrics --------------------------------------------------------------
+[<span style="color:#3333FF;">--</span>] innodb_stats_on_metadata: OFF
+[<span style="color:lime;">OK</span>] No stat updates during querying INFORMATION_SCHEMA.
+ 
+-------- Database Metrics --------------------------------------------------------------------------
+[<span style="color:#3333FF;">--</span>] There is 1 Database(s).
+[<span style="color:#3333FF;">--</span>] All User Databases:
+[<span style="color:#3333FF;">--</span>]  +-- TABLE : 8
+[<span style="color:#3333FF;">--</span>]  +-- VIEW  : 0
+[<span style="color:#3333FF;">--</span>]  +-- INDEX : 14
+[<span style="color:#3333FF;">--</span>]  +-- CHARS : 1 (latin1)
+[<span style="color:#3333FF;">--</span>]  +-- COLLA : 1 (latin1_swedish_ci)
+[<span style="color:#3333FF;">--</span>]  +-- ROWS  : 3864
+[<span style="color:#3333FF;">--</span>]  +-- DATA  : 352.0K(68.75%)
+[<span style="color:#3333FF;">--</span>]  +-- INDEX : 160.0K(31.25%)
+[<span style="color:#3333FF;">--</span>]  +-- SIZE  : 512.0K
+[<span style="color:#3333FF;">--</span>]  +-- ENGINE: 1 (InnoDB)
+
+[<span style="color:#3333FF;">--</span>] Database: classicmodels
+[<span style="color:#3333FF;">--</span>]  +-- TABLE : 8
+[<span style="color:#3333FF;">--</span>]  +-- VIEW  : 0
+[<span style="color:#3333FF;">--</span>]  +-- INDEX : 14
+[<span style="color:#3333FF;">--</span>]  +-- CHARS : 1 (latin1)
+[<span style="color:#3333FF;">--</span>]  +-- COLLA : 1 (latin1_swedish_ci)
+[<span style="color:#3333FF;">--</span>]  +-- ROWS  : 3864
+[<span style="color:#3333FF;">--</span>]  +-- DATA  : 352.0K(68.75%)
+[<span style="color:#3333FF;">--</span>]  +-- INDEX : 160.0K(31.25%)
+[<span style="color:#3333FF;">--</span>]  +-- TOTAL : 512.0K
+[<span style="color:#3333FF;">--</span>]  +-- ENGINE: 1 (InnoDB)
+[<span style="color:#3333FF;">--</span>]  +-- ENGINE InnoDB : 8 TABLE(s)
+[<span style="color:lime;">OK</span>] 1 collation for classicmodels database.
+[<span style="color:lime;">OK</span>] 1 engine for classicmodels database.
+[<span style="color:#3333FF;">--</span>] Charsets for classicmodels database table column: latin1
+[<span style="color:lime;">OK</span>] classicmodels table column(s) has same charset defined for all text like column(s).
+[<span style="color:#3333FF;">--</span>] Collations for classicmodels database table column: latin1_swedish_ci
+[<span style="color:lime;">OK</span>] classicmodels table column(s) has same collation defined for all text like column(s).
+ 
+-------- Table Column Metrics ----------------------------------------------------------------------
+[<span style="color:#3333FF;">--</span>] Database: classicmodels
+[<span style="color:#3333FF;">--</span>]  +-- TABLE: customers
+[<span style="color:#3333FF;">--</span>]      +-- TYPE: InnoDB
+[<span style="color:#3333FF;">--</span>]      +-- Index PRIMARY - Cols: customerNumber - Type: BTREE
+[<span style="color:#3333FF;">--</span>]      +-- Index salesRepEmployeeNumber - Cols: salesRepEmployeeNumber - Type: BTREE
+[<span style="color:#3333FF;">--</span>]      +-- Column customers.customerNumber: INT(11) NOT NULL
+[<span style="color:#3333FF;">--</span>]      +-- Column customers.customerName: VARCHAR(50) NOT NULL
+[<span style="color:#3333FF;">--</span>]      +-- Column customers.contactLastName: VARCHAR(50) NOT NULL
+[<span style="color:#3333FF;">--</span>]      +-- Column customers.contactFirstName: VARCHAR(50) NOT NULL
+[<span style="color:#3333FF;">--</span>]      +-- Column customers.phone: VARCHAR(50) NOT NULL
+[<span style="color:#3333FF;">--</span>]      +-- Column customers.addressLine1: VARCHAR(50) NOT NULL
+[<span style="color:#3333FF;">--</span>]      +-- Column customers.addressLine2: VARCHAR(50) NULL
+[<span style="color:#3333FF;">--</span>]      +-- Column customers.city: VARCHAR(50) NOT NULL
+[<span style="color:#3333FF;">--</span>]      +-- Column customers.state: VARCHAR(50) NULL
+[<span style="color:#3333FF;">--</span>]      +-- Column customers.postalCode: VARCHAR(15) NULL
+[<span style="color:#3333FF;">--</span>]      +-- Column customers.country: VARCHAR(50) NOT NULL
+[<span style="color:#3333FF;">--</span>]      +-- Column customers.salesRepEmployeeNumber: INT(11) NULL
+[<span style="color:#3333FF;">--</span>]      +-- Column customers.creditLimit: DECIMAL(10,2) NULL
+[<span style="color:#3333FF;">--</span>]  +-- TABLE: employees
+[<span style="color:#3333FF;">--</span>]      +-- TYPE: InnoDB
+[<span style="color:#3333FF;">--</span>]      +-- Index officeCode - Cols: officeCode - Type: BTREE
+[<span style="color:#3333FF;">--</span>]      +-- Index PRIMARY - Cols: employeeNumber - Type: BTREE
+[<span style="color:#3333FF;">--</span>]      +-- Index reportsTo - Cols: reportsTo - Type: BTREE
+[<span style="color:#3333FF;">--</span>]      +-- Column employees.employeeNumber: INT(11) NOT NULL
+[<span style="color:#3333FF;">--</span>]      +-- Column employees.lastName: VARCHAR(50) NOT NULL
+[<span style="color:#3333FF;">--</span>]      +-- Column employees.firstName: VARCHAR(50) NOT NULL
+[<span style="color:#3333FF;">--</span>]      +-- Column employees.extension: VARCHAR(10) NOT NULL
+[<span style="color:#3333FF;">--</span>]      +-- Column employees.email: VARCHAR(100) NOT NULL
+[<span style="color:#3333FF;">--</span>]      +-- Column employees.officeCode: VARCHAR(10) NOT NULL
+[<span style="color:#3333FF;">--</span>]      +-- Column employees.reportsTo: INT(11) NULL
+[<span style="color:#3333FF;">--</span>]      +-- Column employees.jobTitle: VARCHAR(50) NOT NULL
+[<span style="color:#3333FF;">--</span>]  +-- TABLE: offices
+[<span style="color:#3333FF;">--</span>]      +-- TYPE: InnoDB
+[<span style="color:#3333FF;">--</span>]      +-- Index PRIMARY - Cols: officeCode - Type: BTREE
+[<span style="color:#3333FF;">--</span>]      +-- Column offices.officeCode: VARCHAR(10) NOT NULL
+[<span style="color:#3333FF;">--</span>]      +-- Column offices.city: VARCHAR(50) NOT NULL
+[<span style="color:#3333FF;">--</span>]      +-- Column offices.phone: VARCHAR(50) NOT NULL
+[<span style="color:#3333FF;">--</span>]      +-- Column offices.addressLine1: VARCHAR(50) NOT NULL
+[<span style="color:#3333FF;">--</span>]      +-- Column offices.addressLine2: VARCHAR(50) NULL
+[<span style="color:#3333FF;">--</span>]      +-- Column offices.state: VARCHAR(50) NULL
+[<span style="color:#3333FF;">--</span>]      +-- Column offices.country: VARCHAR(50) NOT NULL
+[<span style="color:#3333FF;">--</span>]      +-- Column offices.postalCode: VARCHAR(15) NOT NULL
+[<span style="color:#3333FF;">--</span>]      +-- Column offices.territory: VARCHAR(10) NOT NULL
+[<span style="color:#3333FF;">--</span>]  +-- TABLE: orderdetails
+[<span style="color:#3333FF;">--</span>]      +-- TYPE: InnoDB
+[<span style="color:#3333FF;">--</span>]      +-- Index PRIMARY - Cols: orderNumber,productCode - Type: BTREE
+[<span style="color:#3333FF;">--</span>]      +-- Index productCode - Cols: productCode - Type: BTREE
+[<span style="color:#3333FF;">--</span>]      +-- Column orderdetails.orderNumber: INT(11) NOT NULL
+[<span style="color:#3333FF;">--</span>]      +-- Column orderdetails.productCode: VARCHAR(15) NOT NULL
+[<span style="color:#3333FF;">--</span>]      +-- Column orderdetails.quantityOrdered: INT(11) NOT NULL
+[<span style="color:#3333FF;">--</span>]      +-- Column orderdetails.priceEach: DECIMAL(10,2) NOT NULL
+[<span style="color:#3333FF;">--</span>]      +-- Column orderdetails.orderLineNumber: SMALLINT(6) NOT NULL
+[<span style="color:#3333FF;">--</span>]  +-- TABLE: orders
+[<span style="color:#3333FF;">--</span>]      +-- TYPE: InnoDB
+[<span style="color:#3333FF;">--</span>]      +-- Index customerNumber - Cols: customerNumber - Type: BTREE
+[<span style="color:#3333FF;">--</span>]      +-- Index PRIMARY - Cols: orderNumber - Type: BTREE
+[<span style="color:#3333FF;">--</span>]      +-- Column orders.orderNumber: INT(11) NOT NULL
+[<span style="color:#3333FF;">--</span>]      +-- Column orders.orderDate: DATE NOT NULL
+[<span style="color:#3333FF;">--</span>]      +-- Column orders.requiredDate: DATE NOT NULL
+[<span style="color:#3333FF;">--</span>]      +-- Column orders.shippedDate: DATE NULL
+[<span style="color:#3333FF;">--</span>]      +-- Column orders.status: VARCHAR(15) NOT NULL
+[<span style="color:#3333FF;">--</span>]      +-- Column orders.comments: TEXT NULL
+[<span style="color:#3333FF;">--</span>]      +-- Column orders.customerNumber: INT(11) NOT NULL
+[<span style="color:#3333FF;">--</span>]  +-- TABLE: payments
+[<span style="color:#3333FF;">--</span>]      +-- TYPE: InnoDB
+[<span style="color:#3333FF;">--</span>]      +-- Index PRIMARY - Cols: customerNumber,checkNumber - Type: BTREE
+[<span style="color:#3333FF;">--</span>]      +-- Column payments.customerNumber: INT(11) NOT NULL
+[<span style="color:#3333FF;">--</span>]      +-- Column payments.checkNumber: VARCHAR(50) NOT NULL
+[<span style="color:#3333FF;">--</span>]      +-- Column payments.paymentDate: DATE NOT NULL
+[<span style="color:#3333FF;">--</span>]      +-- Column payments.amount: DECIMAL(10,2) NOT NULL
+[<span style="color:#3333FF;">--</span>]  +-- TABLE: productlines
+[<span style="color:#3333FF;">--</span>]      +-- TYPE: InnoDB
+[<span style="color:#3333FF;">--</span>]      +-- Index PRIMARY - Cols: productLine - Type: BTREE
+[<span style="color:#3333FF;">--</span>]      +-- Column productlines.productLine: VARCHAR(50) NOT NULL
+[<span style="color:#3333FF;">--</span>]      +-- Column productlines.textDescription: VARCHAR(4000) NULL
+[<span style="color:#3333FF;">--</span>]      +-- Column productlines.htmlDescription: MEDIUMTEXT NULL
+[<span style="color:#3333FF;">--</span>]      +-- Column productlines.image: MEDIUMBLOB NULL
+[<span style="color:#3333FF;">--</span>]  +-- TABLE: products
+[<span style="color:#3333FF;">--</span>]      +-- TYPE: InnoDB
+[<span style="color:#3333FF;">--</span>]      +-- Index PRIMARY - Cols: productCode - Type: BTREE
+[<span style="color:#3333FF;">--</span>]      +-- Index productLine - Cols: productLine - Type: BTREE
+[<span style="color:#3333FF;">--</span>]      +-- Column products.productCode: VARCHAR(15) NOT NULL
+[<span style="color:#3333FF;">--</span>]      +-- Column products.productName: VARCHAR(70) NOT NULL
+[<span style="color:#3333FF;">--</span>]      +-- Column products.productLine: VARCHAR(50) NOT NULL
+[<span style="color:#3333FF;">--</span>]      +-- Column products.productScale: VARCHAR(10) NOT NULL
+[<span style="color:#3333FF;">--</span>]      +-- Column products.productVendor: VARCHAR(50) NOT NULL
+[<span style="color:#3333FF;">--</span>]      +-- Column products.productDescription: TEXT NOT NULL
+[<span style="color:#3333FF;">--</span>]      +-- Column products.quantityInStock: SMALLINT(6) NOT NULL
+[<span style="color:#3333FF;">--</span>]      +-- Column products.buyPrice: DECIMAL(10,2) NOT NULL
+[<span style="color:#3333FF;">--</span>]      +-- Column products.MSRP: DECIMAL(10,2) NOT NULL
+ 
+-------- Indexes Metrics ---------------------------------------------------------------------------
+[<span style="color:#3333FF;">--</span>] Worst selectivity indexes:
+[<span style="color:#3333FF;">--</span>] Index: productCode(productCode)
+[<span style="color:#3333FF;">--</span>]  +-- COLUMN      : classicmodels.orderdetails
+[<span style="color:#3333FF;">--</span>]  +-- NB SEQS     : 1 sequence(s)
+[<span style="color:#3333FF;">--</span>]  +-- NB COLS     : 1 column(s)
+[<span style="color:#3333FF;">--</span>]  +-- CARDINALITY : 109 distinct values
+[<span style="color:#3333FF;">--</span>]  +-- NB ROWS     : 2996 rows
+[<span style="color:#3333FF;">--</span>]  +-- TYPE        : BTREE
+[<span style="color:#3333FF;">--</span>]  +-- SELECTIVITY : 3.64%
+[<span style="color:red;">!!</span>] productCode(productCode) has a low selectivity
+[<span style="color:#3333FF;">--</span>] Index: productLine(productLine)
+[<span style="color:#3333FF;">--</span>]  +-- COLUMN      : classicmodels.products
+[<span style="color:#3333FF;">--</span>]  +-- NB SEQS     : 1 sequence(s)
+[<span style="color:#3333FF;">--</span>]  +-- NB COLS     : 1 column(s)
+[<span style="color:#3333FF;">--</span>]  +-- CARDINALITY : 7 distinct values
+[<span style="color:#3333FF;">--</span>]  +-- NB ROWS     : 110 rows
+[<span style="color:#3333FF;">--</span>]  +-- TYPE        : BTREE
+[<span style="color:#3333FF;">--</span>]  +-- SELECTIVITY : 6.36%
+[<span style="color:red;">!!</span>] productLine(productLine) has a low selectivity
+[<span style="color:#3333FF;">--</span>] Index: PRIMARY(orderNumber)
+[<span style="color:#3333FF;">--</span>]  +-- COLUMN      : classicmodels.orderdetails
+[<span style="color:#3333FF;">--</span>]  +-- NB SEQS     : 1 sequence(s)
+[<span style="color:#3333FF;">--</span>]  +-- NB COLS     : 2 column(s)
+[<span style="color:#3333FF;">--</span>]  +-- CARDINALITY : 326 distinct values
+[<span style="color:#3333FF;">--</span>]  +-- NB ROWS     : 2996 rows
+[<span style="color:#3333FF;">--</span>]  +-- TYPE        : BTREE
+[<span style="color:#3333FF;">--</span>]  +-- SELECTIVITY : 10.88%
+[<span style="color:red;">!!</span>] PRIMARY(orderNumber) has a low selectivity
+[<span style="color:#3333FF;">--</span>] Index: salesRepEmployeeNumber(salesRepEmployeeNumber)
+[<span style="color:#3333FF;">--</span>]  +-- COLUMN      : classicmodels.customers
+[<span style="color:#3333FF;">--</span>]  +-- NB SEQS     : 1 sequence(s)
+[<span style="color:#3333FF;">--</span>]  +-- NB COLS     : 1 column(s)
+[<span style="color:#3333FF;">--</span>]  +-- CARDINALITY : 16 distinct values
+[<span style="color:#3333FF;">--</span>]  +-- NB ROWS     : 122 rows
+[<span style="color:#3333FF;">--</span>]  +-- TYPE        : BTREE
+[<span style="color:#3333FF;">--</span>]  +-- SELECTIVITY : 13.11%
+[<span style="color:red;">!!</span>] salesRepEmployeeNumber(salesRepEmployeeNumber) has a low selectivity
+[<span style="color:#3333FF;">--</span>] Index: customerNumber(customerNumber)
+[<span style="color:#3333FF;">--</span>]  +-- COLUMN      : classicmodels.orders
+[<span style="color:#3333FF;">--</span>]  +-- NB SEQS     : 1 sequence(s)
+[<span style="color:#3333FF;">--</span>]  +-- NB COLS     : 1 column(s)
+[<span style="color:#3333FF;">--</span>]  +-- CARDINALITY : 98 distinct values
+[<span style="color:#3333FF;">--</span>]  +-- NB ROWS     : 326 rows
+[<span style="color:#3333FF;">--</span>]  +-- TYPE        : BTREE
+[<span style="color:#3333FF;">--</span>]  +-- SELECTIVITY : 30.06%
+[<span style="color:#3333FF;">--</span>] Index: officeCode(officeCode)
+[<span style="color:#3333FF;">--</span>]  +-- COLUMN      : classicmodels.employees
+[<span style="color:#3333FF;">--</span>]  +-- NB SEQS     : 1 sequence(s)
+[<span style="color:#3333FF;">--</span>]  +-- NB COLS     : 1 column(s)
+[<span style="color:#3333FF;">--</span>]  +-- CARDINALITY : 7 distinct values
+[<span style="color:#3333FF;">--</span>]  +-- NB ROWS     : 23 rows
+[<span style="color:#3333FF;">--</span>]  +-- TYPE        : BTREE
+[<span style="color:#3333FF;">--</span>]  +-- SELECTIVITY : 30.43%
+[<span style="color:#3333FF;">--</span>] Index: reportsTo(reportsTo)
+[<span style="color:#3333FF;">--</span>]  +-- COLUMN      : classicmodels.employees
+[<span style="color:#3333FF;">--</span>]  +-- NB SEQS     : 1 sequence(s)
+[<span style="color:#3333FF;">--</span>]  +-- NB COLS     : 1 column(s)
+[<span style="color:#3333FF;">--</span>]  +-- CARDINALITY : 7 distinct values
+[<span style="color:#3333FF;">--</span>]  +-- NB ROWS     : 23 rows
+[<span style="color:#3333FF;">--</span>]  +-- TYPE        : BTREE
+[<span style="color:#3333FF;">--</span>]  +-- SELECTIVITY : 30.43%
+[<span style="color:#3333FF;">--</span>] Index: PRIMARY(customerNumber)
+[<span style="color:#3333FF;">--</span>]  +-- COLUMN      : classicmodels.payments
+[<span style="color:#3333FF;">--</span>]  +-- NB SEQS     : 1 sequence(s)
+[<span style="color:#3333FF;">--</span>]  +-- NB COLS     : 2 column(s)
+[<span style="color:#3333FF;">--</span>]  +-- CARDINALITY : 98 distinct values
+[<span style="color:#3333FF;">--</span>]  +-- NB ROWS     : 273 rows
+[<span style="color:#3333FF;">--</span>]  +-- TYPE        : BTREE
+[<span style="color:#3333FF;">--</span>]  +-- SELECTIVITY : 35.90%
+[<span style="color:#3333FF;">--</span>] Index: PRIMARY(orderNumber)
+[<span style="color:#3333FF;">--</span>]  +-- COLUMN      : classicmodels.orders
+[<span style="color:#3333FF;">--</span>]  +-- NB SEQS     : 1 sequence(s)
+[<span style="color:#3333FF;">--</span>]  +-- NB COLS     : 1 column(s)
+[<span style="color:#3333FF;">--</span>]  +-- CARDINALITY : 326 distinct values
+[<span style="color:#3333FF;">--</span>]  +-- NB ROWS     : 326 rows
+[<span style="color:#3333FF;">--</span>]  +-- TYPE        : BTREE
+[<span style="color:#3333FF;">--</span>]  +-- SELECTIVITY : 100.00%
+[<span style="color:#3333FF;">--</span>] Index: PRIMARY(productCode)
+[<span style="color:#3333FF;">--</span>]  +-- COLUMN      : classicmodels.orderdetails
+[<span style="color:#3333FF;">--</span>]  +-- NB SEQS     : 2 sequence(s)
+[<span style="color:#3333FF;">--</span>]  +-- NB COLS     : 2 column(s)
+[<span style="color:#3333FF;">--</span>]  +-- CARDINALITY : 2996 distinct values
+[<span style="color:#3333FF;">--</span>]  +-- NB ROWS     : 2996 rows
+[<span style="color:#3333FF;">--</span>]  +-- TYPE        : BTREE
+[<span style="color:#3333FF;">--</span>]  +-- SELECTIVITY : 100.00%
+[<span style="color:#3333FF;">--</span>] Indexes per database:
+[<span style="color:#3333FF;">--</span>] Database: classicmodels
+[<span style="color:#3333FF;">--</span>]  +-- INDEX      : customers.PRIMARY
+[<span style="color:#3333FF;">--</span>]  +-- COLUMNS    : customerNumber
+[<span style="color:#3333FF;">--</span>]  +-- CARDINALITY: 122
+[<span style="color:#3333FF;">--</span>]  +-- INDEX      : customers.salesRepEmployeeNumber
+[<span style="color:#3333FF;">--</span>]  +-- COLUMNS    : salesRepEmployeeNumber
+[<span style="color:#3333FF;">--</span>]  +-- CARDINALITY: 16
+[<span style="color:#3333FF;">--</span>]  +-- INDEX      : employees.officeCode
+[<span style="color:#3333FF;">--</span>]  +-- COLUMNS    : officeCode
+[<span style="color:#3333FF;">--</span>]  +-- CARDINALITY: 7
+[<span style="color:#3333FF;">--</span>]  +-- INDEX      : employees.PRIMARY
+[<span style="color:#3333FF;">--</span>]  +-- COLUMNS    : employeeNumber
+[<span style="color:#3333FF;">--</span>]  +-- CARDINALITY: 23
+[<span style="color:#3333FF;">--</span>]  +-- INDEX      : employees.reportsTo
+[<span style="color:#3333FF;">--</span>]  +-- COLUMNS    : reportsTo
+[<span style="color:#3333FF;">--</span>]  +-- CARDINALITY: 7
+[<span style="color:#3333FF;">--</span>]  +-- INDEX      : offices.PRIMARY
+[<span style="color:#3333FF;">--</span>]  +-- COLUMNS    : officeCode
+[<span style="color:#3333FF;">--</span>]  +-- CARDINALITY: 7
+[<span style="color:#3333FF;">--</span>]  +-- INDEX      : orderdetails.PRIMARY
+[<span style="color:#3333FF;">--</span>]  +-- COLUMNS    : orderNumber,productCode
+[<span style="color:#3333FF;">--</span>]  +-- CARDINALITY: 3322
+[<span style="color:#3333FF;">--</span>]  +-- INDEX      : orderdetails.productCode
+[<span style="color:#3333FF;">--</span>]  +-- COLUMNS    : productCode
+[<span style="color:#3333FF;">--</span>]  +-- CARDINALITY: 109
+[<span style="color:#3333FF;">--</span>]  +-- INDEX      : orders.customerNumber
+[<span style="color:#3333FF;">--</span>]  +-- COLUMNS    : customerNumber
+[<span style="color:#3333FF;">--</span>]  +-- CARDINALITY: 98
+[<span style="color:#3333FF;">--</span>]  +-- INDEX      : orders.PRIMARY
+[<span style="color:#3333FF;">--</span>]  +-- COLUMNS    : orderNumber
+[<span style="color:#3333FF;">--</span>]  +-- CARDINALITY: 326
+[<span style="color:#3333FF;">--</span>]  +-- INDEX      : payments.PRIMARY
+[<span style="color:#3333FF;">--</span>]  +-- COLUMNS    : customerNumber,checkNumber
+[<span style="color:#3333FF;">--</span>]  +-- CARDINALITY: 371
+[<span style="color:#3333FF;">--</span>]  +-- INDEX      : productlines.PRIMARY
+[<span style="color:#3333FF;">--</span>]  +-- COLUMNS    : productLine
+[<span style="color:#3333FF;">--</span>]  +-- CARDINALITY: 7
+[<span style="color:#3333FF;">--</span>]  +-- INDEX      : products.PRIMARY
+[<span style="color:#3333FF;">--</span>]  +-- COLUMNS    : productCode
+[<span style="color:#3333FF;">--</span>]  +-- CARDINALITY: 110
+[<span style="color:#3333FF;">--</span>]  +-- INDEX      : products.productLine
+[<span style="color:#3333FF;">--</span>]  +-- COLUMNS    : productLine
+[<span style="color:#3333FF;">--</span>]  +-- CARDINALITY: 7
+[<span style="color:#3333FF;">--</span>] Unused indexes:
+[<span style="color:red;">!!</span>] Index: salesRepEmployeeNumber on classicmodels.customers is not used.
+[<span style="color:red;">!!</span>] Index: reportsTo on classicmodels.employees is not used.
+[<span style="color:red;">!!</span>] Index: officeCode on classicmodels.employees is not used.
+[<span style="color:red;">!!</span>] Index: productCode on classicmodels.orderdetails is not used.
+[<span style="color:red;">!!</span>] Index: customerNumber on classicmodels.orders is not used.
+[<span style="color:red;">!!</span>] Index: productLine on classicmodels.products is not used.
+ 
+-------- Views Metrics -----------------------------------------------------------------------------
+ 
+-------- Triggers Metrics --------------------------------------------------------------------------
+ 
+-------- Routines Metrics --------------------------------------------------------------------------
+ 
+-------- Security Recommendations ------------------------------------------------------------------
+[<span style="color:lime;">OK</span>] No Role user detected
+[<span style="color:lime;">OK</span>] There are no anonymous accounts for any database users
+[<span style="color:lime;">OK</span>] All database users have passwords assigned
+[<span style="color:#3333FF;">--</span>] There are 620 basic passwords in the list.
+ 
+-------- CVE Security Recommendations --------------------------------------------------------------
+[<span style="color:lime;">OK</span>] NO SECURITY CVE FOUND FOR YOUR VERSION
+ 
+-------- Performance Metrics -----------------------------------------------------------------------
+[<span style="color:#3333FF;">--</span>] Up for: 1h 37m 44s (2K q [0.347 qps], 669 conn, TX: 385K, RX: 519K)
+[<span style="color:#3333FF;">--</span>] Reads / Writes: 99% / 1%
+[<span style="color:#3333FF;">--</span>] Binary logging is disabled
+[<span style="color:#3333FF;">--</span>] Physical Memory     : 187.6G
+[<span style="color:#3333FF;">--</span>] Max MySQL memory    : 2.7G
+[<span style="color:#3333FF;">--</span>] Other process memory: 531.6M
+[<span style="color:#3333FF;">--</span>] Total buffers: 192.0M global + 17.1M per thread (151 max threads)
+[<span style="color:#3333FF;">--</span>] Performance_schema Max memory usage: 72B
+[<span style="color:#3333FF;">--</span>] Galera GCache Max memory usage: 0B
+[<span style="color:#3333FF;">--</span>] Global Buffers
+[<span style="color:#3333FF;">--</span>]  +-- Key Buffer: 16.0M
+[<span style="color:#3333FF;">--</span>]  +-- Max Tmp Table: 16.0M
+[<span style="color:#3333FF;">--</span>] Query Cache Buffers
+[<span style="color:#3333FF;">--</span>]  +-- Query Cache: OFF - DISABLED
+[<span style="color:#3333FF;">--</span>]  +-- Query Cache Size: 16.0M
+[<span style="color:#3333FF;">--</span>] Per Thread Buffers
+[<span style="color:#3333FF;">--</span>]  +-- Read Buffer: 128.0K
+[<span style="color:#3333FF;">--</span>]  +-- Read RND Buffer: 256.0K
+[<span style="color:#3333FF;">--</span>]  +-- Sort Buffer: 256.0K
+[<span style="color:#3333FF;">--</span>]  +-- Thread stack: 192.0K
+[<span style="color:#3333FF;">--</span>]  +-- Join Buffer: 256.0K
+[<span style="color:lime;">OK</span>] Maximum reached memory usage: 209.1M (0.11% of installed RAM)
+[<span style="color:lime;">OK</span>] Maximum possible memory usage: 2.7G (1.44% of installed RAM)
+[<span style="color:lime;">OK</span>] Overall possible memory usage with other process is compatible with memory available
+[<span style="color:lime;">OK</span>] Slow queries: 0% (0/2K)
+[<span style="color:lime;">OK</span>] Highest usage of available connections: 0% (1/151)
+[<span style="color:lime;">OK</span>] Aborted connections: 0.30% (2/669)
+[<span style="color:red;">!!</span>] Name resolution is active: a reverse name resolution is made for each new connection which can reduce performance
+[<span style="color:lime;">OK</span>] Query cache is disabled by default due to mutex contention on multiprocessor machines.
+[<span style="color:lime;">OK</span>] Sorts requiring temporary tables: 0% (0 temp sorts / 2 sorts)
+[<span style="color:lime;">OK</span>] No joins without indexes
+[<span style="color:lime;">OK</span>] Temporary tables created on disk: 5% (49 on disk / 919 total)
+[<span style="color:lime;">OK</span>] Thread cache hit rate: 99% (1 created / 669 connections)
+[<span style="color:lime;">OK</span>] Table cache hit rate: 66% (1K hits / 2K requests)
+[<span style="color:lime;">OK</span>] table_definition_cache (1400) is greater than number of tables (289)
+[<span style="color:lime;">OK</span>] Open file limit used: 1% (60/5K)
+[<span style="color:lime;">OK</span>] Table locks acquired immediately: 100% (683 immediate / 683 locks)
+ 
+-------- Performance schema ------------------------------------------------------------------------
+[<span style="color:#3333FF;">--</span>] Performance_schema is activated.
+[<span style="color:#3333FF;">--</span>] Memory used by Performance_schema: 72B
+[<span style="color:#3333FF;">--</span>] Sys schema is installed.
+[<span style="color:#3333FF;">--</span>] Sys schema Version: 1.5.2
+ 
+-------- Performance schema: Top 5 user per connection ---------------------------------------------
+[<span style="color:#3333FF;">--</span>]  +-- 1: debian-sys-maint	1484 conn(s)
+[<span style="color:#3333FF;">--</span>]  +-- 2: background	29 conn(s)
+[<span style="color:#3333FF;">--</span>]  +-- 3: root	1 conn(s)
+ 
+-------- Performance schema: Top 5 user per statement ----------------------------------------------
+[<span style="color:#3333FF;">--</span>]  +-- 1: debian-sys-maint	4573 stmt(s)
+[<span style="color:#3333FF;">--</span>]  +-- 2: root	45 stmt(s)
+[<span style="color:#3333FF;">--</span>]  +-- 3: background	0 stmt(s)
+ 
+-------- Performance schema: Top 5 user per statement latency --------------------------------------
+[<span style="color:#3333FF;">--</span>]  +-- 1: root	3756603355.5556
+[<span style="color:#3333FF;">--</span>]  +-- 2: debian-sys-maint	273935295.6966
+[<span style="color:#3333FF;">--</span>]  +-- 3: background	0.0000
+ 
+-------- Performance schema: Top 5 user per lock latency -------------------------------------------
+[<span style="color:#3333FF;">--</span>]  +-- 1: debian-sys-maint	534874000000
+[<span style="color:#3333FF;">--</span>]  +-- 2: root	45481000000
+[<span style="color:#3333FF;">--</span>]  +-- 3: background	0
+ 
+-------- Performance schema: Top 5 user per nb full scans ------------------------------------------
+[<span style="color:#3333FF;">--</span>]  +-- 1: debian-sys-maint	1458
+[<span style="color:#3333FF;">--</span>]  +-- 2: root	2
+[<span style="color:#3333FF;">--</span>]  +-- 3: background	0
+ 
+-------- Performance schema: Top 5 user per rows sent ----------------------------------------------
+[<span style="color:#3333FF;">--</span>]  +-- 1: debian-sys-maint	5766
+[<span style="color:#3333FF;">--</span>]  +-- 2: root	131
+[<span style="color:#3333FF;">--</span>]  +-- 3: background	0
+ 
+-------- Performance schema: Top 5 user per rows modified ------------------------------------------
+[<span style="color:#3333FF;">--</span>]  +-- 1: root	3865
+[<span style="color:#3333FF;">--</span>]  +-- 2: debian-sys-maint	0
+[<span style="color:#3333FF;">--</span>]  +-- 3: background	0
+ 
+-------- Performance schema: Top 5 user per IO -----------------------------------------------------
+[<span style="color:#3333FF;">--</span>]  +-- 1: debian-sys-maint	6481
+[<span style="color:#3333FF;">--</span>]  +-- 2: background	2220
+[<span style="color:#3333FF;">--</span>]  +-- 3: root	729
+ 
+-------- Performance schema: Top 5 user per IO latency ---------------------------------------------
+[<span style="color:#3333FF;">--</span>]  +-- 1: background	183858041760
+[<span style="color:#3333FF;">--</span>]  +-- 2: debian-sys-maint	101656107360
+[<span style="color:#3333FF;">--</span>]  +-- 3: root	48763192656
+ 
+-------- Performance schema: Top 5 host per connection ---------------------------------------------
+[<span style="color:#3333FF;">--</span>]  +-- 1: localhost	1494 conn(s)
+ 
+-------- Performance schema: Top 5 host per statement ----------------------------------------------
+[<span style="color:#3333FF;">--</span>]  +-- 1: localhost	9526 stmt(s)
+ 
+-------- Performance schema: Top 5 host per statement latency --------------------------------------
+[<span style="color:#3333FF;">--</span>]  +-- 1: localhost	325878115.6106
+ 
+-------- Performance schema: Top 5 host per lock latency -------------------------------------------
+[<span style="color:#3333FF;">--</span>]  +-- 1: localhost	586990000000
+[<span style="color:#3333FF;">--</span>]  +-- 2: background	0
+ 
+-------- Performance schema: Top 5 host per nb full scans ------------------------------------------
+[<span style="color:#3333FF;">--</span>]  +-- 1: localhost	1469
+[<span style="color:#3333FF;">--</span>]  +-- 2: background	0
+ 
+-------- Performance schema: Top 5 host per rows sent ----------------------------------------------
+[<span style="color:#3333FF;">--</span>]  +-- 1: localhost	5925
+[<span style="color:#3333FF;">--</span>]  +-- 2: background	0
+ 
+-------- Performance schema: Top 5 host per rows modified ------------------------------------------
+[<span style="color:#3333FF;">--</span>]  +-- 1: localhost	3865
+[<span style="color:#3333FF;">--</span>]  +-- 2: background	0
+ 
+-------- Performance schema: Top 5 host per io -----------------------------------------------------
+[<span style="color:#3333FF;">--</span>]  +-- 1: localhost	14420
+ 
+-------- Performance schema: Top 5 host per io latency ---------------------------------------------
+[<span style="color:#3333FF;">--</span>]  +-- 1: localhost	300838600032
+ 
+-------- Performance schema: Top IO type order by total io -----------------------------------------
+[<span style="color:#3333FF;">--</span>]  +-- 1: myisam/dfile	5469 i/o
+[<span style="color:#3333FF;">--</span>]  +-- 2: sql/FRM	2627 i/o
+[<span style="color:#3333FF;">--</span>]  +-- 3: innodb/innodb_data_file	745 i/o
+[<span style="color:#3333FF;">--</span>]  +-- 4: sql/file_parser	252 i/o
+[<span style="color:#3333FF;">--</span>]  +-- 5: innodb/innodb_log_file	167 i/o
+[<span style="color:#3333FF;">--</span>]  +-- 6: myisam/kfile	45 i/o
+[<span style="color:#3333FF;">--</span>]  +-- 7: archive/data	40 i/o
+[<span style="color:#3333FF;">--</span>]  +-- 8: csv/data	22 i/o
+[<span style="color:#3333FF;">--</span>]  +-- 9: sql/dbopt	21 i/o
+[<span style="color:#3333FF;">--</span>]  +-- 10: sql/casetest	15 i/o
+[<span style="color:#3333FF;">--</span>]  +-- 11: csv/metadata	8 i/o
+[<span style="color:#3333FF;">--</span>]  +-- 12: mysys/cnf	5 i/o
+[<span style="color:#3333FF;">--</span>]  +-- 13: sql/ERRMSG	5 i/o
+[<span style="color:#3333FF;">--</span>]  +-- 14: sql/pid	3 i/o
+[<span style="color:#3333FF;">--</span>]  +-- 15: mysys/charset	3 i/o
+[<span style="color:#3333FF;">--</span>]  +-- 16: sql/global_ddl_log	2 i/o
+[<span style="color:#3333FF;">--</span>]  +-- 17: sql/misc	1 i/o
+ 
+-------- Performance schema: Top IO type order by total latency ------------------------------------
+[<span style="color:#3333FF;">--</span>]  +-- 1: innodb/innodb_data_file	157805250576.0
+[<span style="color:#3333FF;">--</span>]  +-- 2: myisam/dfile	69786117792.0
+[<span style="color:#3333FF;">--</span>]  +-- 3: sql/FRM	59451511632.0
+[<span style="color:#3333FF;">--</span>]  +-- 4: innodb/innodb_log_file	38563122912.0
+[<span style="color:#3333FF;">--</span>]  +-- 5: myisam/kfile	2017533696.0
+[<span style="color:#3333FF;">--</span>]  +-- 6: sql/file_parser	1958146992.0
+[<span style="color:#3333FF;">--</span>]  +-- 7: sql/casetest	1694817936.0
+[<span style="color:#3333FF;">--</span>]  +-- 8: csv/metadata	1327408704.0
+[<span style="color:#3333FF;">--</span>]  +-- 9: sql/dbopt	807812208.0
+[<span style="color:#3333FF;">--</span>]  +-- 10: csv/data	352143264.0
+[<span style="color:#3333FF;">--</span>]  +-- 11: archive/data	246407808.0
+[<span style="color:#3333FF;">--</span>]  +-- 12: mysys/cnf	151792368.0
+[<span style="color:#3333FF;">--</span>]  +-- 13: sql/ERRMSG	44232912.0
+[<span style="color:#3333FF;">--</span>]  +-- 14: mysys/charset	20398704.0
+[<span style="color:#3333FF;">--</span>]  +-- 15: sql/misc	18451584.0
+[<span style="color:#3333FF;">--</span>]  +-- 16: sql/global_ddl_log	16537296.0
+[<span style="color:#3333FF;">--</span>]  +-- 17: sql/pid	15655392.0
+ 
+-------- Performance schema: Top IO type order by max latency --------------------------------------
+[<span style="color:#3333FF;">--</span>]  +-- 1: myisam/dfile	31255381824
+[<span style="color:#3333FF;">--</span>]  +-- 2: innodb/innodb_data_file	28778155440
+[<span style="color:#3333FF;">--</span>]  +-- 3: sql/casetest	1633506000
+[<span style="color:#3333FF;">--</span>]  +-- 4: innodb/innodb_log_file	1525222416
+[<span style="color:#3333FF;">--</span>]  +-- 5: sql/FRM	776057280
+[<span style="color:#3333FF;">--</span>]  +-- 6: csv/metadata	775681536
+[<span style="color:#3333FF;">--</span>]  +-- 7: sql/dbopt	234404064
+[<span style="color:#3333FF;">--</span>]  +-- 8: myisam/kfile	200667360
+[<span style="color:#3333FF;">--</span>]  +-- 9: sql/file_parser	174775680
+[<span style="color:#3333FF;">--</span>]  +-- 10: mysys/cnf	137666400
+[<span style="color:#3333FF;">--</span>]  +-- 11: csv/data	47481456
+[<span style="color:#3333FF;">--</span>]  +-- 12: sql/ERRMSG	25570656
+[<span style="color:#3333FF;">--</span>]  +-- 13: sql/misc	18451584
+[<span style="color:#3333FF;">--</span>]  +-- 14: sql/global_ddl_log	11664480
+[<span style="color:#3333FF;">--</span>]  +-- 15: sql/pid	10760688
+[<span style="color:#3333FF;">--</span>]  +-- 16: mysys/charset	10441488
+[<span style="color:#3333FF;">--</span>]  +-- 17: archive/data	8631168
+ 
+-------- Performance schema: Top Stages order by total io ------------------------------------------
+[<span style="color:#3333FF;">--</span>]  +-- 1: innodb/buffer pool load	1 i/o
+ 
+-------- Performance schema: Top Stages order by total latency -------------------------------------
+[<span style="color:#3333FF;">--</span>]  +-- 1: innodb/buffer pool load	26631500000.0
+ 
+-------- Performance schema: Top Stages order by avg latency ---------------------------------------
+[<span style="color:#3333FF;">--</span>]  +-- 1: innodb/buffer pool load	26631500000
+ 
+-------- Performance schema: Top 5 host per table scans --------------------------------------------
+[<span style="color:#3333FF;">--</span>]  +-- 1: localhost	2960
+ 
+-------- Performance schema: InnoDB Buffer Pool by schema ------------------------------------------
+[<span style="color:#3333FF;">--</span>]  +-- 1: mysql	802816	332260	49 page(s)
+[<span style="color:#3333FF;">--</span>]  +-- 2: classicmodels	524288	273546	32 page(s)
+[<span style="color:#3333FF;">--</span>]  +-- 3: InnoDB System	229376	28091	14 page(s)
+[<span style="color:#3333FF;">--</span>]  +-- 4: sys	16384	338	1 page(s)
+ 
+-------- Performance schema: 40 InnoDB Buffer Pool by table ----------------------------------------
+[<span style="color:#3333FF;">--</span>]  +-- 1: InnoDB System	SYS_TABLES	1458176	1262415	89 page(s)
+[<span style="color:#3333FF;">--</span>]  +-- 2: mysql	help_topic	278528	183046	17 page(s)
+[<span style="color:#3333FF;">--</span>]  +-- 3: classicmodels	orderdetails	245760	180708	15 page(s)
+[<span style="color:#3333FF;">--</span>]  +-- 4: mysql	help_keyword	163840	102049	10 page(s)
+[<span style="color:#3333FF;">--</span>]  +-- 5: classicmodels	products	81920	33394	5 page(s)
+[<span style="color:#3333FF;">--</span>]  +-- 6: mysql	help_relation	81920	32039	5 page(s)
+[<span style="color:#3333FF;">--</span>]  +-- 7: classicmodels	orders	65536	25302	4 page(s)
+[<span style="color:#3333FF;">--</span>]  +-- 8: classicmodels	employees	49152	2619	3 page(s)
+[<span style="color:#3333FF;">--</span>]  +-- 9: InnoDB System	SYS_FOREIGN	49152	1815	3 page(s)
+[<span style="color:#3333FF;">--</span>]  +-- 10: classicmodels	customers	32768	16761	2 page(s)
+[<span style="color:#3333FF;">--</span>]  +-- 11: mysql	help_category	32768	8050	2 page(s)
+[<span style="color:#3333FF;">--</span>]  +-- 12: classicmodels	offices	16384	630	1 page(s)
+[<span style="color:#3333FF;">--</span>]  +-- 13: classicmodels	payments	16384	10624	1 page(s)
+[<span style="color:#3333FF;">--</span>]  +-- 14: classicmodels	productlines	16384	3508	1 page(s)
+[<span style="color:#3333FF;">--</span>]  +-- 15: InnoDB System	SYS_COLUMNS	16384	12776	1 page(s)
+[<span style="color:#3333FF;">--</span>]  +-- 16: InnoDB System	SYS_DATAFILES	16384	1510	1 page(s)
+[<span style="color:#3333FF;">--</span>]  +-- 17: InnoDB System	SYS_FIELDS	16384	2770	1 page(s)
+[<span style="color:#3333FF;">--</span>]  +-- 18: InnoDB System	SYS_FOREIGN_COLS	16384	674	1 page(s)
+[<span style="color:#3333FF;">--</span>]  +-- 19: InnoDB System	SYS_INDEXES	16384	3219	1 page(s)
+[<span style="color:#3333FF;">--</span>]  +-- 20: InnoDB System	SYS_TABLESPACES	16384	1482	1 page(s)
+[<span style="color:#3333FF;">--</span>]  +-- 21: mysql	engine_cost	16384	112	1 page(s)
+[<span style="color:#3333FF;">--</span>]  +-- 22: mysql	gtid_executed	16384	0	1 page(s)
+[<span style="color:#3333FF;">--</span>]  +-- 23: mysql	innodb_index_stats	16384	5954	1 page(s)
+[<span style="color:#3333FF;">--</span>]  +-- 24: mysql	innodb_table_stats	16384	686	1 page(s)
+[<span style="color:#3333FF;">--</span>]  +-- 25: mysql	plugin	16384	45	1 page(s)
+[<span style="color:#3333FF;">--</span>]  +-- 26: mysql	servers	16384	0	1 page(s)
+[<span style="color:#3333FF;">--</span>]  +-- 27: mysql	server_cost	16384	279	1 page(s)
+[<span style="color:#3333FF;">--</span>]  +-- 28: mysql	slave_master_info	16384	0	1 page(s)
+[<span style="color:#3333FF;">--</span>]  +-- 29: mysql	slave_relay_log_info	16384	0	1 page(s)
+[<span style="color:#3333FF;">--</span>]  +-- 30: mysql	slave_worker_info	16384	0	1 page(s)
+[<span style="color:#3333FF;">--</span>]  +-- 31: mysql	time_zone	16384	0	1 page(s)
+[<span style="color:#3333FF;">--</span>]  +-- 32: mysql	time_zone_leap_second	16384	0	1 page(s)
+[<span style="color:#3333FF;">--</span>]  +-- 33: mysql	time_zone_name	16384	0	1 page(s)
+[<span style="color:#3333FF;">--</span>]  +-- 34: mysql	time_zone_transition	16384	0	1 page(s)
+[<span style="color:#3333FF;">--</span>]  +-- 35: mysql	time_zone_transition_type	16384	0	1 page(s)
+[<span style="color:#3333FF;">--</span>]  +-- 36: sys	sys_config	16384	338	1 page(s)
+ 
+-------- Performance schema: Process per time ------------------------------------------------------
+[<span style="color:#3333FF;">--</span>]  +-- 1: sql/main	NULL	5885
+[<span style="color:#3333FF;">--</span>]  +-- 2: sql/compress_gtid_table	Daemon	5885
+[<span style="color:#3333FF;">--</span>]  +-- 3: debian-sys-maint@localhost	Query	0
+[<span style="color:#3333FF;">--</span>]  +-- 4: sql/thread_timer_notifier	NULL	NULL
+[<span style="color:#3333FF;">--</span>]  +-- 5: innodb/io_ibuf_thread	NULL	NULL
+[<span style="color:#3333FF;">--</span>]  +-- 6: innodb/io_log_thread	NULL	NULL
+[<span style="color:#3333FF;">--</span>]  +-- 7: innodb/io_read_thread	NULL	NULL
+[<span style="color:#3333FF;">--</span>]  +-- 8: innodb/io_read_thread	NULL	NULL
+[<span style="color:#3333FF;">--</span>]  +-- 9: innodb/io_read_thread	NULL	NULL
+[<span style="color:#3333FF;">--</span>]  +-- 10: innodb/io_read_thread	NULL	NULL
+[<span style="color:#3333FF;">--</span>]  +-- 11: innodb/io_write_thread	NULL	NULL
+[<span style="color:#3333FF;">--</span>]  +-- 12: innodb/io_write_thread	NULL	NULL
+[<span style="color:#3333FF;">--</span>]  +-- 13: innodb/io_write_thread	NULL	NULL
+[<span style="color:#3333FF;">--</span>]  +-- 14: innodb/io_write_thread	NULL	NULL
+[<span style="color:#3333FF;">--</span>]  +-- 15: innodb/page_cleaner_thread	NULL	NULL
+[<span style="color:#3333FF;">--</span>]  +-- 16: innodb/srv_lock_timeout_thread	NULL	NULL
+[<span style="color:#3333FF;">--</span>]  +-- 17: innodb/srv_error_monitor_thread	NULL	NULL
+[<span style="color:#3333FF;">--</span>]  +-- 18: innodb/srv_monitor_thread	NULL	NULL
+[<span style="color:#3333FF;">--</span>]  +-- 19: innodb/srv_master_thread	NULL	NULL
+[<span style="color:#3333FF;">--</span>]  +-- 20: innodb/srv_worker_thread	NULL	NULL
+[<span style="color:#3333FF;">--</span>]  +-- 21: innodb/srv_worker_thread	NULL	NULL
+[<span style="color:#3333FF;">--</span>]  +-- 22: innodb/srv_purge_thread	NULL	NULL
+[<span style="color:#3333FF;">--</span>]  +-- 23: innodb/srv_worker_thread	NULL	NULL
+[<span style="color:#3333FF;">--</span>]  +-- 24: innodb/buf_dump_thread	NULL	NULL
+[<span style="color:#3333FF;">--</span>]  +-- 25: innodb/dict_stats_thread	NULL	NULL
+[<span style="color:#3333FF;">--</span>]  +-- 26: sql/signal_handler	NULL	NULL
+ 
+-------- Performance schema: InnoDB Lock Waits -----------------------------------------------------
+[<span style="color:#3333FF;">--</span>] No information found or indicators deactivated.
+ 
+-------- Performance schema: Thread IO Latency -----------------------------------------------------
+[<span style="color:#3333FF;">--</span>]  +-- 1: main	102068250192	28778155440
+[<span style="color:#3333FF;">--</span>]  +-- 2: buf_dump_thread	24631225776	1135700832
+[<span style="color:#3333FF;">--</span>]  +-- 3: page_cleaner_thread	20592222192	5362707744
+[<span style="color:#3333FF;">--</span>]  +-- 4: io_write_thread	10072677024	2666419872
+[<span style="color:#3333FF;">--</span>]  +-- 5: dict_stats_thread	9284228400	670040016
+[<span style="color:#3333FF;">--</span>]  +-- 6: srv_master_thread	8454737952	762127392
+[<span style="color:#3333FF;">--</span>]  +-- 7: io_log_thread	4787757408	1525222416
+[<span style="color:#3333FF;">--</span>]  +-- 8: io_write_thread	3966942816	1585084272
+ 
+-------- Performance schema: Top 15 Most latency statements ----------------------------------------
+[<span style="color:#3333FF;">--</span>]  +-- 1: SELECT `CONCAT` ( `t` . `TABLE_SCHEMA` , ? , `t` . `TABLE_NAME` ) AS ? , `CONCAT` ( `s` . `INDEX_NAME` , ? , `s` . `COLU	68896613000
+[<span style="color:#3333FF;">--</span>]  +-- 2: INSERT INTO `orderdetails` ( `orderNumber` , `productCode` , `quantityOrdered` , `priceEach` , `orderLineNumber` ) VALUE	58957832000
+[<span style="color:#3333FF;">--</span>]  +-- 3: SELECT ENGINE , SUM ( `DATA_LENGTH` + `INDEX_LENGTH` ) , COUNT ( ENGINE ) , SUM ( `DATA_LENGTH` ) , SUM ( `INDEX_LENGTH`	49755524000
+[<span style="color:#3333FF;">--</span>]  +-- 4: SELECT SYSTEM_USER , `Command` AS `PROC` , TIME FROM `sys` . `x$processlist` ORDER BY TIME DESC 	41191317000
+[<span style="color:#3333FF;">--</span>]  +-- 5: SELECT `object_schema` , `allocated` , DATA , `pages` FROM `sys` . `x$innodb_buffer_stats_by_schema` ORDER BY `pages` DE	36107235000
+[<span style="color:#3333FF;">--</span>]  +-- 6: SELECT `IFNULL` ( SUM ( `INDEX_LENGTH` ) , ? ) FROM `information_schema` . `TABLES` WHERE `TABLE_SCHEMA` NOT IN (?) AND 	33850998000
+[<span style="color:#3333FF;">--</span>]  +-- 7: SHOW TABLE STATUS FROM `sys` 	33632374000
+[<span style="color:#3333FF;">--</span>]  +-- 8: SELECT `object_schema` , `object_name` , `allocated` , DATA , `pages` FROM `sys` . `x$innodb_buffer_stats_by_table` ORDE	33374857000
+[<span style="color:#3333FF;">--</span>]  +-- 9: SHOW TABLE STATUS FROM `mysql` 	23787130000
+[<span style="color:#3333FF;">--</span>]  +-- 10: INSERT INTO `customers` ( `customerNumber` , `customerName` , `contactLastName` , `contactFirstName` , `phone` , `addres	22761499000
+[<span style="color:#3333FF;">--</span>]  +-- 11: SELECT `CONCAT` ( `CONCAT` ( `TABLE_SCHEMA` , ? ) , TABLE_NAME ) , CAST ( `DATA_FREE` AS SIGNED ) FROM `information_sche	22703941000
+[<span style="color:#3333FF;">--</span>]  +-- 12: SELECT SYSTEM_USER , `total_connections` FROM `sys` . `user_summary` ORDER BY `total_connections` DESC LIMIT ? 	18211053000
+[<span style="color:#3333FF;">--</span>]  +-- 13: SELECT SYSTEM_USER , `statements` FROM `sys` . `user_summary` ORDER BY `statements` DESC LIMIT ? 	17782490000
+[<span style="color:#3333FF;">--</span>]  +-- 14: SELECT SYSTEM_USER , `file_ios` FROM `sys` . `x$user_summary` ORDER BY `file_ios` DESC LIMIT ? 	17418459000
+[<span style="color:#3333FF;">--</span>]  +-- 15: SELECT SYSTEM_USER , `file_io_latency` FROM `sys` . `x$user_summary` ORDER BY `file_io_latency` DESC LIMIT ? 	16266400000
+ 
+-------- Performance schema: Top 15 slower queries -------------------------------------------------
+[<span style="color:#3333FF;">--</span>]  +-- 1: SELECT `IFNULL` ( SUM ( `INDEX_LENGTH` ) , ? ) FROM `information_schema` . `TABLES` WHERE `TABLE_SCHEMA` NOT IN (?) AND 	4 s
+[<span style="color:#3333FF;">--</span>]  +-- 2: SELECT ENGINE , SUM ( `DATA_LENGTH` + `INDEX_LENGTH` ) , COUNT ( ENGINE ) , SUM ( `DATA_LENGTH` ) , SUM ( `INDEX_LENGTH`	2 s
+[<span style="color:#3333FF;">--</span>]  +-- 3: SHOW TABLE STATUS FROM `sys` 	2 s
+[<span style="color:#3333FF;">--</span>]  +-- 4: INSERT INTO `orderdetails` ( `orderNumber` , `productCode` , `quantityOrdered` , `priceEach` , `orderLineNumber` ) VALUE	1 s
+[<span style="color:#3333FF;">--</span>]  +-- 5: SELECT `CONCAT` ( `t` . `TABLE_SCHEMA` , ? , `t` . `TABLE_NAME` ) AS ? , `CONCAT` ( `s` . `INDEX_NAME` , ? , `s` . `COLU	1 s
+[<span style="color:#3333FF;">--</span>]  +-- 6: SELECT `object_schema` , `allocated` , DATA , `pages` FROM `sys` . `x$innodb_buffer_stats_by_schema` ORDER BY `pages` DE	1 s
+[<span style="color:#3333FF;">--</span>]  +-- 7: SELECT SYSTEM_USER , `Command` AS `PROC` , TIME FROM `sys` . `x$processlist` ORDER BY TIME DESC 	1 s
+ 
+-------- Performance schema: Top 15 nb statement type ----------------------------------------------
+[<span style="color:#3333FF;">--</span>]  +-- 1: select	3002
+[<span style="color:#3333FF;">--</span>]  +-- 2: Quit	1516
+[<span style="color:#3333FF;">--</span>]  +-- 3: jump_if_not	206
+[<span style="color:#3333FF;">--</span>]  +-- 4: freturn	30
+[<span style="color:#3333FF;">--</span>]  +-- 5: show_engine_status	12
+[<span style="color:#3333FF;">--</span>]  +-- 6: set_option	10
+[<span style="color:#3333FF;">--</span>]  +-- 7: drop_table	8
+[<span style="color:#3333FF;">--</span>]  +-- 8: insert	8
+[<span style="color:#3333FF;">--</span>]  +-- 9: show_table_status	8
+[<span style="color:#3333FF;">--</span>]  +-- 10: create_table	8
+[<span style="color:#3333FF;">--</span>]  +-- 11: Init DB	8
+[<span style="color:#3333FF;">--</span>]  +-- 12: show_databases	5
+[<span style="color:#3333FF;">--</span>]  +-- 13: show_variables	4
+[<span style="color:#3333FF;">--</span>]  +-- 14: show_status	4
+[<span style="color:#3333FF;">--</span>]  +-- 15: show_slave_status	2
+ 
+-------- Performance schema: Top 15 statement by total latency -------------------------------------
+[<span style="color:#3333FF;">--</span>]  +-- 1: select	1459958019000
+[<span style="color:#3333FF;">--</span>]  +-- 2: show_table_status	124796053000
+[<span style="color:#3333FF;">--</span>]  +-- 3: insert	106821724000
+[<span style="color:#3333FF;">--</span>]  +-- 4: create_table	51147366000
+[<span style="color:#3333FF;">--</span>]  +-- 5: show_variables	12695785000
+[<span style="color:#3333FF;">--</span>]  +-- 6: Quit	12435387000
+[<span style="color:#3333FF;">--</span>]  +-- 7: show_status	6467783000
+[<span style="color:#3333FF;">--</span>]  +-- 8: show_databases	2819242000
+[<span style="color:#3333FF;">--</span>]  +-- 9: show_engine_status	2043722000
+[<span style="color:#3333FF;">--</span>]  +-- 10: drop_table	978393000
+[<span style="color:#3333FF;">--</span>]  +-- 11: set_option	829816000
+[<span style="color:#3333FF;">--</span>]  +-- 12: show_slave_status	795483000
+[<span style="color:#3333FF;">--</span>]  +-- 13: jump_if_not	461770000
+[<span style="color:#3333FF;">--</span>]  +-- 14: show_storage_engines	361017000
+[<span style="color:#3333FF;">--</span>]  +-- 15: Init DB	353860000
+ 
+-------- Performance schema: Top 15 statement by lock latency --------------------------------------
+[<span style="color:#3333FF;">--</span>]  +-- 1: select	518403000000
+[<span style="color:#3333FF;">--</span>]  +-- 2: insert	45196000000
+[<span style="color:#3333FF;">--</span>]  +-- 3: show_table_status	33407000000
+[<span style="color:#3333FF;">--</span>]  +-- 4: show_variables	621000000
+[<span style="color:#3333FF;">--</span>]  +-- 5: show_status	540000000
+[<span style="color:#3333FF;">--</span>]  +-- 6: show_databases	453000000
+[<span style="color:#3333FF;">--</span>]  +-- 7: show_storage_engines	155000000
+[<span style="color:#3333FF;">--</span>]  +-- 8: show_slave_status	0
+[<span style="color:#3333FF;">--</span>]  +-- 9: drop_table	0
+[<span style="color:#3333FF;">--</span>]  +-- 10: Ping	0
+[<span style="color:#3333FF;">--</span>]  +-- 11: jump_if_not	0
+[<span style="color:#3333FF;">--</span>]  +-- 12: set_option	0
+[<span style="color:#3333FF;">--</span>]  +-- 13: Quit	0
+[<span style="color:#3333FF;">--</span>]  +-- 14: create_db	0
+[<span style="color:#3333FF;">--</span>]  +-- 15: show_engine_status	0
+ 
+-------- Performance schema: Top 15 statement by full scans ----------------------------------------
+[<span style="color:#3333FF;">--</span>]  +-- 1: select	1468
+[<span style="color:#3333FF;">--</span>]  +-- 2: show_table_status	8
+[<span style="color:#3333FF;">--</span>]  +-- 3: show_databases	5
+[<span style="color:#3333FF;">--</span>]  +-- 4: show_status	4
+[<span style="color:#3333FF;">--</span>]  +-- 5: show_variables	4
+[<span style="color:#3333FF;">--</span>]  +-- 6: show_storage_engines	2
+[<span style="color:#3333FF;">--</span>]  +-- 7: drop_table	0
+[<span style="color:#3333FF;">--</span>]  +-- 8: change_db	0
+[<span style="color:#3333FF;">--</span>]  +-- 9: Statistics	0
+[<span style="color:#3333FF;">--</span>]  +-- 10: show_slave_status	0
+[<span style="color:#3333FF;">--</span>]  +-- 11: freturn	0
+[<span style="color:#3333FF;">--</span>]  +-- 12: show_slave_hosts	0
+[<span style="color:#3333FF;">--</span>]  +-- 13: insert	0
+[<span style="color:#3333FF;">--</span>]  +-- 14: set_option	0
+[<span style="color:#3333FF;">--</span>]  +-- 15: Init DB	0
+ 
+-------- Performance schema: Top 15 statement by rows sent -----------------------------------------
+[<span style="color:#3333FF;">--</span>]  +-- 1: select	2205
+[<span style="color:#3333FF;">--</span>]  +-- 2: show_variables	2048
+[<span style="color:#3333FF;">--</span>]  +-- 3: show_status	1422
+[<span style="color:#3333FF;">--</span>]  +-- 4: show_table_status	456
+[<span style="color:#3333FF;">--</span>]  +-- 5: show_databases	25
+[<span style="color:#3333FF;">--</span>]  +-- 6: show_storage_engines	18
+[<span style="color:#3333FF;">--</span>]  +-- 7: show_slave_status	0
+[<span style="color:#3333FF;">--</span>]  +-- 8: drop_table	0
+[<span style="color:#3333FF;">--</span>]  +-- 9: Ping	0
+[<span style="color:#3333FF;">--</span>]  +-- 10: jump_if_not	0
+[<span style="color:#3333FF;">--</span>]  +-- 11: set_option	0
+[<span style="color:#3333FF;">--</span>]  +-- 12: Quit	0
+[<span style="color:#3333FF;">--</span>]  +-- 13: create_db	0
+[<span style="color:#3333FF;">--</span>]  +-- 14: show_engine_status	0
+[<span style="color:#3333FF;">--</span>]  +-- 15: insert	0
+ 
+-------- Performance schema: Top 15 statement by rows modified -------------------------------------
+[<span style="color:#3333FF;">--</span>]  +-- 1: insert	3864
+[<span style="color:#3333FF;">--</span>]  +-- 2: create_db	1
+[<span style="color:#3333FF;">--</span>]  +-- 3: show_slave_status	0
+[<span style="color:#3333FF;">--</span>]  +-- 4: drop_table	0
+[<span style="color:#3333FF;">--</span>]  +-- 5: Ping	0
+[<span style="color:#3333FF;">--</span>]  +-- 6: jump_if_not	0
+[<span style="color:#3333FF;">--</span>]  +-- 7: set_option	0
+[<span style="color:#3333FF;">--</span>]  +-- 8: show_variables	0
+[<span style="color:#3333FF;">--</span>]  +-- 9: select	0
+[<span style="color:#3333FF;">--</span>]  +-- 10: Quit	0
+[<span style="color:#3333FF;">--</span>]  +-- 11: show_engine_status	0
+[<span style="color:#3333FF;">--</span>]  +-- 12: Statistics	0
+[<span style="color:#3333FF;">--</span>]  +-- 13: show_storage_engines	0
+[<span style="color:#3333FF;">--</span>]  +-- 14: show_table_status	0
+[<span style="color:#3333FF;">--</span>]  +-- 15: show_databases	0
+ 
+-------- Performance schema: 15 sample queries using temp table ------------------------------------
+[<span style="color:#3333FF;">--</span>]  +-- 1: SELECT `COLUMN_TYPE` FROM `information_schema` . `COLUMNS` WHERE `TABLE_SCHEMA` = ? AND TABLE_NAME = ? AND COLUMN_NAME =
+[<span style="color:#3333FF;">--</span>]  +-- 2: SELECT `IS_NULLABLE` FROM `information_schema` . `COLUMNS` WHERE `TABLE_SCHEMA` = ? AND TABLE_NAME = ? AND COLUMN_NAME =
+[<span style="color:#3333FF;">--</span>]  +-- 3: SELECT `IFNULL` ( SUM ( `INDEX_LENGTH` ) , ? ) FROM `information_schema` . `TABLES` WHERE `TABLE_SCHEMA` NOT IN (?) AND 
+[<span style="color:#3333FF;">--</span>]  +-- 4: SELECT `CONCAT` ( `t` . `TABLE_SCHEMA` , ? , `t` . `TABLE_NAME` ) AS ? , `CONCAT` ( `s` . `INDEX_NAME` , ? , `s` . `COLU
+[<span style="color:#3333FF;">--</span>]  +-- 5: SELECT ENGINE , SUM ( `DATA_LENGTH` + `INDEX_LENGTH` ) , COUNT ( ENGINE ) , SUM ( `DATA_LENGTH` ) , SUM ( `INDEX_LENGTH`
+[<span style="color:#3333FF;">--</span>]  +-- 6: SELECT `CONCAT` ( `CONCAT` ( `TABLE_SCHEMA` , ? ) , TABLE_NAME ) , CAST ( `DATA_FREE` AS SIGNED ) FROM `information_sche
+[<span style="color:#3333FF;">--</span>]  +-- 7: SHOW TABLE STATUS FROM `sys` 
+[<span style="color:#3333FF;">--</span>]  +-- 8: SELECT `concat` ( TABLE_NAME , ? , `index_name` ) AS `idxname` , GROUP_CONCAT ( COLUMN_NAME ORDER BY `seq_in_index` ) AS
+[<span style="color:#3333FF;">--</span>]  +-- 9: SELECT COUNT ( * ) FROM `information_schema` . `TABLES` WHERE ENGINE = ? 
+[<span style="color:#3333FF;">--</span>]  +-- 10: SELECT COLUMN_NAME FROM `information_schema` . `COLUMNS` WHERE `TABLE_SCHEMA` = ? AND TABLE_NAME = ? 
+[<span style="color:#3333FF;">--</span>]  +-- 11: SELECT ? FROM `information_schema` . `columns` WHERE `TABLE_SCHEMA` = ? AND TABLE_NAME = ? AND COLUMN_NAME = ? 
+[<span style="color:#3333FF;">--</span>]  +-- 12: SELECT `object_schema` , `allocated` , DATA , `pages` FROM `sys` . `x$innodb_buffer_stats_by_schema` ORDER BY `pages` DE
+[<span style="color:#3333FF;">--</span>]  +-- 13: SELECT `object_schema` , `object_name` , `allocated` , DATA , `pages` FROM `sys` . `x$innodb_buffer_stats_by_table` ORDE
+[<span style="color:#3333FF;">--</span>]  +-- 14: SELECT SYSTEM_USER , `Command` AS `PROC` , TIME FROM `sys` . `x$processlist` ORDER BY TIME DESC 
+[<span style="color:#3333FF;">--</span>]  +-- 15: SELECT COUNT ( * ) FROM `information_schema` . `columns` WHERE TABLE_NAME = ? AND `TABLE_SCHEMA` = ? AND COLUMN_NAME = ?
+ 
+-------- Performance schema: Unused indexes --------------------------------------------------------
+[<span style="color:#3333FF;">--</span>]  +-- 1: classicmodels	customers	salesRepEmployeeNumber
+[<span style="color:#3333FF;">--</span>]  +-- 2: classicmodels	employees	reportsTo
+[<span style="color:#3333FF;">--</span>]  +-- 3: classicmodels	employees	officeCode
+[<span style="color:#3333FF;">--</span>]  +-- 4: classicmodels	orderdetails	productCode
+[<span style="color:#3333FF;">--</span>]  +-- 5: classicmodels	orders	customerNumber
+[<span style="color:#3333FF;">--</span>]  +-- 6: classicmodels	products	productLine
+ 
+-------- Performance schema: Tables with full table scans ------------------------------------------
+[<span style="color:#3333FF;">--</span>]  +-- 1: classicmodels	customers	122	4279427760
+ 
+-------- Performance schema: Latest File IO by latency ---------------------------------------------
+[<span style="color:#3333FF;">--</span>] No information found or indicators deactivated.
+ 
+-------- Performance schema: File by IO read bytes -------------------------------------------------
+[<span style="color:#3333FF;">--</span>]  +-- 1: /var/lib/mysql/ibdata1	4718592
+[<span style="color:#3333FF;">--</span>]  +-- 2: /var/lib/mysql/mysql/user.MYD	592620
+[<span style="color:#3333FF;">--</span>]  +-- 3: /var/lib/mysql/mysql/help_topic.ibd	327680
+[<span style="color:#3333FF;">--</span>]  +-- 4: /var/lib/mysql/mysql/proc.MYD	235988
+[<span style="color:#3333FF;">--</span>]  +-- 5: /var/lib/mysql/mysql/help_keyword.ibd	212992
+[<span style="color:#3333FF;">--</span>]  +-- 6: /var/lib/mysql/mysql/help_relation.ibd	131072
+[<span style="color:#3333FF;">--</span>]  +-- 7: /var/lib/mysql/mysql/help_category.ibd	81920
+[<span style="color:#3333FF;">--</span>]  +-- 8: /var/lib/mysql/sys/sys_config.ibd	81920
+[<span style="color:#3333FF;">--</span>]  +-- 9: /usr/share/mysql/english/errmsg.sys	80201
+[<span style="color:#3333FF;">--</span>]  +-- 10: /var/lib/mysql/ib_logfile0	70144
+[<span style="color:#3333FF;">--</span>]  +-- 11: /var/lib/mysql/mysql/engine_cost.ibd	65536
+[<span style="color:#3333FF;">--</span>]  +-- 12: /var/lib/mysql/mysql/innodb_index_stats.ibd	65536
+[<span style="color:#3333FF;">--</span>]  +-- 13: /var/lib/mysql/mysql/innodb_table_stats.ibd	65536
+[<span style="color:#3333FF;">--</span>]  +-- 14: /var/lib/mysql/mysql/plugin.ibd	65536
+[<span style="color:#3333FF;">--</span>]  +-- 15: /var/lib/mysql/mysql/server_cost.ibd	65536
+ 
+-------- Performance schema: File by IO written bytes ----------------------------------------------
+[<span style="color:#3333FF;">--</span>]  +-- 1: /var/lib/mysql/ibtmp1	13467648
+[<span style="color:#3333FF;">--</span>]  +-- 2: /var/lib/mysql/ibdata1	4751360
+[<span style="color:#3333FF;">--</span>]  +-- 3: /var/lib/mysql/ib_logfile0	729600
+[<span style="color:#3333FF;">--</span>]  +-- 4: /var/lib/mysql/classicmodels/orderdetails.ibd	376832
+[<span style="color:#3333FF;">--</span>]  +-- 5: /var/lib/mysql/classicmodels/products.ibd	212992
+[<span style="color:#3333FF;">--</span>]  +-- 6: /var/lib/mysql/classicmodels/orders.ibd	196608
+[<span style="color:#3333FF;">--</span>]  +-- 7: /var/lib/mysql/classicmodels/employees.ibd	180224
+[<span style="color:#3333FF;">--</span>]  +-- 8: /var/lib/mysql/classicmodels/customers.ibd	163840
+[<span style="color:#3333FF;">--</span>]  +-- 9: /var/lib/mysql/classicmodels/offices.ibd	147456
+[<span style="color:#3333FF;">--</span>]  +-- 10: /var/lib/mysql/classicmodels/payments.ibd	147456
+[<span style="color:#3333FF;">--</span>]  +-- 11: /var/lib/mysql/classicmodels/productlines.ibd	147456
+[<span style="color:#3333FF;">--</span>]  +-- 12: /var/lib/mysql/mysql/innodb_index_stats.ibd	81920
+[<span style="color:#3333FF;">--</span>]  +-- 13: /var/lib/mysql/mysql/innodb_table_stats.ibd	81920
+[<span style="color:#3333FF;">--</span>]  +-- 14: /var/lib/mysql/classicmodels/productlines.frm	12923
+[<span style="color:#3333FF;">--</span>]  +-- 15: /var/lib/mysql/classicmodels/customers.frm	5685
+ 
+-------- Performance schema: File per IO total latency ---------------------------------------------
+[<span style="color:#3333FF;">--</span>]  +-- 1: /var/lib/mysql/ibdata1	45944330160
+[<span style="color:#3333FF;">--</span>]  +-- 2: /var/lib/mysql/ibtmp1	44338411248
+[<span style="color:#3333FF;">--</span>]  +-- 3: /var/lib/mysql/ib_logfile0	38554254624
+[<span style="color:#3333FF;">--</span>]  +-- 4: /var/lib/mysql/mysql/event.MYD	31411348416
+[<span style="color:#3333FF;">--</span>]  +-- 5: /var/lib/mysql/mysql/user.MYD	20699752464
+[<span style="color:#3333FF;">--</span>]  +-- 6: /var/lib/mysql/mysql/tables_priv.MYD	13454462400
+[<span style="color:#3333FF;">--</span>]  +-- 7: /var/lib/mysql/classicmodels/orderdetails.ibd	9277423056
+[<span style="color:#3333FF;">--</span>]  +-- 8: /var/lib/mysql/mysql/help_topic.ibd	6283649904
+[<span style="color:#3333FF;">--</span>]  +-- 9: /var/lib/mysql/classicmodels/products.ibd	5081966784
+[<span style="color:#3333FF;">--</span>]  +-- 10: /var/lib/mysql/mysql/innodb_index_stats.ibd	3518953824
+[<span style="color:#3333FF;">--</span>]  +-- 11: /var/lib/mysql/classicmodels/employees.ibd	3484056144
+[<span style="color:#3333FF;">--</span>]  +-- 12: /var/lib/mysql/mysql/help_keyword.ibd	3222127008
+[<span style="color:#3333FF;">--</span>]  +-- 13: /var/lib/mysql/classicmodels/orders.ibd	3174529728
+[<span style="color:#3333FF;">--</span>]  +-- 14: /var/lib/mysql/classicmodels/customers.ibd	3162688320
+[<span style="color:#3333FF;">--</span>]  +-- 15: /var/lib/mysql/mysql/proc.MYD	2954988528
+[<span style="color:#3333FF;">--</span>]  +-- 16: /var/lib/mysql/classicmodels/payments.ibd	2526940416
+[<span style="color:#3333FF;">--</span>]  +-- 17: /var/lib/mysql/classicmodels/offices.ibd	2433097440
+[<span style="color:#3333FF;">--</span>]  +-- 18: /var/lib/mysql/classicmodels/productlines.ibd	2320542960
+[<span style="color:#3333FF;">--</span>]  +-- 19: /var/lib/mysql/mysql/innodb_table_stats.ibd	2124327984
+[<span style="color:#3333FF;">--</span>]  +-- 20: /var/lib/mysql/mysql/time_zone_leap_second.ibd	1878985392
+ 
+-------- Performance schema: file per IO read latency ----------------------------------------------
+[<span style="color:#3333FF;">--</span>]  +-- 1: /var/lib/mysql/ibdata1	22785998976
+[<span style="color:#3333FF;">--</span>]  +-- 2: /var/lib/mysql/mysql/user.MYD	9911596848
+[<span style="color:#3333FF;">--</span>]  +-- 3: /var/lib/mysql/mysql/help_topic.ibd	6248116560
+[<span style="color:#3333FF;">--</span>]  +-- 4: /var/lib/mysql/mysql/help_keyword.ibd	3183004944
+[<span style="color:#3333FF;">--</span>]  +-- 5: /var/lib/mysql/mysql/proc.MYD	2463325680
+[<span style="color:#3333FF;">--</span>]  +-- 6: /var/lib/mysql/mysql/time_zone_leap_second.ibd	1843425600
+[<span style="color:#3333FF;">--</span>]  +-- 7: /var/lib/mysql/mysql/time_zone_transition_type.ibd	1811090640
+[<span style="color:#3333FF;">--</span>]  +-- 8: /var/lib/mysql/mysql/plugin.ibd	1588075632
+[<span style="color:#3333FF;">--</span>]  +-- 9: /var/lib/mysql/mysql/time_zone_transition.ibd	1571937792
+[<span style="color:#3333FF;">--</span>]  +-- 10: /var/lib/mysql/mysql/slave_relay_log_info.ibd	1457747184
+[<span style="color:#3333FF;">--</span>]  +-- 11: /var/lib/mysql/mysql/engine_cost.ibd	1416997200
+[<span style="color:#3333FF;">--</span>]  +-- 12: /var/lib/mysql/sys/sys_config.ibd	1373328816
+[<span style="color:#3333FF;">--</span>]  +-- 13: /var/lib/mysql/mysql/help_relation.ibd	1350331824
+[<span style="color:#3333FF;">--</span>]  +-- 14: /var/lib/mysql/mysql/server_cost.ibd	1345735344
+[<span style="color:#3333FF;">--</span>]  +-- 15: /var/lib/mysql/mysql/slave_worker_info.ibd	1317091248
+[<span style="color:#3333FF;">--</span>]  +-- 16: /var/lib/mysql/mysql/innodb_index_stats.ibd	1069693920
+[<span style="color:#3333FF;">--</span>]  +-- 17: /var/lib/mysql/mysql/time_zone.ibd	995196288
+[<span style="color:#3333FF;">--</span>]  +-- 18: /var/lib/mysql/ib_logfile0	950822928
+[<span style="color:#3333FF;">--</span>]  +-- 19: /var/lib/mysql/mysql/slave_master_info.ibd	947570736
+[<span style="color:#3333FF;">--</span>]  +-- 20: /var/lib/mysql/mysql/help_category.ibd	869546400
+ 
+-------- Performance schema: file per IO write latency ---------------------------------------------
+[<span style="color:#3333FF;">--</span>]  +-- 1: /var/lib/mysql/ibtmp1	15454202976
+[<span style="color:#3333FF;">--</span>]  +-- 2: /var/lib/mysql/ibdata1	5624547504
+[<span style="color:#3333FF;">--</span>]  +-- 3: /var/lib/mysql/ib_logfile0	2230497552
+[<span style="color:#3333FF;">--</span>]  +-- 4: /var/lib/mysql/classicmodels/orderdetails.ibd	664119312
+[<span style="color:#3333FF;">--</span>]  +-- 5: /var/lib/mysql/classicmodels/employees.ibd	470948592
+[<span style="color:#3333FF;">--</span>]  +-- 6: /var/lib/mysql/classicmodels/customers.ibd	454258080
+[<span style="color:#3333FF;">--</span>]  +-- 7: /var/lib/mysql/classicmodels/orders.ibd	436246992
+[<span style="color:#3333FF;">--</span>]  +-- 8: /var/lib/mysql/classicmodels/products.ibd	410905248
+[<span style="color:#3333FF;">--</span>]  +-- 9: /var/lib/mysql/classicmodels/offices.ibd	390226560
+[<span style="color:#3333FF;">--</span>]  +-- 10: /var/lib/mysql/classicmodels/payments.ibd	372246480
+[<span style="color:#3333FF;">--</span>]  +-- 11: /var/lib/mysql/classicmodels/productlines.ibd	300404592
+[<span style="color:#3333FF;">--</span>]  +-- 12: /var/lib/mysql/classicmodels/customers.frm	228384864
+[<span style="color:#3333FF;">--</span>]  +-- 13: /var/lib/mysql/classicmodels/orderdetails.frm	179992320
+[<span style="color:#3333FF;">--</span>]  +-- 14: /var/lib/mysql/classicmodels/offices.frm	155582640
+[<span style="color:#3333FF;">--</span>]  +-- 15: /var/lib/mysql/classicmodels/products.frm	144203616
+[<span style="color:#3333FF;">--</span>]  +-- 16: /var/lib/mysql/classicmodels/orders.frm	143085504
+[<span style="color:#3333FF;">--</span>]  +-- 17: /var/lib/mysql/mysql/innodb_table_stats.ibd	139667328
+[<span style="color:#3333FF;">--</span>]  +-- 18: /var/lib/mysql/mysql/innodb_index_stats.ibd	128385888
+[<span style="color:#3333FF;">--</span>]  +-- 19: /var/lib/mysql/classicmodels/employees.frm	115970832
+[<span style="color:#3333FF;">--</span>]  +-- 20: /var/lib/mysql/classicmodels/payments.frm	112714080
+ 
+-------- Performance schema: Event Wait by read bytes ----------------------------------------------
+[<span style="color:#3333FF;">--</span>]  +-- 1: innodb/innodb_data_file	6520832
+[<span style="color:#3333FF;">--</span>]  +-- 2: myisam/dfile	832315
+[<span style="color:#3333FF;">--</span>]  +-- 3: sql/FRM	677706
+[<span style="color:#3333FF;">--</span>]  +-- 4: sql/ERRMSG	80201
+[<span style="color:#3333FF;">--</span>]  +-- 5: innodb/innodb_log_file	70144
+[<span style="color:#3333FF;">--</span>]  +-- 6: mysys/charset	19427
+[<span style="color:#3333FF;">--</span>]  +-- 7: sql/file_parser	9360
+[<span style="color:#3333FF;">--</span>]  +-- 8: myisam/kfile	5789
+[<span style="color:#3333FF;">--</span>]  +-- 9: sql/dbopt	187
+[<span style="color:#3333FF;">--</span>]  +-- 10: csv/metadata	70
+[<span style="color:#3333FF;">--</span>]  +-- 11: mysys/cnf	56
+[<span style="color:#3333FF;">--</span>]  +-- 12: sql/casetest	0
+[<span style="color:#3333FF;">--</span>]  +-- 13: sql/global_ddl_log	0
+[<span style="color:#3333FF;">--</span>]  +-- 14: sql/misc	0
+[<span style="color:#3333FF;">--</span>]  +-- 15: sql/pid	0
+ 
+-------- Performance schema: Event Wait written bytes ----------------------------------------------
+[<span style="color:#3333FF;">--</span>]  +-- 1: innodb/innodb_data_file	19955712
+[<span style="color:#3333FF;">--</span>]  +-- 2: innodb/innodb_log_file	729600
+[<span style="color:#3333FF;">--</span>]  +-- 3: sql/FRM	48975
+[<span style="color:#3333FF;">--</span>]  +-- 4: sql/dbopt	65
+[<span style="color:#3333FF;">--</span>]  +-- 5: sql/pid	5
+[<span style="color:#3333FF;">--</span>]  +-- 6: sql/casetest	0
+[<span style="color:#3333FF;">--</span>]  +-- 7: sql/ERRMSG	0
+[<span style="color:#3333FF;">--</span>]  +-- 8: sql/file_parser	0
+[<span style="color:#3333FF;">--</span>]  +-- 9: sql/global_ddl_log	0
+[<span style="color:#3333FF;">--</span>]  +-- 10: sql/misc	0
+[<span style="color:#3333FF;">--</span>]  +-- 11: mysys/charset	0
+[<span style="color:#3333FF;">--</span>]  +-- 12: mysys/cnf	0
+[<span style="color:#3333FF;">--</span>]  +-- 13: csv/metadata	0
+[<span style="color:#3333FF;">--</span>]  +-- 14: csv/data	0
+[<span style="color:#3333FF;">--</span>]  +-- 15: myisam/dfile	0
+ 
+-------- Performance schema: event per wait total latency ------------------------------------------
+[<span style="color:#3333FF;">--</span>]  +-- 1: innodb/innodb_data_file	157805250576
+[<span style="color:#3333FF;">--</span>]  +-- 2: myisam/dfile	69786117792
+[<span style="color:#3333FF;">--</span>]  +-- 3: sql/FRM	60449482224
+[<span style="color:#3333FF;">--</span>]  +-- 4: innodb/innodb_log_file	38563122912
+[<span style="color:#3333FF;">--</span>]  +-- 5: myisam/kfile	2017533696
+[<span style="color:#3333FF;">--</span>]  +-- 6: sql/casetest	1694817936
+[<span style="color:#3333FF;">--</span>]  +-- 7: csv/metadata	1327408704
+[<span style="color:#3333FF;">--</span>]  +-- 8: sql/file_parser	960176400
+[<span style="color:#3333FF;">--</span>]  +-- 9: sql/dbopt	807812208
+[<span style="color:#3333FF;">--</span>]  +-- 10: csv/data	352143264
+[<span style="color:#3333FF;">--</span>]  +-- 11: archive/data	246407808
+[<span style="color:#3333FF;">--</span>]  +-- 12: mysys/cnf	151792368
+[<span style="color:#3333FF;">--</span>]  +-- 13: sql/ERRMSG	44232912
+[<span style="color:#3333FF;">--</span>]  +-- 14: mysys/charset	20398704
+[<span style="color:#3333FF;">--</span>]  +-- 15: sql/misc	18451584
+[<span style="color:#3333FF;">--</span>]  +-- 16: sql/global_ddl_log	16537296
+[<span style="color:#3333FF;">--</span>]  +-- 17: sql/pid	15655392
+ 
+-------- Performance schema: event per wait read latency -------------------------------------------
+[<span style="color:#3333FF;">--</span>]  +-- 1: innodb/innodb_data_file	54210442800
+[<span style="color:#3333FF;">--</span>]  +-- 2: sql/FRM	45066586704
+[<span style="color:#3333FF;">--</span>]  +-- 3: myisam/dfile	12784995120
+[<span style="color:#3333FF;">--</span>]  +-- 4: myisam/kfile	1773528096
+[<span style="color:#3333FF;">--</span>]  +-- 5: innodb/innodb_log_file	950822928
+[<span style="color:#3333FF;">--</span>]  +-- 6: sql/dbopt	554244288
+[<span style="color:#3333FF;">--</span>]  +-- 7: csv/metadata	359552352
+[<span style="color:#3333FF;">--</span>]  +-- 8: sql/file_parser	234076656
+[<span style="color:#3333FF;">--</span>]  +-- 9: mysys/cnf	138861120
+[<span style="color:#3333FF;">--</span>]  +-- 10: sql/ERRMSG	30639552
+[<span style="color:#3333FF;">--</span>]  +-- 11: mysys/charset	10441488
+[<span style="color:#3333FF;">--</span>]  +-- 12: csv/data	0
+[<span style="color:#3333FF;">--</span>]  +-- 13: sql/casetest	0
+[<span style="color:#3333FF;">--</span>]  +-- 14: sql/pid	0
+[<span style="color:#3333FF;">--</span>]  +-- 15: sql/misc	0
+[<span style="color:#3333FF;">--</span>]  +-- 16: sql/global_ddl_log	0
+[<span style="color:#3333FF;">--</span>]  +-- 17: archive/data	0
+ 
+-------- Performance schema: event per wait write latency ------------------------------------------
+[<span style="color:#3333FF;">--</span>]  +-- 1: innodb/innodb_data_file	24846159552
+[<span style="color:#3333FF;">--</span>]  +-- 2: innodb/innodb_log_file	2230497552
+[<span style="color:#3333FF;">--</span>]  +-- 3: sql/FRM	1190524800
+[<span style="color:#3333FF;">--</span>]  +-- 4: sql/dbopt	34085088
+[<span style="color:#3333FF;">--</span>]  +-- 5: sql/pid	3845904
+[<span style="color:#3333FF;">--</span>]  +-- 6: archive/data	0
+[<span style="color:#3333FF;">--</span>]  +-- 7: sql/casetest	0
+[<span style="color:#3333FF;">--</span>]  +-- 8: myisam/kfile	0
+[<span style="color:#3333FF;">--</span>]  +-- 9: myisam/dfile	0
+[<span style="color:#3333FF;">--</span>]  +-- 10: csv/data	0
+[<span style="color:#3333FF;">--</span>]  +-- 11: csv/metadata	0
+[<span style="color:#3333FF;">--</span>]  +-- 12: mysys/cnf	0
+[<span style="color:#3333FF;">--</span>]  +-- 13: mysys/charset	0
+[<span style="color:#3333FF;">--</span>]  +-- 14: sql/misc	0
+[<span style="color:#3333FF;">--</span>]  +-- 15: sql/global_ddl_log	0
+[<span style="color:#3333FF;">--</span>]  +-- 16: sql/file_parser	0
+[<span style="color:#3333FF;">--</span>]  +-- 17: sql/ERRMSG	0
+ 
+-------- Performance schema: Top 15 most read indexes ----------------------------------------------
+[<span style="color:#3333FF;">--</span>]  +-- 1: classicmodels	customers	PRIMARY	0
+[<span style="color:#3333FF;">--</span>]  +-- 2: classicmodels	customers	salesRepEmployeeNumber	0
+[<span style="color:#3333FF;">--</span>]  +-- 3: classicmodels	employees	PRIMARY	0
+[<span style="color:#3333FF;">--</span>]  +-- 4: classicmodels	employees	reportsTo	0
+[<span style="color:#3333FF;">--</span>]  +-- 5: classicmodels	employees	officeCode	0
+[<span style="color:#3333FF;">--</span>]  +-- 6: classicmodels	offices	PRIMARY	0
+[<span style="color:#3333FF;">--</span>]  +-- 7: classicmodels	orderdetails	PRIMARY	0
+[<span style="color:#3333FF;">--</span>]  +-- 8: classicmodels	orderdetails	productCode	0
+[<span style="color:#3333FF;">--</span>]  +-- 9: classicmodels	orders	PRIMARY	0
+[<span style="color:#3333FF;">--</span>]  +-- 10: classicmodels	orders	customerNumber	0
+[<span style="color:#3333FF;">--</span>]  +-- 11: classicmodels	payments	PRIMARY	0
+[<span style="color:#3333FF;">--</span>]  +-- 12: classicmodels	productlines	PRIMARY	0
+[<span style="color:#3333FF;">--</span>]  +-- 13: classicmodels	products	PRIMARY	0
+[<span style="color:#3333FF;">--</span>]  +-- 14: classicmodels	products	productLine	0
+[<span style="color:#3333FF;">--</span>]  +-- 15: sys	sys_config	PRIMARY	0
+ 
+-------- Performance schema: Top 15 most modified indexes ------------------------------------------
+[<span style="color:#3333FF;">--</span>]  +-- 1: classicmodels	customers	PRIMARY	0
+[<span style="color:#3333FF;">--</span>]  +-- 2: classicmodels	customers	salesRepEmployeeNumber	0
+[<span style="color:#3333FF;">--</span>]  +-- 3: classicmodels	employees	PRIMARY	0
+[<span style="color:#3333FF;">--</span>]  +-- 4: classicmodels	employees	reportsTo	0
+[<span style="color:#3333FF;">--</span>]  +-- 5: classicmodels	employees	officeCode	0
+[<span style="color:#3333FF;">--</span>]  +-- 6: classicmodels	offices	PRIMARY	0
+[<span style="color:#3333FF;">--</span>]  +-- 7: classicmodels	orderdetails	PRIMARY	0
+[<span style="color:#3333FF;">--</span>]  +-- 8: classicmodels	orderdetails	productCode	0
+[<span style="color:#3333FF;">--</span>]  +-- 9: classicmodels	orders	PRIMARY	0
+[<span style="color:#3333FF;">--</span>]  +-- 10: classicmodels	orders	customerNumber	0
+[<span style="color:#3333FF;">--</span>]  +-- 11: classicmodels	payments	PRIMARY	0
+[<span style="color:#3333FF;">--</span>]  +-- 12: classicmodels	productlines	PRIMARY	0
+[<span style="color:#3333FF;">--</span>]  +-- 13: classicmodels	products	PRIMARY	0
+[<span style="color:#3333FF;">--</span>]  +-- 14: classicmodels	products	productLine	0
+[<span style="color:#3333FF;">--</span>]  +-- 15: sys	sys_config	PRIMARY	0
+ 
+-------- Performance schema: Top 15 high read latency index ----------------------------------------
+[<span style="color:#3333FF;">--</span>]  +-- 1: classicmodels	customers	PRIMARY	0
+[<span style="color:#3333FF;">--</span>]  +-- 2: classicmodels	customers	salesRepEmployeeNumber	0
+[<span style="color:#3333FF;">--</span>]  +-- 3: classicmodels	employees	PRIMARY	0
+[<span style="color:#3333FF;">--</span>]  +-- 4: classicmodels	employees	reportsTo	0
+[<span style="color:#3333FF;">--</span>]  +-- 5: classicmodels	employees	officeCode	0
+[<span style="color:#3333FF;">--</span>]  +-- 6: classicmodels	offices	PRIMARY	0
+[<span style="color:#3333FF;">--</span>]  +-- 7: classicmodels	orderdetails	PRIMARY	0
+[<span style="color:#3333FF;">--</span>]  +-- 8: classicmodels	orderdetails	productCode	0
+[<span style="color:#3333FF;">--</span>]  +-- 9: classicmodels	orders	PRIMARY	0
+[<span style="color:#3333FF;">--</span>]  +-- 10: classicmodels	orders	customerNumber	0
+[<span style="color:#3333FF;">--</span>]  +-- 11: classicmodels	payments	PRIMARY	0
+[<span style="color:#3333FF;">--</span>]  +-- 12: classicmodels	productlines	PRIMARY	0
+[<span style="color:#3333FF;">--</span>]  +-- 13: classicmodels	products	PRIMARY	0
+[<span style="color:#3333FF;">--</span>]  +-- 14: classicmodels	products	productLine	0
+[<span style="color:#3333FF;">--</span>]  +-- 15: sys	sys_config	PRIMARY	0
+ 
+-------- Performance schema: Top 15 most modified indexes ------------------------------------------
+[<span style="color:#3333FF;">--</span>]  +-- 1: classicmodels	customers	PRIMARY	0
+[<span style="color:#3333FF;">--</span>]  +-- 2: classicmodels	customers	salesRepEmployeeNumber	0
+[<span style="color:#3333FF;">--</span>]  +-- 3: classicmodels	employees	PRIMARY	0
+[<span style="color:#3333FF;">--</span>]  +-- 4: classicmodels	employees	reportsTo	0
+[<span style="color:#3333FF;">--</span>]  +-- 5: classicmodels	employees	officeCode	0
+[<span style="color:#3333FF;">--</span>]  +-- 6: classicmodels	offices	PRIMARY	0
+[<span style="color:#3333FF;">--</span>]  +-- 7: classicmodels	orderdetails	PRIMARY	0
+[<span style="color:#3333FF;">--</span>]  +-- 8: classicmodels	orderdetails	productCode	0
+[<span style="color:#3333FF;">--</span>]  +-- 9: classicmodels	orders	PRIMARY	0
+[<span style="color:#3333FF;">--</span>]  +-- 10: classicmodels	orders	customerNumber	0
+[<span style="color:#3333FF;">--</span>]  +-- 11: classicmodels	payments	PRIMARY	0
+[<span style="color:#3333FF;">--</span>]  +-- 12: classicmodels	productlines	PRIMARY	0
+[<span style="color:#3333FF;">--</span>]  +-- 13: classicmodels	products	PRIMARY	0
+[<span style="color:#3333FF;">--</span>]  +-- 14: classicmodels	products	productLine	0
+[<span style="color:#3333FF;">--</span>]  +-- 15: sys	sys_config	PRIMARY	0
+ 
+-------- Performance schema: Top 15 high update latency index --------------------------------------
+[<span style="color:#3333FF;">--</span>]  +-- 1: classicmodels	customers	PRIMARY	0
+[<span style="color:#3333FF;">--</span>]  +-- 2: classicmodels	customers	salesRepEmployeeNumber	0
+[<span style="color:#3333FF;">--</span>]  +-- 3: classicmodels	employees	PRIMARY	0
+[<span style="color:#3333FF;">--</span>]  +-- 4: classicmodels	employees	reportsTo	0
+[<span style="color:#3333FF;">--</span>]  +-- 5: classicmodels	employees	officeCode	0
+[<span style="color:#3333FF;">--</span>]  +-- 6: classicmodels	offices	PRIMARY	0
+[<span style="color:#3333FF;">--</span>]  +-- 7: classicmodels	orderdetails	PRIMARY	0
+[<span style="color:#3333FF;">--</span>]  +-- 8: classicmodels	orderdetails	productCode	0
+[<span style="color:#3333FF;">--</span>]  +-- 9: classicmodels	orders	PRIMARY	0
+[<span style="color:#3333FF;">--</span>]  +-- 10: classicmodels	orders	customerNumber	0
+[<span style="color:#3333FF;">--</span>]  +-- 11: classicmodels	payments	PRIMARY	0
+[<span style="color:#3333FF;">--</span>]  +-- 12: classicmodels	productlines	PRIMARY	0
+[<span style="color:#3333FF;">--</span>]  +-- 13: classicmodels	products	PRIMARY	0
+[<span style="color:#3333FF;">--</span>]  +-- 14: classicmodels	products	productLine	0
+[<span style="color:#3333FF;">--</span>]  +-- 15: sys	sys_config	PRIMARY	0
+ 
+-------- Performance schema: Top 15 high delete latency index --------------------------------------
+[<span style="color:#3333FF;">--</span>]  +-- 1: classicmodels	customers	PRIMARY	0
+[<span style="color:#3333FF;">--</span>]  +-- 2: classicmodels	customers	salesRepEmployeeNumber	0
+[<span style="color:#3333FF;">--</span>]  +-- 3: classicmodels	employees	PRIMARY	0
+[<span style="color:#3333FF;">--</span>]  +-- 4: classicmodels	employees	reportsTo	0
+[<span style="color:#3333FF;">--</span>]  +-- 5: classicmodels	employees	officeCode	0
+[<span style="color:#3333FF;">--</span>]  +-- 6: classicmodels	offices	PRIMARY	0
+[<span style="color:#3333FF;">--</span>]  +-- 7: classicmodels	orderdetails	PRIMARY	0
+[<span style="color:#3333FF;">--</span>]  +-- 8: classicmodels	orderdetails	productCode	0
+[<span style="color:#3333FF;">--</span>]  +-- 9: classicmodels	orders	PRIMARY	0
+[<span style="color:#3333FF;">--</span>]  +-- 10: classicmodels	orders	customerNumber	0
+[<span style="color:#3333FF;">--</span>]  +-- 11: classicmodels	payments	PRIMARY	0
+[<span style="color:#3333FF;">--</span>]  +-- 12: classicmodels	productlines	PRIMARY	0
+[<span style="color:#3333FF;">--</span>]  +-- 13: classicmodels	products	PRIMARY	0
+[<span style="color:#3333FF;">--</span>]  +-- 14: classicmodels	products	productLine	0
+[<span style="color:#3333FF;">--</span>]  +-- 15: sys	sys_config	PRIMARY	0
+ 
+-------- Performance schema: Top 15 most read tables -----------------------------------------------
+[<span style="color:#3333FF;">--</span>]  +-- 1: classicmodels	customers	122
+[<span style="color:#3333FF;">--</span>]  +-- 2: classicmodels	payments	0
+[<span style="color:#3333FF;">--</span>]  +-- 3: classicmodels	orders	0
+[<span style="color:#3333FF;">--</span>]  +-- 4: classicmodels	productlines	0
+[<span style="color:#3333FF;">--</span>]  +-- 5: classicmodels	orderdetails	0
+[<span style="color:#3333FF;">--</span>]  +-- 6: classicmodels	employees	0
+[<span style="color:#3333FF;">--</span>]  +-- 7: sys	sys_config	0
+[<span style="color:#3333FF;">--</span>]  +-- 8: classicmodels	products	0
+[<span style="color:#3333FF;">--</span>]  +-- 9: classicmodels	offices	0
+ 
+-------- Performance schema: Top 15 most modified tables -------------------------------------------
+[<span style="color:#3333FF;">--</span>]  +-- 1: classicmodels	orderdetails	2996
+[<span style="color:#3333FF;">--</span>]  +-- 2: classicmodels	orders	326
+[<span style="color:#3333FF;">--</span>]  +-- 3: classicmodels	payments	273
+[<span style="color:#3333FF;">--</span>]  +-- 4: classicmodels	customers	122
+[<span style="color:#3333FF;">--</span>]  +-- 5: classicmodels	products	110
+[<span style="color:#3333FF;">--</span>]  +-- 6: classicmodels	employees	23
+[<span style="color:#3333FF;">--</span>]  +-- 7: classicmodels	productlines	7
+[<span style="color:#3333FF;">--</span>]  +-- 8: classicmodels	offices	7
+[<span style="color:#3333FF;">--</span>]  +-- 9: sys	sys_config	0
+ 
+-------- Performance schema: Top 15 high read latency tables ---------------------------------------
+[<span style="color:#3333FF;">--</span>]  +-- 1: classicmodels	customers	724381536
+[<span style="color:#3333FF;">--</span>]  +-- 2: classicmodels	payments	0
+[<span style="color:#3333FF;">--</span>]  +-- 3: classicmodels	orders	0
+[<span style="color:#3333FF;">--</span>]  +-- 4: classicmodels	productlines	0
+[<span style="color:#3333FF;">--</span>]  +-- 5: classicmodels	orderdetails	0
+[<span style="color:#3333FF;">--</span>]  +-- 6: classicmodels	employees	0
+[<span style="color:#3333FF;">--</span>]  +-- 7: sys	sys_config	0
+[<span style="color:#3333FF;">--</span>]  +-- 8: classicmodels	products	0
+[<span style="color:#3333FF;">--</span>]  +-- 9: classicmodels	offices	0
+ 
+-------- Performance schema: Top 15 high insert latency tables -------------------------------------
+[<span style="color:#3333FF;">--</span>]  +-- 1: classicmodels	orderdetails	34100464320
+[<span style="color:#3333FF;">--</span>]  +-- 2: classicmodels	products	4818719808
+[<span style="color:#3333FF;">--</span>]  +-- 3: classicmodels	orders	4576097712
+[<span style="color:#3333FF;">--</span>]  +-- 4: classicmodels	customers	3555046224
+[<span style="color:#3333FF;">--</span>]  +-- 5: classicmodels	payments	1224666432
+[<span style="color:#3333FF;">--</span>]  +-- 6: classicmodels	employees	538217712
+[<span style="color:#3333FF;">--</span>]  +-- 7: classicmodels	offices	98093808
+[<span style="color:#3333FF;">--</span>]  +-- 8: classicmodels	productlines	68287824
+[<span style="color:#3333FF;">--</span>]  +-- 9: sys	sys_config	0
+ 
+-------- Performance schema: Top 15 high update latency tables -------------------------------------
+[<span style="color:#3333FF;">--</span>]  +-- 1: classicmodels	payments	0
+[<span style="color:#3333FF;">--</span>]  +-- 2: classicmodels	orders	0
+[<span style="color:#3333FF;">--</span>]  +-- 3: classicmodels	productlines	0
+[<span style="color:#3333FF;">--</span>]  +-- 4: classicmodels	orderdetails	0
+[<span style="color:#3333FF;">--</span>]  +-- 5: classicmodels	employees	0
+[<span style="color:#3333FF;">--</span>]  +-- 6: classicmodels	customers	0
+[<span style="color:#3333FF;">--</span>]  +-- 7: sys	sys_config	0
+[<span style="color:#3333FF;">--</span>]  +-- 8: classicmodels	products	0
+[<span style="color:#3333FF;">--</span>]  +-- 9: classicmodels	offices	0
+ 
+-------- Performance schema: Top 15 high delete latency tables -------------------------------------
+[<span style="color:#3333FF;">--</span>]  +-- 1: classicmodels	payments	0
+[<span style="color:#3333FF;">--</span>]  +-- 2: classicmodels	orders	0
+[<span style="color:#3333FF;">--</span>]  +-- 3: classicmodels	productlines	0
+[<span style="color:#3333FF;">--</span>]  +-- 4: classicmodels	orderdetails	0
+[<span style="color:#3333FF;">--</span>]  +-- 5: classicmodels	employees	0
+[<span style="color:#3333FF;">--</span>]  +-- 6: classicmodels	customers	0
+[<span style="color:#3333FF;">--</span>]  +-- 7: sys	sys_config	0
+[<span style="color:#3333FF;">--</span>]  +-- 8: classicmodels	products	0
+[<span style="color:#3333FF;">--</span>]  +-- 9: classicmodels	offices	0
+ 
+-------- Performance schema: Redundant indexes -----------------------------------------------------
+[<span style="color:#3333FF;">--</span>] No information found or indicators deactivated.
+ 
+-------- Performance schema: Table not using InnoDB buffer -----------------------------------------
+[<span style="color:#3333FF;">--</span>] No information found or indicators deactivated.
+ 
+-------- Performance schema: Top 15 Tables using InnoDB buffer -------------------------------------
+[<span style="color:#3333FF;">--</span>]  +-- 1: classicmodels	orderdetails	245760
+[<span style="color:#3333FF;">--</span>]  +-- 2: classicmodels	products	81920
+[<span style="color:#3333FF;">--</span>]  +-- 3: classicmodels	orders	65536
+[<span style="color:#3333FF;">--</span>]  +-- 4: classicmodels	employees	49152
+[<span style="color:#3333FF;">--</span>]  +-- 5: classicmodels	customers	32768
+[<span style="color:#3333FF;">--</span>]  +-- 6: classicmodels	payments	16384
+[<span style="color:#3333FF;">--</span>]  +-- 7: sys	sys_config	16384
+[<span style="color:#3333FF;">--</span>]  +-- 8: classicmodels	productlines	16384
+[<span style="color:#3333FF;">--</span>]  +-- 9: classicmodels	offices	16384
+ 
+-------- Performance schema: Top 15 Tables with InnoDB buffer free ---------------------------------
+[<span style="color:#3333FF;">--</span>]  +-- 1: classicmodels	orderdetails	65052
+[<span style="color:#3333FF;">--</span>]  +-- 2: classicmodels	products	48526
+[<span style="color:#3333FF;">--</span>]  +-- 3: classicmodels	employees	46533
+[<span style="color:#3333FF;">--</span>]  +-- 4: classicmodels	orders	40234
+[<span style="color:#3333FF;">--</span>]  +-- 5: sys	sys_config	16046
+[<span style="color:#3333FF;">--</span>]  +-- 6: classicmodels	customers	16007
+[<span style="color:#3333FF;">--</span>]  +-- 7: classicmodels	offices	15754
+[<span style="color:#3333FF;">--</span>]  +-- 8: classicmodels	productlines	12876
+[<span style="color:#3333FF;">--</span>]  +-- 9: classicmodels	payments	5760
+ 
+-------- Performance schema: Top 15 Most executed queries ------------------------------------------
+[<span style="color:#3333FF;">--</span>]  +-- 1: NULL	SELECT @@`version_comment` LIMIT ? 	1551
+[<span style="color:#3333FF;">--</span>]  +-- 2: NULL	SELECT `CONCAT` ( SYSTEM_USER , ? , HOST ) FROM `mysql` . `user` WHERE `authentication_string` = PASSWORD (?) OR `authen	1240
+[<span style="color:#3333FF;">--</span>]  +-- 3: NULL	SELECT `COLUMN_TYPE` FROM `information_schema` . `COLUMNS` WHERE `TABLE_SCHEMA` = ? AND TABLE_NAME = ? AND COLUMN_NAME =	59
+[<span style="color:#3333FF;">--</span>]  +-- 4: NULL	SELECT `IS_NULLABLE` FROM `information_schema` . `COLUMNS` WHERE `TABLE_SCHEMA` = ? AND TABLE_NAME = ? AND COLUMN_NAME =	59
+[<span style="color:#3333FF;">--</span>]  +-- 5: NULL	SELECT SCHEMA ( ) 	31
+[<span style="color:#3333FF;">--</span>]  +-- 6: NULL	SHOW ENGINE `PERFORMANCE_SCHEMA` STATUS 	12
+[<span style="color:#3333FF;">--</span>]  +-- 7: NULL	SELECT ENGINE FROM `information_schema` . `tables` WHERE `TABLE_schema` = ? AND TABLE_NAME = ? 	8
+[<span style="color:#3333FF;">--</span>]  +-- 8: NULL	SELECT `index_name` AS `idxname` , GROUP_CONCAT ( COLUMN_NAME ORDER BY `seq_in_index` ) AS `cols` , `INDEX_TYPE` AS TYPE	8
+[<span style="color:#3333FF;">--</span>]  +-- 9: NULL	SELECT COLUMN_NAME FROM `information_schema` . `COLUMNS` WHERE `TABLE_SCHEMA` = ? AND TABLE_NAME = ? 	8
+[<span style="color:#3333FF;">--</span>]  +-- 10: NULL	SHOW SCHEMAS 	4
+[<span style="color:#3333FF;">--</span>]  +-- 11: NULL	SELECT ? FROM `information_schema` . `columns` WHERE `TABLE_SCHEMA` = ? AND TABLE_NAME = ? AND COLUMN_NAME = ? 	4
+[<span style="color:#3333FF;">--</span>]  +-- 12: NULL	SELECT `IFNULL` ( SUM ( `INDEX_LENGTH` ) , ? ) FROM `information_schema` . `TABLES` WHERE `TABLE_SCHEMA` NOT IN (?) AND 	4
+[<span style="color:#3333FF;">--</span>]  +-- 13: classicmodels	SELECT SCHEMA ( ) 	3
+[<span style="color:#3333FF;">--</span>]  +-- 14: NULL	SELECT `VERSION` ( ) 	2
+[<span style="color:#3333FF;">--</span>]  +-- 15: NULL	SHOW VARIABLES 	2
+ 
+-------- Performance schema: Latest SQL queries in errors or warnings ------------------------------
+[<span style="color:#3333FF;">--</span>]  +-- 1: SET `SQL_MODE` = ? 	2022-10-29 13:27:39
+[<span style="color:#3333FF;">--</span>]  +-- 2: SELECT `CONCAT` ( `QUOTE` ( SYSTEM_USER ) , ? , `QUOTE` ( HOST ) ) FROM `mysql` . `user` WHERE SYSTEM_USER != ? AND ( CA	2022-10-29 13:46:55
+[<span style="color:#3333FF;">--</span>]  +-- 3: SELECT `CONCAT` ( SYSTEM_USER , ? , HOST ) FROM `mysql` . `user` WHERE `authentication_string` = PASSWORD (?) OR `authen	2022-10-29 13:47:06
+[<span style="color:#3333FF;">--</span>]  +-- 4: SELECT `wait_age_secs` , `locked_table` , `locked_type` , `waiting_query` FROM `sys` . `x$innodb_lock_waits` ORDER BY `w	2022-10-29 13:47:11
+ 
+-------- Performance schema: Top 20 queries with full table scans ----------------------------------
+[<span style="color:#3333FF;">--</span>]  +-- 1: NULL	SELECT `CONCAT` ( SYSTEM_USER , ? , HOST ) FROM `mysql` . `user` WHERE `authentication_string` = PASSWORD (?) OR `authen	1240
+[<span style="color:#3333FF;">--</span>]  +-- 2: NULL	SELECT `COLUMN_TYPE` FROM `information_schema` . `COLUMNS` WHERE `TABLE_SCHEMA` = ? AND TABLE_NAME = ? AND COLUMN_NAME =	59
+[<span style="color:#3333FF;">--</span>]  +-- 3: NULL	SELECT `IS_NULLABLE` FROM `information_schema` . `COLUMNS` WHERE `TABLE_SCHEMA` = ? AND TABLE_NAME = ? AND COLUMN_NAME =	59
+[<span style="color:#3333FF;">--</span>]  +-- 4: NULL	SELECT ENGINE FROM `information_schema` . `tables` WHERE `TABLE_schema` = ? AND TABLE_NAME = ? 	8
+[<span style="color:#3333FF;">--</span>]  +-- 5: NULL	SELECT `index_name` AS `idxname` , GROUP_CONCAT ( COLUMN_NAME ORDER BY `seq_in_index` ) AS `cols` , `INDEX_TYPE` AS TYPE	8
+[<span style="color:#3333FF;">--</span>]  +-- 6: NULL	SELECT COLUMN_NAME FROM `information_schema` . `COLUMNS` WHERE `TABLE_SCHEMA` = ? AND TABLE_NAME = ? 	8
+[<span style="color:#3333FF;">--</span>]  +-- 7: NULL	SELECT ? FROM `information_schema` . `columns` WHERE `TABLE_SCHEMA` = ? AND TABLE_NAME = ? AND COLUMN_NAME = ? 	4
+[<span style="color:#3333FF;">--</span>]  +-- 8: NULL	SELECT `IFNULL` ( SUM ( `INDEX_LENGTH` ) , ? ) FROM `information_schema` . `TABLES` WHERE `TABLE_SCHEMA` NOT IN (?) AND 	4
+[<span style="color:#3333FF;">--</span>]  +-- 9: NULL	SELECT ENGINE , `SUPPORT` FROM `information_schema` . `ENGINES` ORDER BY ENGINE ASC 	2
+[<span style="color:#3333FF;">--</span>]  +-- 10: NULL	SELECT ENGINE , SUM ( `DATA_LENGTH` + `INDEX_LENGTH` ) , COUNT ( ENGINE ) , SUM ( `DATA_LENGTH` ) , SUM ( `INDEX_LENGTH`	2
+[<span style="color:#3333FF;">--</span>]  +-- 11: NULL	SELECT `CONCAT` ( `CONCAT` ( `TABLE_SCHEMA` , ? ) , TABLE_NAME ) , CAST ( `DATA_FREE` AS SIGNED ) FROM `information_sche	2
+[<span style="color:#3333FF;">--</span>]  +-- 12: NULL	SELECT COUNT ( * ) FROM `information_schema` . `columns` WHERE TABLE_NAME = ? AND `TABLE_SCHEMA` = ? AND COLUMN_NAME = ?	2
+[<span style="color:#3333FF;">--</span>]  +-- 13: NULL	SELECT `CONCAT` ( `QUOTE` ( SYSTEM_USER ) , ? , `QUOTE` ( HOST ) ) FROM `mysql` . `user` WHERE ( `authentication_string`	2
+[<span style="color:#3333FF;">--</span>]  +-- 14: NULL	SELECT COUNT ( * ) FROM `information_schema` . `plugins` WHERE `PLUGIN_NAME` = ? AND `PLUGIN_STATUS` = ? 	2
+[<span style="color:#3333FF;">--</span>]  +-- 15: NULL	SELECT `CONCAT` ( `QUOTE` ( SYSTEM_USER ) , ? , `QUOTE` ( HOST ) ) FROM `mysql` . `user` WHERE SYSTEM_USER != ? AND ( CA	2
+[<span style="color:#3333FF;">--</span>]  +-- 16: NULL	SELECT COUNT ( * ) FROM `information_schema` . `tables` 	2
+[<span style="color:#3333FF;">--</span>]  +-- 17: NULL	SELECT COUNT ( * ) FROM `information_schema` . `TABLES` WHERE `TABLE_TYPE` = ? AND `TABLE_SCHEMA` NOT IN (...) 	2
+[<span style="color:#3333FF;">--</span>]  +-- 18: NULL	SELECT COUNT ( * ) FROM `information_schema` . `TABLES` WHERE `TABLE_TYPE` = ? AND `TABLE_SCHEMA` = ? 	2
+[<span style="color:#3333FF;">--</span>]  +-- 19: NULL	SELECT DISTINCTROW ( ENGINE ) FROM `information_schema` . `TABLES` WHERE `TABLE_SCHEMA` = ? AND ENGINE IS NOT NULL 	2
+[<span style="color:#3333FF;">--</span>]  +-- 20: NULL	SELECT DISTINCTROW `TABLE_SCHEMA` FROM `information_schema` . `TABLES` WHERE `TABLE_SCHEMA` NOT IN (...) 	2
+ 
+-------- Performance schema: Last 50 queries with full table scans ---------------------------------
+[<span style="color:#3333FF;">--</span>]  +-- 1: NULL	SELECT `table_schema` , TABLE_NAME , `innodb_buffer_free` FROM `sys` . `x$schema_table_statistics_with_buffer` WHERE `in	2022-10-29 13:47:12
+[<span style="color:#3333FF;">--</span>]  +-- 2: NULL	SELECT `db` , LEFT ( QUERY , ? ) , `exec_count` FROM `sys` . `x$statement_analysis` ORDER BY `exec_count` DESC LIMIT ? 	2022-10-29 13:47:12
+[<span style="color:#3333FF;">--</span>]  +-- 3: NULL	SELECT LEFT ( QUERY , ? ) , `last_seen` FROM `sys` . `x$statements_with_errors_or_warnings` ORDER BY `last_seen` LIMIT ?	2022-10-29 13:47:12
+[<span style="color:#3333FF;">--</span>]  +-- 4: NULL	SELECT `db` , LEFT ( QUERY , ? ) , `exec_count` FROM `sys` . `x$statements_with_full_table_scans` ORDER BY `exec_count` 	2022-10-29 13:47:12
+[<span style="color:#3333FF;">--</span>]  +-- 5: NULL	SELECT `wait_age_secs` , `locked_table` , `locked_type` , `waiting_query` FROM `sys` . `x$innodb_lock_waits` ORDER BY `w	2022-10-29 13:47:11
+[<span style="color:#3333FF;">--</span>]  +-- 6: NULL	SELECT SYSTEM_USER , `total_latency` , `max_latency` FROM `sys` . `x$io_by_thread_by_latency` ORDER BY `total_latency` D	2022-10-29 13:47:11
+[<span style="color:#3333FF;">--</span>]  +-- 7: NULL	SELECT LEFT ( QUERY , ? ) , `avg_latency` FROM `sys` . `x$statement_analysis` ORDER BY `avg_latency` DESC LIMIT ? 	2022-10-29 13:47:11
+[<span style="color:#3333FF;">--</span>]  +-- 8: NULL	SELECT LEFT ( QUERY , ? ) , `exec_count` FROM `sys` . `x$statements_with_runtimes_in_95th_percentile` ORDER BY `exec_cou	2022-10-29 13:47:11
+[<span style="color:#3333FF;">--</span>]  +-- 9: sys	SELECT `statement` , SUM ( `total` ) AS `total` FROM `sys` . `x$host_summary_by_statement_type` GROUP BY `statement` ORD	2022-10-29 13:47:11
+[<span style="color:#3333FF;">--</span>]  +-- 10: sys	SELECT `statement` , SUM ( `total_latency` ) AS `total` FROM `sys` . `x$host_summary_by_statement_type` GROUP BY `statem	2022-10-29 13:47:11
+[<span style="color:#3333FF;">--</span>]  +-- 11: sys	SELECT `statement` , SUM ( `lock_latency` ) AS `total` FROM `sys` . `x$host_summary_by_statement_type` GROUP BY `stateme	2022-10-29 13:47:11
+[<span style="color:#3333FF;">--</span>]  +-- 12: sys	SELECT `statement` , SUM ( `full_scans` ) AS `total` FROM `sys` . `x$host_summary_by_statement_type` GROUP BY `statement	2022-10-29 13:47:11
+[<span style="color:#3333FF;">--</span>]  +-- 13: sys	SELECT `statement` , SUM ( `rows_sent` ) AS `total` FROM `sys` . `x$host_summary_by_statement_type` GROUP BY `statement`	2022-10-29 13:47:11
+[<span style="color:#3333FF;">--</span>]  +-- 14: sys	SELECT `statement` , SUM ( `rows_affected` ) AS `total` FROM `sys` . `x$host_summary_by_statement_type` GROUP BY `statem	2022-10-29 13:47:11
+[<span style="color:#3333FF;">--</span>]  +-- 15: sys	SELECT LEFT ( QUERY , ? ) FROM `sys` . `x$statements_with_temp_tables` LIMIT ? 	2022-10-29 13:47:11
+[<span style="color:#3333FF;">--</span>]  +-- 16: NULL	SELECT * FROM `sys` . `schema_unused_indexes` WHERE `object_schema` NOT IN (?) 	2022-10-29 13:47:11
+[<span style="color:#3333FF;">--</span>]  +-- 17: NULL	SELECT * FROM `sys` . `x$schema_tables_with_full_table_scans` ORDER BY `rows_full_scanned` DESC 	2022-10-29 13:47:11
+[<span style="color:#3333FF;">--</span>]  +-- 18: sys	SELECT `thread` , FILE , `latency` , `operation` FROM `sys` . `x$latest_file_io` ORDER BY `latency` LIMIT ? 	2022-10-29 13:47:11
+[<span style="color:#3333FF;">--</span>]  +-- 19: NULL	SELECT FILE , `total_read` FROM `sys` . `x$io_global_by_file_by_bytes` ORDER BY `total_read` DESC LIMIT ? 	2022-10-29 13:47:11
+[<span style="color:#3333FF;">--</span>]  +-- 20: NULL	SELECT FILE , `total_written` FROM `sys` . `x$io_global_by_file_by_bytes` ORDER BY `total_written` DESC LIMIT ? 	2022-10-29 13:47:11
+[<span style="color:#3333FF;">--</span>]  +-- 21: NULL	SELECT FILE , `total_latency` FROM `sys` . `x$io_global_by_file_by_latency` ORDER BY `total_latency` DESC LIMIT ? 	2022-10-29 13:47:11
+[<span style="color:#3333FF;">--</span>]  +-- 22: sys	SELECT FILE , `read_latency` FROM `sys` . `x$io_global_by_file_by_latency` ORDER BY `read_latency` DESC LIMIT ? 	2022-10-29 13:47:11
+[<span style="color:#3333FF;">--</span>]  +-- 23: sys	SELECT FILE , `write_latency` FROM `sys` . `x$io_global_by_file_by_latency` ORDER BY `write_latency` DESC LIMIT ? 	2022-10-29 13:47:11
+[<span style="color:#3333FF;">--</span>]  +-- 24: NULL	SELECT `event_name` , `total_read` FROM `sys` . `x$io_global_by_wait_by_bytes` ORDER BY `total_read` DESC LIMIT ? 	2022-10-29 13:47:11
+[<span style="color:#3333FF;">--</span>]  +-- 25: NULL	SELECT `event_name` , `total_written` FROM `sys` . `x$io_global_by_wait_by_bytes` ORDER BY `total_written` DESC LIMIT ? 	2022-10-29 13:47:11
+[<span style="color:#3333FF;">--</span>]  +-- 26: sys	SELECT `event_name` , `total_latency` FROM `sys` . `x$io_global_by_wait_by_latency` ORDER BY `total_latency` DESC LIMIT 	2022-10-29 13:47:11
+[<span style="color:#3333FF;">--</span>]  +-- 27: sys	SELECT `event_name` , `read_latency` FROM `sys` . `x$io_global_by_wait_by_latency` ORDER BY `read_latency` DESC LIMIT ? 	2022-10-29 13:47:11
+[<span style="color:#3333FF;">--</span>]  +-- 28: sys	SELECT `event_name` , `write_latency` FROM `sys` . `x$io_global_by_wait_by_latency` ORDER BY `write_latency` DESC LIMIT 	2022-10-29 13:47:11
+[<span style="color:#3333FF;">--</span>]  +-- 29: sys	SELECT `table_schema` , TABLE_NAME , `index_name` , `rows_selected` FROM `sys` . `x$schema_index_statistics` ORDER BY `R	2022-10-29 13:47:11
+[<span style="color:#3333FF;">--</span>]  +-- 30: sys	SELECT `table_schema` , TABLE_NAME , `index_name` , `rows_inserted` + `rows_updated` + `rows_deleted` AS `changes` FROM 	2022-10-29 13:47:11
+[<span style="color:#3333FF;">--</span>]  +-- 31: sys	SELECT `table_schema` , TABLE_NAME , `index_name` , `select_latency` FROM `sys` . `x$schema_index_statistics` ORDER BY `	2022-10-29 13:47:11
+[<span style="color:#3333FF;">--</span>]  +-- 32: sys	SELECT `table_schema` , TABLE_NAME , `index_name` , `insert_latency` FROM `sys` . `x$schema_index_statistics` ORDER BY `	2022-10-29 13:47:11
+[<span style="color:#3333FF;">--</span>]  +-- 33: sys	SELECT `table_schema` , TABLE_NAME , `index_name` , `update_latency` FROM `sys` . `x$schema_index_statistics` ORDER BY `	2022-10-29 13:47:11
+[<span style="color:#3333FF;">--</span>]  +-- 34: sys	SELECT `table_schema` , TABLE_NAME , `index_name` , `delete_latency` FROM `sys` . `x$schema_index_statistics` ORDER BY `	2022-10-29 13:47:11
+[<span style="color:#3333FF;">--</span>]  +-- 35: sys	SELECT `table_schema` , TABLE_NAME , `rows_fetched` FROM `sys` . `x$schema_table_statistics` ORDER BY `ROWs_fetched` DES	2022-10-29 13:47:11
+[<span style="color:#3333FF;">--</span>]  +-- 36: sys	SELECT `table_schema` , TABLE_NAME , `rows_inserted` + `rows_updated` + `rows_deleted` AS `changes` FROM `sys` . `x$sche	2022-10-29 13:47:11
+[<span style="color:#3333FF;">--</span>]  +-- 37: sys	SELECT `table_schema` , TABLE_NAME , `fetch_latency` FROM `sys` . `x$schema_table_statistics` ORDER BY `fetch_latency` D	2022-10-29 13:47:11
+[<span style="color:#3333FF;">--</span>]  +-- 38: sys	SELECT `table_schema` , TABLE_NAME , `insert_latency` FROM `sys` . `x$schema_table_statistics` ORDER BY `insert_latency`	2022-10-29 13:47:11
+[<span style="color:#3333FF;">--</span>]  +-- 39: sys	SELECT `table_schema` , TABLE_NAME , `update_latency` FROM `sys` . `x$schema_table_statistics` ORDER BY `update_latency`	2022-10-29 13:47:11
+[<span style="color:#3333FF;">--</span>]  +-- 40: sys	SELECT `table_schema` , TABLE_NAME , `delete_latency` FROM `sys` . `x$schema_table_statistics` ORDER BY `delete_latency`	2022-10-29 13:47:11
+[<span style="color:#3333FF;">--</span>]  +-- 41: sys	SELECT * FROM `schema_redundant_indexes` 	2022-10-29 13:47:11
+[<span style="color:#3333FF;">--</span>]  +-- 42: NULL	SELECT `table_schema` , TABLE_NAME FROM `sys` . `x$schema_table_statistics_with_buffer` WHERE `innodb_buffer_allocated` 	2022-10-29 13:47:11
+[<span style="color:#3333FF;">--</span>]  +-- 43: NULL	SELECT `table_schema` , TABLE_NAME , `innodb_buffer_allocated` FROM `sys` . `x$schema_table_statistics_with_buffer` WHER	2022-10-29 13:47:11
+[<span style="color:#3333FF;">--</span>]  +-- 44: NULL	SELECT COUNT ( * ) FROM `information_schema` . `tables` 	2022-10-29 13:47:10
+[<span style="color:#3333FF;">--</span>]  +-- 45: NULL	SELECT SYSTEM_USER , `total_connections` FROM `sys` . `user_summary` ORDER BY `total_connections` DESC LIMIT ? 	2022-10-29 13:47:10
+[<span style="color:#3333FF;">--</span>]  +-- 46: NULL	SELECT SYSTEM_USER , `statements` FROM `sys` . `user_summary` ORDER BY `statements` DESC LIMIT ? 	2022-10-29 13:47:10
+[<span style="color:#3333FF;">--</span>]  +-- 47: NULL	SELECT SYSTEM_USER , `statement_avg_latency` FROM `sys` . `x$user_summary` ORDER BY `statement_avg_latency` DESC LIMIT ?	2022-10-29 13:47:10
+[<span style="color:#3333FF;">--</span>]  +-- 48: NULL	SELECT SYSTEM_USER , `lock_latency` FROM `sys` . `x$user_summary_by_statement_latency` ORDER BY `lock_latency` DESC LIMI	2022-10-29 13:47:10
+[<span style="color:#3333FF;">--</span>]  +-- 49: NULL	SELECT SYSTEM_USER , `full_scans` FROM `sys` . `x$user_summary_by_statement_latency` ORDER BY `full_scans` DESC LIMIT ? 	2022-10-29 13:47:10
+[<span style="color:#3333FF;">--</span>]  +-- 50: NULL	SELECT SYSTEM_USER , `rows_sent` FROM `sys` . `x$user_summary_by_statement_latency` ORDER BY `rows_sent` DESC LIMIT ? 	2022-10-29 13:47:10
+ 
+-------- Performance schema: Top 15 reader queries (95% percentile) --------------------------------
+[<span style="color:#3333FF;">--</span>]  +-- 1: NULL	SELECT SYSTEM_USER , `Command` AS `PROC` , TIME FROM `sys` . `x$processlist` ORDER BY TIME DESC 	26
+[<span style="color:#3333FF;">--</span>]  +-- 2: NULL	SELECT `CONCAT` ( `t` . `TABLE_SCHEMA` , ? , `t` . `TABLE_NAME` ) AS ? , `CONCAT` ( `s` . `INDEX_NAME` , ? , `s` . `COLU	10
+[<span style="color:#3333FF;">--</span>]  +-- 3: NULL	SELECT `table_schema` , TABLE_NAME , `innodb_buffer_allocated` FROM `sys` . `x$schema_table_statistics_with_buffer` WHER	9
+[<span style="color:#3333FF;">--</span>]  +-- 4: NULL	SELECT `table_schema` , TABLE_NAME , `innodb_buffer_free` FROM `sys` . `x$schema_table_statistics_with_buffer` WHERE `in	9
+[<span style="color:#3333FF;">--</span>]  +-- 5: NULL	SELECT `IFNULL` ( SUM ( `INDEX_LENGTH` ) , ? ) FROM `information_schema` . `TABLES` WHERE `TABLE_SCHEMA` NOT IN (?) AND 	4
+[<span style="color:#3333FF;">--</span>]  +-- 6: NULL	SELECT `object_schema` , `allocated` , DATA , `pages` FROM `sys` . `x$innodb_buffer_stats_by_schema` ORDER BY `pages` DE	4
+[<span style="color:#3333FF;">--</span>]  +-- 7: NULL	SELECT ENGINE , SUM ( `DATA_LENGTH` + `INDEX_LENGTH` ) , COUNT ( ENGINE ) , SUM ( `DATA_LENGTH` ) , SUM ( `INDEX_LENGTH`	2
+[<span style="color:#3333FF;">--</span>]  +-- 8: classicmodels	INSERT INTO `orderdetails` ( `orderNumber` , `productCode` , `quantityOrdered` , `priceEach` , `orderLineNumber` ) VALUE	0
+[<span style="color:#3333FF;">--</span>]  +-- 9: NULL	SELECT `table_schema` , TABLE_NAME FROM `sys` . `x$schema_table_statistics_with_buffer` WHERE `innodb_buffer_allocated` 	0
+ 
+-------- Performance schema: Top 15 most row look queries (95% percentile) -------------------------
+[<span style="color:#3333FF;">--</span>]  +-- 1: NULL	SELECT `table_schema` , TABLE_NAME , `innodb_buffer_allocated` FROM `sys` . `x$schema_table_statistics_with_buffer` WHER	9409
+[<span style="color:#3333FF;">--</span>]  +-- 2: NULL	SELECT `table_schema` , TABLE_NAME , `innodb_buffer_free` FROM `sys` . `x$schema_table_statistics_with_buffer` WHERE `in	9409
+[<span style="color:#3333FF;">--</span>]  +-- 3: NULL	SELECT `table_schema` , TABLE_NAME FROM `sys` . `x$schema_table_statistics_with_buffer` WHERE `innodb_buffer_allocated` 	9339
+[<span style="color:#3333FF;">--</span>]  +-- 4: NULL	SELECT `object_schema` , `allocated` , DATA , `pages` FROM `sys` . `x$innodb_buffer_stats_by_schema` ORDER BY `pages` DE	8304
+[<span style="color:#3333FF;">--</span>]  +-- 5: NULL	SELECT SYSTEM_USER , `Command` AS `PROC` , TIME FROM `sys` . `x$processlist` ORDER BY TIME DESC 	7787
+[<span style="color:#3333FF;">--</span>]  +-- 6: NULL	SELECT `IFNULL` ( SUM ( `INDEX_LENGTH` ) , ? ) FROM `information_schema` . `TABLES` WHERE `TABLE_SCHEMA` NOT IN (?) AND 	912
+[<span style="color:#3333FF;">--</span>]  +-- 7: NULL	SELECT `CONCAT` ( `t` . `TABLE_SCHEMA` , ? , `t` . `TABLE_NAME` ) AS ? , `CONCAT` ( `s` . `INDEX_NAME` , ? , `s` . `COLU	391
+[<span style="color:#3333FF;">--</span>]  +-- 8: NULL	SELECT ENGINE , SUM ( `DATA_LENGTH` + `INDEX_LENGTH` ) , COUNT ( ENGINE ) , SUM ( `DATA_LENGTH` ) , SUM ( `INDEX_LENGTH`	222
+[<span style="color:#3333FF;">--</span>]  +-- 9: classicmodels	INSERT INTO `orderdetails` ( `orderNumber` , `productCode` , `quantityOrdered` , `priceEach` , `orderLineNumber` ) VALUE	0
+ 
+-------- Performance schema: Top 15 total latency queries (95% percentile) -------------------------
+[<span style="color:#3333FF;">--</span>]  +-- 1: NULL	SELECT `IFNULL` ( SUM ( `INDEX_LENGTH` ) , ? ) FROM `information_schema` . `TABLES` WHERE `TABLE_SCHEMA` NOT IN (?) AND 	135403995000
+[<span style="color:#3333FF;">--</span>]  +-- 2: NULL	SELECT ENGINE , SUM ( `DATA_LENGTH` + `INDEX_LENGTH` ) , COUNT ( ENGINE ) , SUM ( `DATA_LENGTH` ) , SUM ( `INDEX_LENGTH`	99511048000
+[<span style="color:#3333FF;">--</span>]  +-- 3: NULL	SELECT `CONCAT` ( `t` . `TABLE_SCHEMA` , ? , `t` . `TABLE_NAME` ) AS ? , `CONCAT` ( `s` . `INDEX_NAME` , ? , `s` . `COLU	68896613000
+[<span style="color:#3333FF;">--</span>]  +-- 4: classicmodels	INSERT INTO `orderdetails` ( `orderNumber` , `productCode` , `quantityOrdered` , `priceEach` , `orderLineNumber` ) VALUE	58957832000
+[<span style="color:#3333FF;">--</span>]  +-- 5: NULL	SELECT `table_schema` , TABLE_NAME FROM `sys` . `x$schema_table_statistics_with_buffer` WHERE `innodb_buffer_allocated` 	45537744000
+[<span style="color:#3333FF;">--</span>]  +-- 6: NULL	SELECT `table_schema` , TABLE_NAME , `innodb_buffer_free` FROM `sys` . `x$schema_table_statistics_with_buffer` WHERE `in	42643414000
+[<span style="color:#3333FF;">--</span>]  +-- 7: NULL	SELECT SYSTEM_USER , `Command` AS `PROC` , TIME FROM `sys` . `x$processlist` ORDER BY TIME DESC 	41191317000
+[<span style="color:#3333FF;">--</span>]  +-- 8: NULL	SELECT `object_schema` , `allocated` , DATA , `pages` FROM `sys` . `x$innodb_buffer_stats_by_schema` ORDER BY `pages` DE	36107235000
+[<span style="color:#3333FF;">--</span>]  +-- 9: NULL	SELECT `table_schema` , TABLE_NAME , `innodb_buffer_allocated` FROM `sys` . `x$schema_table_statistics_with_buffer` WHER	33783798000
+ 
+-------- Performance schema: Top 15 max latency queries (95% percentile) ---------------------------
+[<span style="color:#3333FF;">--</span>]  +-- 1: NULL	SELECT `CONCAT` ( `t` . `TABLE_SCHEMA` , ? , `t` . `TABLE_NAME` ) AS ? , `CONCAT` ( `s` . `INDEX_NAME` , ? , `s` . `COLU	68896613000
+[<span style="color:#3333FF;">--</span>]  +-- 2: NULL	SELECT ENGINE , SUM ( `DATA_LENGTH` + `INDEX_LENGTH` ) , COUNT ( ENGINE ) , SUM ( `DATA_LENGTH` ) , SUM ( `INDEX_LENGTH`	68419191000
+[<span style="color:#3333FF;">--</span>]  +-- 3: classicmodels	INSERT INTO `orderdetails` ( `orderNumber` , `productCode` , `quantityOrdered` , `priceEach` , `orderLineNumber` ) VALUE	58957832000
+[<span style="color:#3333FF;">--</span>]  +-- 4: NULL	SELECT `table_schema` , TABLE_NAME FROM `sys` . `x$schema_table_statistics_with_buffer` WHERE `innodb_buffer_allocated` 	45537744000
+[<span style="color:#3333FF;">--</span>]  +-- 5: NULL	SELECT `table_schema` , TABLE_NAME , `innodb_buffer_free` FROM `sys` . `x$schema_table_statistics_with_buffer` WHERE `in	42643414000
+[<span style="color:#3333FF;">--</span>]  +-- 6: NULL	SELECT SYSTEM_USER , `Command` AS `PROC` , TIME FROM `sys` . `x$processlist` ORDER BY TIME DESC 	41191317000
+[<span style="color:#3333FF;">--</span>]  +-- 7: NULL	SELECT `object_schema` , `allocated` , DATA , `pages` FROM `sys` . `x$innodb_buffer_stats_by_schema` ORDER BY `pages` DE	36107235000
+[<span style="color:#3333FF;">--</span>]  +-- 8: NULL	SELECT `IFNULL` ( SUM ( `INDEX_LENGTH` ) , ? ) FROM `information_schema` . `TABLES` WHERE `TABLE_SCHEMA` NOT IN (?) AND 	35511019000
+[<span style="color:#3333FF;">--</span>]  +-- 9: NULL	SELECT `table_schema` , TABLE_NAME , `innodb_buffer_allocated` FROM `sys` . `x$schema_table_statistics_with_buffer` WHER	33783798000
+ 
+-------- Performance schema: Top 15 average latency queries (95% percentile) -----------------------
+[<span style="color:#3333FF;">--</span>]  +-- 1: NULL	SELECT `CONCAT` ( `t` . `TABLE_SCHEMA` , ? , `t` . `TABLE_NAME` ) AS ? , `CONCAT` ( `s` . `INDEX_NAME` , ? , `s` . `COLU	68896613000
+[<span style="color:#3333FF;">--</span>]  +-- 2: classicmodels	INSERT INTO `orderdetails` ( `orderNumber` , `productCode` , `quantityOrdered` , `priceEach` , `orderLineNumber` ) VALUE	58957832000
+[<span style="color:#3333FF;">--</span>]  +-- 3: NULL	SELECT ENGINE , SUM ( `DATA_LENGTH` + `INDEX_LENGTH` ) , COUNT ( ENGINE ) , SUM ( `DATA_LENGTH` ) , SUM ( `INDEX_LENGTH`	49755524000
+[<span style="color:#3333FF;">--</span>]  +-- 4: NULL	SELECT `table_schema` , TABLE_NAME FROM `sys` . `x$schema_table_statistics_with_buffer` WHERE `innodb_buffer_allocated` 	45537744000
+[<span style="color:#3333FF;">--</span>]  +-- 5: NULL	SELECT `table_schema` , TABLE_NAME , `innodb_buffer_free` FROM `sys` . `x$schema_table_statistics_with_buffer` WHERE `in	42643414000
+[<span style="color:#3333FF;">--</span>]  +-- 6: NULL	SELECT SYSTEM_USER , `Command` AS `PROC` , TIME FROM `sys` . `x$processlist` ORDER BY TIME DESC 	41191317000
+[<span style="color:#3333FF;">--</span>]  +-- 7: NULL	SELECT `object_schema` , `allocated` , DATA , `pages` FROM `sys` . `x$innodb_buffer_stats_by_schema` ORDER BY `pages` DE	36107235000
+[<span style="color:#3333FF;">--</span>]  +-- 8: NULL	SELECT `IFNULL` ( SUM ( `INDEX_LENGTH` ) , ? ) FROM `information_schema` . `TABLES` WHERE `TABLE_SCHEMA` NOT IN (?) AND 	33850998000
+[<span style="color:#3333FF;">--</span>]  +-- 9: NULL	SELECT `table_schema` , TABLE_NAME , `innodb_buffer_allocated` FROM `sys` . `x$schema_table_statistics_with_buffer` WHER	33783798000
+ 
+-------- Performance schema: Top 20 queries with sort ----------------------------------------------
+[<span style="color:#3333FF;">--</span>]  +-- 1: NULL	SELECT `index_name` AS `idxname` , GROUP_CONCAT ( COLUMN_NAME ORDER BY `seq_in_index` ) AS `cols` , `INDEX_TYPE` AS TYPE	8
+[<span style="color:#3333FF;">--</span>]  +-- 2: NULL	SELECT ENGINE , `SUPPORT` FROM `information_schema` . `ENGINES` ORDER BY ENGINE ASC 	2
+[<span style="color:#3333FF;">--</span>]  +-- 3: NULL	SELECT ENGINE , SUM ( `DATA_LENGTH` + `INDEX_LENGTH` ) , COUNT ( ENGINE ) , SUM ( `DATA_LENGTH` ) , SUM ( `INDEX_LENGTH`	2
+[<span style="color:#3333FF;">--</span>]  +-- 4: NULL	SELECT TABLE_NAME FROM `information_schema` . `TABLES` WHERE `TABLE_SCHEMA` = ? AND `TABLE_TYPE` = ? ORDER BY TABLE_NAME	1
+[<span style="color:#3333FF;">--</span>]  +-- 5: NULL	SELECT `CONCAT` ( `t` . `TABLE_SCHEMA` , ? , `t` . `TABLE_NAME` ) AS ? , `CONCAT` ( `s` . `INDEX_NAME` , ? , `s` . `COLU	1
+[<span style="color:#3333FF;">--</span>]  +-- 6: NULL	SELECT `concat` ( TABLE_NAME , ? , `index_name` ) AS `idxname` , GROUP_CONCAT ( COLUMN_NAME ORDER BY `seq_in_index` ) AS	1
+[<span style="color:#3333FF;">--</span>]  +-- 7: NULL	SELECT `CONCAT` ( `object_schema` , ? , `object_name` ) AS ? , `index_name` FROM `performance_schema` . `table_io_waits_	1
+[<span style="color:#3333FF;">--</span>]  +-- 8: NULL	SELECT SYSTEM_USER , `total_connections` FROM `sys` . `user_summary` ORDER BY `total_connections` DESC LIMIT ? 	1
+[<span style="color:#3333FF;">--</span>]  +-- 9: NULL	SELECT SYSTEM_USER , `statements` FROM `sys` . `user_summary` ORDER BY `statements` DESC LIMIT ? 	1
+[<span style="color:#3333FF;">--</span>]  +-- 10: NULL	SELECT SYSTEM_USER , `statement_avg_latency` FROM `sys` . `x$user_summary` ORDER BY `statement_avg_latency` DESC LIMIT ?	1
+[<span style="color:#3333FF;">--</span>]  +-- 11: NULL	SELECT SYSTEM_USER , `lock_latency` FROM `sys` . `x$user_summary_by_statement_latency` ORDER BY `lock_latency` DESC LIMI	1
+[<span style="color:#3333FF;">--</span>]  +-- 12: NULL	SELECT SYSTEM_USER , `full_scans` FROM `sys` . `x$user_summary_by_statement_latency` ORDER BY `full_scans` DESC LIMIT ? 	1
+[<span style="color:#3333FF;">--</span>]  +-- 13: NULL	SELECT SYSTEM_USER , `rows_sent` FROM `sys` . `x$user_summary_by_statement_latency` ORDER BY `rows_sent` DESC LIMIT ? 	1
+[<span style="color:#3333FF;">--</span>]  +-- 14: NULL	SELECT SYSTEM_USER , `rows_affected` FROM `sys` . `x$user_summary_by_statement_latency` ORDER BY `rows_affected` DESC LI	1
+[<span style="color:#3333FF;">--</span>]  +-- 15: NULL	SELECT SYSTEM_USER , `file_ios` FROM `sys` . `x$user_summary` ORDER BY `file_ios` DESC LIMIT ? 	1
+[<span style="color:#3333FF;">--</span>]  +-- 16: NULL	SELECT SYSTEM_USER , `file_io_latency` FROM `sys` . `x$user_summary` ORDER BY `file_io_latency` DESC LIMIT ? 	1
+[<span style="color:#3333FF;">--</span>]  +-- 17: NULL	SELECT HOST , `total_connections` FROM `sys` . `x$host_summary` ORDER BY `total_connections` DESC LIMIT ? 	1
+[<span style="color:#3333FF;">--</span>]  +-- 18: NULL	SELECT HOST , `statements` FROM `sys` . `x$host_summary` ORDER BY `statements` DESC LIMIT ? 	1
+[<span style="color:#3333FF;">--</span>]  +-- 19: NULL	SELECT HOST , `statement_avg_latency` FROM `sys` . `x$host_summary` ORDER BY `statement_avg_latency` DESC LIMIT ? 	1
+[<span style="color:#3333FF;">--</span>]  +-- 20: NULL	SELECT HOST , `lock_latency` FROM `sys` . `x$host_summary_by_statement_latency` ORDER BY `lock_latency` DESC LIMIT ? 	1
+ 
+-------- Performance schema: Last 50 queries with sort ---------------------------------------------
+[<span style="color:#3333FF;">--</span>]  +-- 1: NULL	SELECT `table_schema` , TABLE_NAME , `innodb_buffer_free` FROM `sys` . `x$schema_table_statistics_with_buffer` WHERE `in	2022-10-29 13:47:12
+[<span style="color:#3333FF;">--</span>]  +-- 2: NULL	SELECT `db` , LEFT ( QUERY , ? ) , `exec_count` FROM `sys` . `x$statement_analysis` ORDER BY `exec_count` DESC LIMIT ? 	2022-10-29 13:47:12
+[<span style="color:#3333FF;">--</span>]  +-- 3: NULL	SELECT LEFT ( QUERY , ? ) , `last_seen` FROM `sys` . `x$statements_with_errors_or_warnings` ORDER BY `last_seen` LIMIT ?	2022-10-29 13:47:12
+[<span style="color:#3333FF;">--</span>]  +-- 4: NULL	SELECT `db` , LEFT ( QUERY , ? ) , `exec_count` FROM `sys` . `x$statements_with_full_table_scans` ORDER BY `exec_count` 	2022-10-29 13:47:12
+[<span style="color:#3333FF;">--</span>]  +-- 5: NULL	SELECT `db` , LEFT ( QUERY , ? ) , `last_seen` FROM `sys` . `x$statements_with_full_table_scans` ORDER BY `last_seen` DE	2022-10-29 13:47:12
+[<span style="color:#3333FF;">--</span>]  +-- 6: sys	SELECT `db` , LEFT ( QUERY , ? ) , `rows_sent` FROM `sys` . `x$statements_with_runtimes_in_95th_percentile` ORDER BY `RO	2022-10-29 13:47:12
+[<span style="color:#3333FF;">--</span>]  +-- 7: sys	SELECT `db` , LEFT ( QUERY , ? ) , `rows_examined` AS `search` FROM `sys` . `x$statements_with_runtimes_in_95th_percenti	2022-10-29 13:47:12
+[<span style="color:#3333FF;">--</span>]  +-- 8: sys	SELECT `db` , LEFT ( QUERY , ? ) , `total_latency` AS `search` FROM `sys` . `x$statements_with_runtimes_in_95th_percenti	2022-10-29 13:47:12
+[<span style="color:#3333FF;">--</span>]  +-- 9: sys	SELECT `db` , LEFT ( QUERY , ? ) , `max_latency` AS `search` FROM `sys` . `x$statements_with_runtimes_in_95th_percentile	2022-10-29 13:47:12
+[<span style="color:#3333FF;">--</span>]  +-- 10: sys	SELECT `db` , LEFT ( QUERY , ? ) , `avg_latency` AS `search` FROM `sys` . `x$statements_with_runtimes_in_95th_percentile	2022-10-29 13:47:12
+[<span style="color:#3333FF;">--</span>]  +-- 11: NULL	SELECT `db` , LEFT ( QUERY , ? ) , `exec_count` FROM `sys` . `x$statements_with_sorting` ORDER BY `exec_count` DESC LIMI	2022-10-29 13:47:12
+[<span style="color:#3333FF;">--</span>]  +-- 12: NULL	SELECT SYSTEM_USER , `total_latency` , `max_latency` FROM `sys` . `x$io_by_thread_by_latency` ORDER BY `total_latency` D	2022-10-29 13:47:11
+[<span style="color:#3333FF;">--</span>]  +-- 13: NULL	SELECT LEFT ( QUERY , ? ) , `avg_latency` FROM `sys` . `x$statement_analysis` ORDER BY `avg_latency` DESC LIMIT ? 	2022-10-29 13:47:11
+[<span style="color:#3333FF;">--</span>]  +-- 14: NULL	SELECT LEFT ( QUERY , ? ) , `exec_count` FROM `sys` . `x$statements_with_runtimes_in_95th_percentile` ORDER BY `exec_cou	2022-10-29 13:47:11
+[<span style="color:#3333FF;">--</span>]  +-- 15: sys	SELECT `statement` , SUM ( `total` ) AS `total` FROM `sys` . `x$host_summary_by_statement_type` GROUP BY `statement` ORD	2022-10-29 13:47:11
+[<span style="color:#3333FF;">--</span>]  +-- 16: sys	SELECT `statement` , SUM ( `total_latency` ) AS `total` FROM `sys` . `x$host_summary_by_statement_type` GROUP BY `statem	2022-10-29 13:47:11
+[<span style="color:#3333FF;">--</span>]  +-- 17: sys	SELECT `statement` , SUM ( `lock_latency` ) AS `total` FROM `sys` . `x$host_summary_by_statement_type` GROUP BY `stateme	2022-10-29 13:47:11
+[<span style="color:#3333FF;">--</span>]  +-- 18: sys	SELECT `statement` , SUM ( `full_scans` ) AS `total` FROM `sys` . `x$host_summary_by_statement_type` GROUP BY `statement	2022-10-29 13:47:11
+[<span style="color:#3333FF;">--</span>]  +-- 19: sys	SELECT `statement` , SUM ( `rows_sent` ) AS `total` FROM `sys` . `x$host_summary_by_statement_type` GROUP BY `statement`	2022-10-29 13:47:11
+[<span style="color:#3333FF;">--</span>]  +-- 20: sys	SELECT `statement` , SUM ( `rows_affected` ) AS `total` FROM `sys` . `x$host_summary_by_statement_type` GROUP BY `statem	2022-10-29 13:47:11
+[<span style="color:#3333FF;">--</span>]  +-- 21: sys	SELECT LEFT ( QUERY , ? ) FROM `sys` . `x$statements_with_temp_tables` LIMIT ? 	2022-10-29 13:47:11
+[<span style="color:#3333FF;">--</span>]  +-- 22: NULL	SELECT * FROM `sys` . `schema_unused_indexes` WHERE `object_schema` NOT IN (?) 	2022-10-29 13:47:11
+[<span style="color:#3333FF;">--</span>]  +-- 23: NULL	SELECT * FROM `sys` . `x$schema_tables_with_full_table_scans` ORDER BY `rows_full_scanned` DESC 	2022-10-29 13:47:11
+[<span style="color:#3333FF;">--</span>]  +-- 24: NULL	SELECT FILE , `total_read` FROM `sys` . `x$io_global_by_file_by_bytes` ORDER BY `total_read` DESC LIMIT ? 	2022-10-29 13:47:11
+[<span style="color:#3333FF;">--</span>]  +-- 25: NULL	SELECT FILE , `total_written` FROM `sys` . `x$io_global_by_file_by_bytes` ORDER BY `total_written` DESC LIMIT ? 	2022-10-29 13:47:11
+[<span style="color:#3333FF;">--</span>]  +-- 26: NULL	SELECT FILE , `total_latency` FROM `sys` . `x$io_global_by_file_by_latency` ORDER BY `total_latency` DESC LIMIT ? 	2022-10-29 13:47:11
+[<span style="color:#3333FF;">--</span>]  +-- 27: sys	SELECT FILE , `read_latency` FROM `sys` . `x$io_global_by_file_by_latency` ORDER BY `read_latency` DESC LIMIT ? 	2022-10-29 13:47:11
+[<span style="color:#3333FF;">--</span>]  +-- 28: sys	SELECT FILE , `write_latency` FROM `sys` . `x$io_global_by_file_by_latency` ORDER BY `write_latency` DESC LIMIT ? 	2022-10-29 13:47:11
+[<span style="color:#3333FF;">--</span>]  +-- 29: NULL	SELECT `event_name` , `total_read` FROM `sys` . `x$io_global_by_wait_by_bytes` ORDER BY `total_read` DESC LIMIT ? 	2022-10-29 13:47:11
+[<span style="color:#3333FF;">--</span>]  +-- 30: NULL	SELECT `event_name` , `total_written` FROM `sys` . `x$io_global_by_wait_by_bytes` ORDER BY `total_written` DESC LIMIT ? 	2022-10-29 13:47:11
+[<span style="color:#3333FF;">--</span>]  +-- 31: sys	SELECT `event_name` , `total_latency` FROM `sys` . `x$io_global_by_wait_by_latency` ORDER BY `total_latency` DESC LIMIT 	2022-10-29 13:47:11
+[<span style="color:#3333FF;">--</span>]  +-- 32: sys	SELECT `event_name` , `read_latency` FROM `sys` . `x$io_global_by_wait_by_latency` ORDER BY `read_latency` DESC LIMIT ? 	2022-10-29 13:47:11
+[<span style="color:#3333FF;">--</span>]  +-- 33: sys	SELECT `event_name` , `write_latency` FROM `sys` . `x$io_global_by_wait_by_latency` ORDER BY `write_latency` DESC LIMIT 	2022-10-29 13:47:11
+[<span style="color:#3333FF;">--</span>]  +-- 34: sys	SELECT `table_schema` , TABLE_NAME , `index_name` , `rows_selected` FROM `sys` . `x$schema_index_statistics` ORDER BY `R	2022-10-29 13:47:11
+[<span style="color:#3333FF;">--</span>]  +-- 35: sys	SELECT `table_schema` , TABLE_NAME , `index_name` , `rows_inserted` + `rows_updated` + `rows_deleted` AS `changes` FROM 	2022-10-29 13:47:11
+[<span style="color:#3333FF;">--</span>]  +-- 36: sys	SELECT `table_schema` , TABLE_NAME , `index_name` , `select_latency` FROM `sys` . `x$schema_index_statistics` ORDER BY `	2022-10-29 13:47:11
+[<span style="color:#3333FF;">--</span>]  +-- 37: sys	SELECT `table_schema` , TABLE_NAME , `index_name` , `insert_latency` FROM `sys` . `x$schema_index_statistics` ORDER BY `	2022-10-29 13:47:11
+[<span style="color:#3333FF;">--</span>]  +-- 38: sys	SELECT `table_schema` , TABLE_NAME , `index_name` , `update_latency` FROM `sys` . `x$schema_index_statistics` ORDER BY `	2022-10-29 13:47:11
+[<span style="color:#3333FF;">--</span>]  +-- 39: sys	SELECT `table_schema` , TABLE_NAME , `index_name` , `delete_latency` FROM `sys` . `x$schema_index_statistics` ORDER BY `	2022-10-29 13:47:11
+[<span style="color:#3333FF;">--</span>]  +-- 40: sys	SELECT `table_schema` , TABLE_NAME , `rows_fetched` FROM `sys` . `x$schema_table_statistics` ORDER BY `ROWs_fetched` DES	2022-10-29 13:47:11
+[<span style="color:#3333FF;">--</span>]  +-- 41: sys	SELECT `table_schema` , TABLE_NAME , `rows_inserted` + `rows_updated` + `rows_deleted` AS `changes` FROM `sys` . `x$sche	2022-10-29 13:47:11
+[<span style="color:#3333FF;">--</span>]  +-- 42: sys	SELECT `table_schema` , TABLE_NAME , `fetch_latency` FROM `sys` . `x$schema_table_statistics` ORDER BY `fetch_latency` D	2022-10-29 13:47:11
+[<span style="color:#3333FF;">--</span>]  +-- 43: sys	SELECT `table_schema` , TABLE_NAME , `insert_latency` FROM `sys` . `x$schema_table_statistics` ORDER BY `insert_latency`	2022-10-29 13:47:11
+[<span style="color:#3333FF;">--</span>]  +-- 44: sys	SELECT `table_schema` , TABLE_NAME , `update_latency` FROM `sys` . `x$schema_table_statistics` ORDER BY `update_latency`	2022-10-29 13:47:11
+[<span style="color:#3333FF;">--</span>]  +-- 45: sys	SELECT `table_schema` , TABLE_NAME , `delete_latency` FROM `sys` . `x$schema_table_statistics` ORDER BY `delete_latency`	2022-10-29 13:47:11
+[<span style="color:#3333FF;">--</span>]  +-- 46: sys	SELECT * FROM `schema_redundant_indexes` 	2022-10-29 13:47:11
+[<span style="color:#3333FF;">--</span>]  +-- 47: NULL	SELECT `table_schema` , TABLE_NAME FROM `sys` . `x$schema_table_statistics_with_buffer` WHERE `innodb_buffer_allocated` 	2022-10-29 13:47:11
+[<span style="color:#3333FF;">--</span>]  +-- 48: NULL	SELECT `table_schema` , TABLE_NAME , `innodb_buffer_allocated` FROM `sys` . `x$schema_table_statistics_with_buffer` WHER	2022-10-29 13:47:11
+[<span style="color:#3333FF;">--</span>]  +-- 49: NULL	SELECT SYSTEM_USER , `total_connections` FROM `sys` . `user_summary` ORDER BY `total_connections` DESC LIMIT ? 	2022-10-29 13:47:10
+[<span style="color:#3333FF;">--</span>]  +-- 50: NULL	SELECT SYSTEM_USER , `statements` FROM `sys` . `user_summary` ORDER BY `statements` DESC LIMIT ? 	2022-10-29 13:47:10
+ 
+-------- Performance schema: Top 15 row sorting queries with sort ----------------------------------
+[<span style="color:#3333FF;">--</span>]  +-- 1: NULL	SELECT `table_schema` , TABLE_NAME , `innodb_buffer_allocated` FROM `sys` . `x$schema_table_statistics_with_buffer` WHER	577
+[<span style="color:#3333FF;">--</span>]  +-- 2: NULL	SELECT `table_schema` , TABLE_NAME , `innodb_buffer_free` FROM `sys` . `x$schema_table_statistics_with_buffer` WHERE `in	577
+[<span style="color:#3333FF;">--</span>]  +-- 3: NULL	SELECT `table_schema` , TABLE_NAME FROM `sys` . `x$schema_table_statistics_with_buffer` WHERE `innodb_buffer_allocated` 	516
+[<span style="color:#3333FF;">--</span>]  +-- 4: sys	SELECT `db` , LEFT ( QUERY , ? ) , `avg_latency` AS `search` FROM `sys` . `x$statements_with_runtimes_in_95th_percentile	364
+[<span style="color:#3333FF;">--</span>]  +-- 5: sys	SELECT `db` , LEFT ( QUERY , ? ) , `max_latency` AS `search` FROM `sys` . `x$statements_with_runtimes_in_95th_percentile	362
+[<span style="color:#3333FF;">--</span>]  +-- 6: sys	SELECT `db` , LEFT ( QUERY , ? ) , `total_latency` AS `search` FROM `sys` . `x$statements_with_runtimes_in_95th_percenti	360
+[<span style="color:#3333FF;">--</span>]  +-- 7: sys	SELECT `db` , LEFT ( QUERY , ? ) , `rows_examined` AS `search` FROM `sys` . `x$statements_with_runtimes_in_95th_percenti	358
+[<span style="color:#3333FF;">--</span>]  +-- 8: sys	SELECT `db` , LEFT ( QUERY , ? ) , `rows_sent` FROM `sys` . `x$statements_with_runtimes_in_95th_percentile` ORDER BY `RO	356
+[<span style="color:#3333FF;">--</span>]  +-- 9: NULL	SELECT LEFT ( QUERY , ? ) , `exec_count` FROM `sys` . `x$statements_with_runtimes_in_95th_percentile` ORDER BY `exec_cou	272
+[<span style="color:#3333FF;">--</span>]  +-- 10: sys	SELECT `table_schema` , TABLE_NAME , `rows_fetched` FROM `sys` . `x$schema_table_statistics` ORDER BY `ROWs_fetched` DES	257
+[<span style="color:#3333FF;">--</span>]  +-- 11: sys	SELECT `table_schema` , TABLE_NAME , `rows_inserted` + `rows_updated` + `rows_deleted` AS `changes` FROM `sys` . `x$sche	257
+[<span style="color:#3333FF;">--</span>]  +-- 12: sys	SELECT `table_schema` , TABLE_NAME , `fetch_latency` FROM `sys` . `x$schema_table_statistics` ORDER BY `fetch_latency` D	257
+[<span style="color:#3333FF;">--</span>]  +-- 13: sys	SELECT `table_schema` , TABLE_NAME , `insert_latency` FROM `sys` . `x$schema_table_statistics` ORDER BY `insert_latency`	257
+[<span style="color:#3333FF;">--</span>]  +-- 14: sys	SELECT `table_schema` , TABLE_NAME , `update_latency` FROM `sys` . `x$schema_table_statistics` ORDER BY `update_latency`	257
+[<span style="color:#3333FF;">--</span>]  +-- 15: sys	SELECT `table_schema` , TABLE_NAME , `delete_latency` FROM `sys` . `x$schema_table_statistics` ORDER BY `delete_latency`	257
+ 
+-------- Performance schema: Top 15 total latency queries with sort --------------------------------
+[<span style="color:#3333FF;">--</span>]  +-- 1: NULL	SELECT ENGINE , SUM ( `DATA_LENGTH` + `INDEX_LENGTH` ) , COUNT ( ENGINE ) , SUM ( `DATA_LENGTH` ) , SUM ( `INDEX_LENGTH`	99511048000
+[<span style="color:#3333FF;">--</span>]  +-- 2: NULL	SELECT `CONCAT` ( `t` . `TABLE_SCHEMA` , ? , `t` . `TABLE_NAME` ) AS ? , `CONCAT` ( `s` . `INDEX_NAME` , ? , `s` . `COLU	68896613000
+[<span style="color:#3333FF;">--</span>]  +-- 3: NULL	SELECT `table_schema` , TABLE_NAME FROM `sys` . `x$schema_table_statistics_with_buffer` WHERE `innodb_buffer_allocated` 	45537744000
+[<span style="color:#3333FF;">--</span>]  +-- 4: NULL	SELECT `table_schema` , TABLE_NAME , `innodb_buffer_free` FROM `sys` . `x$schema_table_statistics_with_buffer` WHERE `in	42643414000
+[<span style="color:#3333FF;">--</span>]  +-- 5: NULL	SELECT SYSTEM_USER , `Command` AS `PROC` , TIME FROM `sys` . `x$processlist` ORDER BY TIME DESC 	41191317000
+[<span style="color:#3333FF;">--</span>]  +-- 6: NULL	SELECT `object_schema` , `allocated` , DATA , `pages` FROM `sys` . `x$innodb_buffer_stats_by_schema` ORDER BY `pages` DE	36107235000
+[<span style="color:#3333FF;">--</span>]  +-- 7: sys	SELECT `db` , LEFT ( QUERY , ? ) , `avg_latency` AS `search` FROM `sys` . `x$statements_with_runtimes_in_95th_percentile	34786169000
+[<span style="color:#3333FF;">--</span>]  +-- 8: NULL	SELECT `table_schema` , TABLE_NAME , `innodb_buffer_allocated` FROM `sys` . `x$schema_table_statistics_with_buffer` WHER	33783798000
+[<span style="color:#3333FF;">--</span>]  +-- 9: sys	SELECT `db` , LEFT ( QUERY , ? ) , `max_latency` AS `search` FROM `sys` . `x$statements_with_runtimes_in_95th_percentile	33750246000
+[<span style="color:#3333FF;">--</span>]  +-- 10: sys	SELECT `db` , LEFT ( QUERY , ? ) , `total_latency` AS `search` FROM `sys` . `x$statements_with_runtimes_in_95th_percenti	33400895000
+[<span style="color:#3333FF;">--</span>]  +-- 11: NULL	SELECT `object_schema` , `object_name` , `allocated` , DATA , `pages` FROM `sys` . `x$innodb_buffer_stats_by_table` ORDE	33374857000
+[<span style="color:#3333FF;">--</span>]  +-- 12: sys	SELECT `db` , LEFT ( QUERY , ? ) , `rows_sent` FROM `sys` . `x$statements_with_runtimes_in_95th_percentile` ORDER BY `RO	32611580000
+[<span style="color:#3333FF;">--</span>]  +-- 13: sys	SELECT `db` , LEFT ( QUERY , ? ) , `rows_examined` AS `search` FROM `sys` . `x$statements_with_runtimes_in_95th_percenti	32608409000
+[<span style="color:#3333FF;">--</span>]  +-- 14: NULL	SELECT LEFT ( QUERY , ? ) , `exec_count` FROM `sys` . `x$statements_with_runtimes_in_95th_percentile` ORDER BY `exec_cou	23300387000
+[<span style="color:#3333FF;">--</span>]  +-- 15: sys	SELECT `table_schema` , TABLE_NAME , `rows_inserted` + `rows_updated` + `rows_deleted` AS `changes` FROM `sys` . `x$sche	20106714000
+ 
+-------- Performance schema: Top 15 merge queries with sort ----------------------------------------
+[<span style="color:#3333FF;">--</span>]  +-- 1: NULL	SELECT `table_schema` , TABLE_NAME FROM `sys` . `x$schema_table_statistics_with_buffer` WHERE `innodb_buffer_allocated` 	1
+[<span style="color:#3333FF;">--</span>]  +-- 2: NULL	SELECT `table_schema` , TABLE_NAME , `innodb_buffer_allocated` FROM `sys` . `x$schema_table_statistics_with_buffer` WHER	1
+[<span style="color:#3333FF;">--</span>]  +-- 3: NULL	SELECT `table_schema` , TABLE_NAME , `innodb_buffer_free` FROM `sys` . `x$schema_table_statistics_with_buffer` WHERE `in	1
+[<span style="color:#3333FF;">--</span>]  +-- 4: NULL	SELECT ENGINE , `SUPPORT` FROM `information_schema` . `ENGINES` ORDER BY ENGINE ASC 	0
+[<span style="color:#3333FF;">--</span>]  +-- 5: NULL	SELECT ENGINE , SUM ( `DATA_LENGTH` + `INDEX_LENGTH` ) , COUNT ( ENGINE ) , SUM ( `DATA_LENGTH` ) , SUM ( `INDEX_LENGTH`	0
+[<span style="color:#3333FF;">--</span>]  +-- 6: NULL	SELECT TABLE_NAME FROM `information_schema` . `TABLES` WHERE `TABLE_SCHEMA` = ? AND `TABLE_TYPE` = ? ORDER BY TABLE_NAME	0
+[<span style="color:#3333FF;">--</span>]  +-- 7: NULL	SELECT `index_name` AS `idxname` , GROUP_CONCAT ( COLUMN_NAME ORDER BY `seq_in_index` ) AS `cols` , `INDEX_TYPE` AS TYPE	0
+[<span style="color:#3333FF;">--</span>]  +-- 8: NULL	SELECT `CONCAT` ( `t` . `TABLE_SCHEMA` , ? , `t` . `TABLE_NAME` ) AS ? , `CONCAT` ( `s` . `INDEX_NAME` , ? , `s` . `COLU	0
+[<span style="color:#3333FF;">--</span>]  +-- 9: NULL	SELECT `concat` ( TABLE_NAME , ? , `index_name` ) AS `idxname` , GROUP_CONCAT ( COLUMN_NAME ORDER BY `seq_in_index` ) AS	0
+[<span style="color:#3333FF;">--</span>]  +-- 10: NULL	SELECT `CONCAT` ( `object_schema` , ? , `object_name` ) AS ? , `index_name` FROM `performance_schema` . `table_io_waits_	0
+[<span style="color:#3333FF;">--</span>]  +-- 11: NULL	SELECT SYSTEM_USER , `total_connections` FROM `sys` . `user_summary` ORDER BY `total_connections` DESC LIMIT ? 	0
+[<span style="color:#3333FF;">--</span>]  +-- 12: NULL	SELECT SYSTEM_USER , `statements` FROM `sys` . `user_summary` ORDER BY `statements` DESC LIMIT ? 	0
+[<span style="color:#3333FF;">--</span>]  +-- 13: NULL	SELECT SYSTEM_USER , `statement_avg_latency` FROM `sys` . `x$user_summary` ORDER BY `statement_avg_latency` DESC LIMIT ?	0
+[<span style="color:#3333FF;">--</span>]  +-- 14: NULL	SELECT SYSTEM_USER , `lock_latency` FROM `sys` . `x$user_summary_by_statement_latency` ORDER BY `lock_latency` DESC LIMI	0
+[<span style="color:#3333FF;">--</span>]  +-- 15: NULL	SELECT SYSTEM_USER , `full_scans` FROM `sys` . `x$user_summary_by_statement_latency` ORDER BY `full_scans` DESC LIMIT ? 	0
+ 
+-------- Performance schema: Top 15 average sort merges queries with sort --------------------------
+[<span style="color:#3333FF;">--</span>]  +-- 1: NULL	SELECT `table_schema` , TABLE_NAME FROM `sys` . `x$schema_table_statistics_with_buffer` WHERE `innodb_buffer_allocated` 	1
+[<span style="color:#3333FF;">--</span>]  +-- 2: NULL	SELECT `table_schema` , TABLE_NAME , `innodb_buffer_allocated` FROM `sys` . `x$schema_table_statistics_with_buffer` WHER	1
+[<span style="color:#3333FF;">--</span>]  +-- 3: NULL	SELECT `table_schema` , TABLE_NAME , `innodb_buffer_free` FROM `sys` . `x$schema_table_statistics_with_buffer` WHERE `in	1
+[<span style="color:#3333FF;">--</span>]  +-- 4: NULL	SELECT ENGINE , `SUPPORT` FROM `information_schema` . `ENGINES` ORDER BY ENGINE ASC 	0
+[<span style="color:#3333FF;">--</span>]  +-- 5: NULL	SELECT ENGINE , SUM ( `DATA_LENGTH` + `INDEX_LENGTH` ) , COUNT ( ENGINE ) , SUM ( `DATA_LENGTH` ) , SUM ( `INDEX_LENGTH`	0
+[<span style="color:#3333FF;">--</span>]  +-- 6: NULL	SELECT TABLE_NAME FROM `information_schema` . `TABLES` WHERE `TABLE_SCHEMA` = ? AND `TABLE_TYPE` = ? ORDER BY TABLE_NAME	0
+[<span style="color:#3333FF;">--</span>]  +-- 7: NULL	SELECT `index_name` AS `idxname` , GROUP_CONCAT ( COLUMN_NAME ORDER BY `seq_in_index` ) AS `cols` , `INDEX_TYPE` AS TYPE	0
+[<span style="color:#3333FF;">--</span>]  +-- 8: NULL	SELECT `CONCAT` ( `t` . `TABLE_SCHEMA` , ? , `t` . `TABLE_NAME` ) AS ? , `CONCAT` ( `s` . `INDEX_NAME` , ? , `s` . `COLU	0
+[<span style="color:#3333FF;">--</span>]  +-- 9: NULL	SELECT `concat` ( TABLE_NAME , ? , `index_name` ) AS `idxname` , GROUP_CONCAT ( COLUMN_NAME ORDER BY `seq_in_index` ) AS	0
+[<span style="color:#3333FF;">--</span>]  +-- 10: NULL	SELECT `CONCAT` ( `object_schema` , ? , `object_name` ) AS ? , `index_name` FROM `performance_schema` . `table_io_waits_	0
+[<span style="color:#3333FF;">--</span>]  +-- 11: NULL	SELECT SYSTEM_USER , `total_connections` FROM `sys` . `user_summary` ORDER BY `total_connections` DESC LIMIT ? 	0
+[<span style="color:#3333FF;">--</span>]  +-- 12: NULL	SELECT SYSTEM_USER , `statements` FROM `sys` . `user_summary` ORDER BY `statements` DESC LIMIT ? 	0
+[<span style="color:#3333FF;">--</span>]  +-- 13: NULL	SELECT SYSTEM_USER , `statement_avg_latency` FROM `sys` . `x$user_summary` ORDER BY `statement_avg_latency` DESC LIMIT ?	0
+[<span style="color:#3333FF;">--</span>]  +-- 14: NULL	SELECT SYSTEM_USER , `lock_latency` FROM `sys` . `x$user_summary_by_statement_latency` ORDER BY `lock_latency` DESC LIMI	0
+[<span style="color:#3333FF;">--</span>]  +-- 15: NULL	SELECT SYSTEM_USER , `full_scans` FROM `sys` . `x$user_summary_by_statement_latency` ORDER BY `full_scans` DESC LIMIT ? 	0
+ 
+-------- Performance schema: Top 15 scans queries with sort ----------------------------------------
+[<span style="color:#3333FF;">--</span>]  +-- 1: NULL	SELECT `index_name` AS `idxname` , GROUP_CONCAT ( COLUMN_NAME ORDER BY `seq_in_index` ) AS `cols` , `INDEX_TYPE` AS TYPE	8
+[<span style="color:#3333FF;">--</span>]  +-- 2: NULL	SELECT SYSTEM_USER , `total_connections` FROM `sys` . `user_summary` ORDER BY `total_connections` DESC LIMIT ? 	6
+[<span style="color:#3333FF;">--</span>]  +-- 3: NULL	SELECT SYSTEM_USER , `statements` FROM `sys` . `user_summary` ORDER BY `statements` DESC LIMIT ? 	6
+[<span style="color:#3333FF;">--</span>]  +-- 4: NULL	SELECT SYSTEM_USER , `statement_avg_latency` FROM `sys` . `x$user_summary` ORDER BY `statement_avg_latency` DESC LIMIT ?	6
+[<span style="color:#3333FF;">--</span>]  +-- 5: NULL	SELECT SYSTEM_USER , `file_ios` FROM `sys` . `x$user_summary` ORDER BY `file_ios` DESC LIMIT ? 	6
+[<span style="color:#3333FF;">--</span>]  +-- 6: NULL	SELECT SYSTEM_USER , `file_io_latency` FROM `sys` . `x$user_summary` ORDER BY `file_io_latency` DESC LIMIT ? 	6
+[<span style="color:#3333FF;">--</span>]  +-- 7: NULL	SELECT HOST , `total_connections` FROM `sys` . `x$host_summary` ORDER BY `total_connections` DESC LIMIT ? 	5
+[<span style="color:#3333FF;">--</span>]  +-- 8: NULL	SELECT HOST , `statements` FROM `sys` . `x$host_summary` ORDER BY `statements` DESC LIMIT ? 	5
+[<span style="color:#3333FF;">--</span>]  +-- 9: NULL	SELECT HOST , `statement_avg_latency` FROM `sys` . `x$host_summary` ORDER BY `statement_avg_latency` DESC LIMIT ? 	5
+[<span style="color:#3333FF;">--</span>]  +-- 10: NULL	SELECT HOST , `file_ios` FROM `sys` . `x$host_summary` ORDER BY `file_ios` DESC LIMIT ? 	5
+[<span style="color:#3333FF;">--</span>]  +-- 11: NULL	SELECT HOST , `file_io_latency` FROM `sys` . `x$host_summary` ORDER BY `file_io_latency` DESC LIMIT ? 	5
+[<span style="color:#3333FF;">--</span>]  +-- 12: NULL	SELECT HOST , `table_scans` FROM `sys` . `x$host_summary` ORDER BY `table_scans` DESC LIMIT ? 	5
+[<span style="color:#3333FF;">--</span>]  +-- 13: NULL	SELECT `table_schema` , TABLE_NAME , `innodb_buffer_allocated` FROM `sys` . `x$schema_table_statistics_with_buffer` WHER	5
+[<span style="color:#3333FF;">--</span>]  +-- 14: NULL	SELECT `table_schema` , TABLE_NAME , `innodb_buffer_free` FROM `sys` . `x$schema_table_statistics_with_buffer` WHERE `in	5
+[<span style="color:#3333FF;">--</span>]  +-- 15: NULL	SELECT LEFT ( QUERY , ? ) , `exec_count` FROM `sys` . `x$statements_with_runtimes_in_95th_percentile` ORDER BY `exec_cou	4
+ 
+-------- Performance schema: Top 15 range queries with sort ----------------------------------------
+[<span style="color:#3333FF;">--</span>]  +-- 1: NULL	SELECT ENGINE , `SUPPORT` FROM `information_schema` . `ENGINES` ORDER BY ENGINE ASC 	0
+[<span style="color:#3333FF;">--</span>]  +-- 2: NULL	SELECT ENGINE , SUM ( `DATA_LENGTH` + `INDEX_LENGTH` ) , COUNT ( ENGINE ) , SUM ( `DATA_LENGTH` ) , SUM ( `INDEX_LENGTH`	0
+[<span style="color:#3333FF;">--</span>]  +-- 3: NULL	SELECT TABLE_NAME FROM `information_schema` . `TABLES` WHERE `TABLE_SCHEMA` = ? AND `TABLE_TYPE` = ? ORDER BY TABLE_NAME	0
+[<span style="color:#3333FF;">--</span>]  +-- 4: NULL	SELECT `index_name` AS `idxname` , GROUP_CONCAT ( COLUMN_NAME ORDER BY `seq_in_index` ) AS `cols` , `INDEX_TYPE` AS TYPE	0
+[<span style="color:#3333FF;">--</span>]  +-- 5: NULL	SELECT `CONCAT` ( `t` . `TABLE_SCHEMA` , ? , `t` . `TABLE_NAME` ) AS ? , `CONCAT` ( `s` . `INDEX_NAME` , ? , `s` . `COLU	0
+[<span style="color:#3333FF;">--</span>]  +-- 6: NULL	SELECT `concat` ( TABLE_NAME , ? , `index_name` ) AS `idxname` , GROUP_CONCAT ( COLUMN_NAME ORDER BY `seq_in_index` ) AS	0
+[<span style="color:#3333FF;">--</span>]  +-- 7: NULL	SELECT `CONCAT` ( `object_schema` , ? , `object_name` ) AS ? , `index_name` FROM `performance_schema` . `table_io_waits_	0
+[<span style="color:#3333FF;">--</span>]  +-- 8: NULL	SELECT SYSTEM_USER , `total_connections` FROM `sys` . `user_summary` ORDER BY `total_connections` DESC LIMIT ? 	0
+[<span style="color:#3333FF;">--</span>]  +-- 9: NULL	SELECT SYSTEM_USER , `statements` FROM `sys` . `user_summary` ORDER BY `statements` DESC LIMIT ? 	0
+[<span style="color:#3333FF;">--</span>]  +-- 10: NULL	SELECT SYSTEM_USER , `statement_avg_latency` FROM `sys` . `x$user_summary` ORDER BY `statement_avg_latency` DESC LIMIT ?	0
+[<span style="color:#3333FF;">--</span>]  +-- 11: NULL	SELECT SYSTEM_USER , `lock_latency` FROM `sys` . `x$user_summary_by_statement_latency` ORDER BY `lock_latency` DESC LIMI	0
+[<span style="color:#3333FF;">--</span>]  +-- 12: NULL	SELECT SYSTEM_USER , `full_scans` FROM `sys` . `x$user_summary_by_statement_latency` ORDER BY `full_scans` DESC LIMIT ? 	0
+[<span style="color:#3333FF;">--</span>]  +-- 13: NULL	SELECT SYSTEM_USER , `rows_sent` FROM `sys` . `x$user_summary_by_statement_latency` ORDER BY `rows_sent` DESC LIMIT ? 	0
+[<span style="color:#3333FF;">--</span>]  +-- 14: NULL	SELECT SYSTEM_USER , `rows_affected` FROM `sys` . `x$user_summary_by_statement_latency` ORDER BY `rows_affected` DESC LI	0
+[<span style="color:#3333FF;">--</span>]  +-- 15: NULL	SELECT SYSTEM_USER , `file_ios` FROM `sys` . `x$user_summary` ORDER BY `file_ios` DESC LIMIT ? 	0
+ 
+-------- Performance schema: Top 20 queries with temp table ----------------------------------------
+[<span style="color:#3333FF;">--</span>]  +-- 1: NULL	SELECT `COLUMN_TYPE` FROM `information_schema` . `COLUMNS` WHERE `TABLE_SCHEMA` = ? AND TABLE_NAME = ? AND COLUMN_NAME =	59
+[<span style="color:#3333FF;">--</span>]  +-- 2: NULL	SELECT `IS_NULLABLE` FROM `information_schema` . `COLUMNS` WHERE `TABLE_SCHEMA` = ? AND TABLE_NAME = ? AND COLUMN_NAME =	59
+[<span style="color:#3333FF;">--</span>]  +-- 3: NULL	SELECT ENGINE FROM `information_schema` . `tables` WHERE `TABLE_schema` = ? AND TABLE_NAME = ? 	8
+[<span style="color:#3333FF;">--</span>]  +-- 4: NULL	SELECT `index_name` AS `idxname` , GROUP_CONCAT ( COLUMN_NAME ORDER BY `seq_in_index` ) AS `cols` , `INDEX_TYPE` AS TYPE	8
+[<span style="color:#3333FF;">--</span>]  +-- 5: NULL	SELECT COLUMN_NAME FROM `information_schema` . `COLUMNS` WHERE `TABLE_SCHEMA` = ? AND TABLE_NAME = ? 	8
+[<span style="color:#3333FF;">--</span>]  +-- 6: NULL	SHOW SCHEMAS 	4
+[<span style="color:#3333FF;">--</span>]  +-- 7: NULL	SELECT ? FROM `information_schema` . `columns` WHERE `TABLE_SCHEMA` = ? AND TABLE_NAME = ? AND COLUMN_NAME = ? 	4
+[<span style="color:#3333FF;">--</span>]  +-- 8: NULL	SELECT `IFNULL` ( SUM ( `INDEX_LENGTH` ) , ? ) FROM `information_schema` . `TABLES` WHERE `TABLE_SCHEMA` NOT IN (?) AND 	4
+[<span style="color:#3333FF;">--</span>]  +-- 9: NULL	SHOW VARIABLES 	2
+[<span style="color:#3333FF;">--</span>]  +-- 10: NULL	SHOW GLOBAL VARIABLES 	2
+[<span style="color:#3333FF;">--</span>]  +-- 11: NULL	SHOW STATUS 	2
+[<span style="color:#3333FF;">--</span>]  +-- 12: NULL	SHOW GLOBAL STATUS 	2
+[<span style="color:#3333FF;">--</span>]  +-- 13: NULL	SHOW ENGINES 	2
+[<span style="color:#3333FF;">--</span>]  +-- 14: NULL	SELECT ENGINE , `SUPPORT` FROM `information_schema` . `ENGINES` ORDER BY ENGINE ASC 	2
+[<span style="color:#3333FF;">--</span>]  +-- 15: NULL	SELECT ENGINE , SUM ( `DATA_LENGTH` + `INDEX_LENGTH` ) , COUNT ( ENGINE ) , SUM ( `DATA_LENGTH` ) , SUM ( `INDEX_LENGTH`	2
+[<span style="color:#3333FF;">--</span>]  +-- 16: NULL	SELECT `CONCAT` ( `CONCAT` ( `TABLE_SCHEMA` , ? ) , TABLE_NAME ) , CAST ( `DATA_FREE` AS SIGNED ) FROM `information_sche	2
+[<span style="color:#3333FF;">--</span>]  +-- 17: NULL	SHOW TABLE STATUS FROM `classicmodels` 	2
+[<span style="color:#3333FF;">--</span>]  +-- 18: NULL	SHOW TABLE STATUS FROM `mysql` 	2
+[<span style="color:#3333FF;">--</span>]  +-- 19: NULL	SHOW TABLE STATUS FROM `performance_schema` 	2
+[<span style="color:#3333FF;">--</span>]  +-- 20: NULL	SHOW TABLE STATUS FROM `sys` 	2
+ 
+-------- Performance schema: Last 50 queries with temp table ---------------------------------------
+[<span style="color:#3333FF;">--</span>]  +-- 1: NULL	SELECT `table_schema` , TABLE_NAME , `innodb_buffer_free` FROM `sys` . `x$schema_table_statistics_with_buffer` WHERE `in	2022-10-29 13:47:12
+[<span style="color:#3333FF;">--</span>]  +-- 2: sys	SELECT `db` , LEFT ( QUERY , ? ) , `rows_sent` FROM `sys` . `x$statements_with_runtimes_in_95th_percentile` ORDER BY `RO	2022-10-29 13:47:12
+[<span style="color:#3333FF;">--</span>]  +-- 3: sys	SELECT `db` , LEFT ( QUERY , ? ) , `rows_examined` AS `search` FROM `sys` . `x$statements_with_runtimes_in_95th_percenti	2022-10-29 13:47:12
+[<span style="color:#3333FF;">--</span>]  +-- 4: sys	SELECT `db` , LEFT ( QUERY , ? ) , `total_latency` AS `search` FROM `sys` . `x$statements_with_runtimes_in_95th_percenti	2022-10-29 13:47:12
+[<span style="color:#3333FF;">--</span>]  +-- 5: sys	SELECT `db` , LEFT ( QUERY , ? ) , `max_latency` AS `search` FROM `sys` . `x$statements_with_runtimes_in_95th_percentile	2022-10-29 13:47:12
+[<span style="color:#3333FF;">--</span>]  +-- 6: sys	SELECT `db` , LEFT ( QUERY , ? ) , `avg_latency` AS `search` FROM `sys` . `x$statements_with_runtimes_in_95th_percentile	2022-10-29 13:47:12
+[<span style="color:#3333FF;">--</span>]  +-- 7: NULL	SELECT `wait_age_secs` , `locked_table` , `locked_type` , `waiting_query` FROM `sys` . `x$innodb_lock_waits` ORDER BY `w	2022-10-29 13:47:11
+[<span style="color:#3333FF;">--</span>]  +-- 8: NULL	SELECT SYSTEM_USER , `total_latency` , `max_latency` FROM `sys` . `x$io_by_thread_by_latency` ORDER BY `total_latency` D	2022-10-29 13:47:11
+[<span style="color:#3333FF;">--</span>]  +-- 9: NULL	SELECT LEFT ( QUERY , ? ) , `exec_count` FROM `sys` . `x$statements_with_runtimes_in_95th_percentile` ORDER BY `exec_cou	2022-10-29 13:47:11
+[<span style="color:#3333FF;">--</span>]  +-- 10: sys	SELECT `statement` , SUM ( `total` ) AS `total` FROM `sys` . `x$host_summary_by_statement_type` GROUP BY `statement` ORD	2022-10-29 13:47:11
+[<span style="color:#3333FF;">--</span>]  +-- 11: sys	SELECT `statement` , SUM ( `total_latency` ) AS `total` FROM `sys` . `x$host_summary_by_statement_type` GROUP BY `statem	2022-10-29 13:47:11
+[<span style="color:#3333FF;">--</span>]  +-- 12: sys	SELECT `statement` , SUM ( `lock_latency` ) AS `total` FROM `sys` . `x$host_summary_by_statement_type` GROUP BY `stateme	2022-10-29 13:47:11
+[<span style="color:#3333FF;">--</span>]  +-- 13: sys	SELECT `statement` , SUM ( `full_scans` ) AS `total` FROM `sys` . `x$host_summary_by_statement_type` GROUP BY `statement	2022-10-29 13:47:11
+[<span style="color:#3333FF;">--</span>]  +-- 14: sys	SELECT `statement` , SUM ( `rows_sent` ) AS `total` FROM `sys` . `x$host_summary_by_statement_type` GROUP BY `statement`	2022-10-29 13:47:11
+[<span style="color:#3333FF;">--</span>]  +-- 15: sys	SELECT `statement` , SUM ( `rows_affected` ) AS `total` FROM `sys` . `x$host_summary_by_statement_type` GROUP BY `statem	2022-10-29 13:47:11
+[<span style="color:#3333FF;">--</span>]  +-- 16: NULL	SELECT * FROM `sys` . `schema_unused_indexes` WHERE `object_schema` NOT IN (?) 	2022-10-29 13:47:11
+[<span style="color:#3333FF;">--</span>]  +-- 17: sys	SELECT `thread` , FILE , `latency` , `operation` FROM `sys` . `x$latest_file_io` ORDER BY `latency` LIMIT ? 	2022-10-29 13:47:11
+[<span style="color:#3333FF;">--</span>]  +-- 18: sys	SELECT `table_schema` , TABLE_NAME , `rows_fetched` FROM `sys` . `x$schema_table_statistics` ORDER BY `ROWs_fetched` DES	2022-10-29 13:47:11
+[<span style="color:#3333FF;">--</span>]  +-- 19: sys	SELECT `table_schema` , TABLE_NAME , `rows_inserted` + `rows_updated` + `rows_deleted` AS `changes` FROM `sys` . `x$sche	2022-10-29 13:47:11
+[<span style="color:#3333FF;">--</span>]  +-- 20: sys	SELECT `table_schema` , TABLE_NAME , `fetch_latency` FROM `sys` . `x$schema_table_statistics` ORDER BY `fetch_latency` D	2022-10-29 13:47:11
+[<span style="color:#3333FF;">--</span>]  +-- 21: sys	SELECT `table_schema` , TABLE_NAME , `insert_latency` FROM `sys` . `x$schema_table_statistics` ORDER BY `insert_latency`	2022-10-29 13:47:11
+[<span style="color:#3333FF;">--</span>]  +-- 22: sys	SELECT `table_schema` , TABLE_NAME , `update_latency` FROM `sys` . `x$schema_table_statistics` ORDER BY `update_latency`	2022-10-29 13:47:11
+[<span style="color:#3333FF;">--</span>]  +-- 23: sys	SELECT `table_schema` , TABLE_NAME , `delete_latency` FROM `sys` . `x$schema_table_statistics` ORDER BY `delete_latency`	2022-10-29 13:47:11
+[<span style="color:#3333FF;">--</span>]  +-- 24: sys	SELECT * FROM `schema_redundant_indexes` 	2022-10-29 13:47:11
+[<span style="color:#3333FF;">--</span>]  +-- 25: NULL	SELECT `table_schema` , TABLE_NAME FROM `sys` . `x$schema_table_statistics_with_buffer` WHERE `innodb_buffer_allocated` 	2022-10-29 13:47:11
+[<span style="color:#3333FF;">--</span>]  +-- 26: NULL	SELECT `table_schema` , TABLE_NAME , `innodb_buffer_allocated` FROM `sys` . `x$schema_table_statistics_with_buffer` WHER	2022-10-29 13:47:11
+[<span style="color:#3333FF;">--</span>]  +-- 27: NULL	SHOW SCHEMAS 	2022-10-29 13:47:10
+[<span style="color:#3333FF;">--</span>]  +-- 28: NULL	SELECT COUNT ( * ) FROM `information_schema` . `tables` 	2022-10-29 13:47:10
+[<span style="color:#3333FF;">--</span>]  +-- 29: NULL	SELECT `sys_version` FROM `sys` . `version` 	2022-10-29 13:47:10
+[<span style="color:#3333FF;">--</span>]  +-- 30: NULL	SELECT SYSTEM_USER , `total_connections` FROM `sys` . `user_summary` ORDER BY `total_connections` DESC LIMIT ? 	2022-10-29 13:47:10
+[<span style="color:#3333FF;">--</span>]  +-- 31: NULL	SELECT SYSTEM_USER , `statements` FROM `sys` . `user_summary` ORDER BY `statements` DESC LIMIT ? 	2022-10-29 13:47:10
+[<span style="color:#3333FF;">--</span>]  +-- 32: NULL	SELECT SYSTEM_USER , `statement_avg_latency` FROM `sys` . `x$user_summary` ORDER BY `statement_avg_latency` DESC LIMIT ?	2022-10-29 13:47:10
+[<span style="color:#3333FF;">--</span>]  +-- 33: NULL	SELECT SYSTEM_USER , `lock_latency` FROM `sys` . `x$user_summary_by_statement_latency` ORDER BY `lock_latency` DESC LIMI	2022-10-29 13:47:10
+[<span style="color:#3333FF;">--</span>]  +-- 34: NULL	SELECT SYSTEM_USER , `full_scans` FROM `sys` . `x$user_summary_by_statement_latency` ORDER BY `full_scans` DESC LIMIT ? 	2022-10-29 13:47:10
+[<span style="color:#3333FF;">--</span>]  +-- 35: NULL	SELECT SYSTEM_USER , `rows_sent` FROM `sys` . `x$user_summary_by_statement_latency` ORDER BY `rows_sent` DESC LIMIT ? 	2022-10-29 13:47:10
+[<span style="color:#3333FF;">--</span>]  +-- 36: NULL	SELECT SYSTEM_USER , `rows_affected` FROM `sys` . `x$user_summary_by_statement_latency` ORDER BY `rows_affected` DESC LI	2022-10-29 13:47:10
+[<span style="color:#3333FF;">--</span>]  +-- 37: NULL	SELECT SYSTEM_USER , `file_ios` FROM `sys` . `x$user_summary` ORDER BY `file_ios` DESC LIMIT ? 	2022-10-29 13:47:10
+[<span style="color:#3333FF;">--</span>]  +-- 38: NULL	SELECT SYSTEM_USER , `file_io_latency` FROM `sys` . `x$user_summary` ORDER BY `file_io_latency` DESC LIMIT ? 	2022-10-29 13:47:10
+[<span style="color:#3333FF;">--</span>]  +-- 39: NULL	SELECT HOST , `total_connections` FROM `sys` . `x$host_summary` ORDER BY `total_connections` DESC LIMIT ? 	2022-10-29 13:47:10
+[<span style="color:#3333FF;">--</span>]  +-- 40: NULL	SELECT HOST , `statements` FROM `sys` . `x$host_summary` ORDER BY `statements` DESC LIMIT ? 	2022-10-29 13:47:10
+[<span style="color:#3333FF;">--</span>]  +-- 41: NULL	SELECT HOST , `statement_avg_latency` FROM `sys` . `x$host_summary` ORDER BY `statement_avg_latency` DESC LIMIT ? 	2022-10-29 13:47:10
+[<span style="color:#3333FF;">--</span>]  +-- 42: NULL	SELECT HOST , `lock_latency` FROM `sys` . `x$host_summary_by_statement_latency` ORDER BY `lock_latency` DESC LIMIT ? 	2022-10-29 13:47:10
+[<span style="color:#3333FF;">--</span>]  +-- 43: NULL	SELECT HOST , `full_scans` FROM `sys` . `x$host_summary_by_statement_latency` ORDER BY `full_scans` DESC LIMIT ? 	2022-10-29 13:47:10
+[<span style="color:#3333FF;">--</span>]  +-- 44: NULL	SELECT HOST , `rows_sent` FROM `sys` . `x$host_summary_by_statement_latency` ORDER BY `rows_sent` DESC LIMIT ? 	2022-10-29 13:47:10
+[<span style="color:#3333FF;">--</span>]  +-- 45: NULL	SELECT HOST , `rows_affected` FROM `sys` . `x$host_summary_by_statement_latency` ORDER BY `rows_affected` DESC LIMIT ? 	2022-10-29 13:47:10
+[<span style="color:#3333FF;">--</span>]  +-- 46: NULL	SELECT HOST , `file_ios` FROM `sys` . `x$host_summary` ORDER BY `file_ios` DESC LIMIT ? 	2022-10-29 13:47:10
+[<span style="color:#3333FF;">--</span>]  +-- 47: NULL	SELECT HOST , `file_io_latency` FROM `sys` . `x$host_summary` ORDER BY `file_io_latency` DESC LIMIT ? 	2022-10-29 13:47:10
+[<span style="color:#3333FF;">--</span>]  +-- 48: sys	SELECT SUBSTRING ( `event_name` , ? ) , SUM ( `total` ) AS `total` FROM `sys` . `x$host_summary_by_file_io_type` GROUP B	2022-10-29 13:47:10
+[<span style="color:#3333FF;">--</span>]  +-- 49: NULL	SELECT SUBSTRING ( `event_name` , ? ) , `ROUND` ( SUM ( `total_latency` ) , ? ) AS `total_latency` FROM `sys` . `x$host_	2022-10-29 13:47:10
+[<span style="color:#3333FF;">--</span>]  +-- 50: sys	SELECT SUBSTRING ( `event_name` , ? ) , MAX ( `max_latency` ) AS `max_latency` FROM `sys` . `x$host_summary_by_file_io_t	2022-10-29 13:47:10
+ 
+-------- Performance schema: Top 15 total latency queries with temp table --------------------------
+[<span style="color:#3333FF;">--</span>]  +-- 1: NULL	SELECT `IFNULL` ( SUM ( `INDEX_LENGTH` ) , ? ) FROM `information_schema` . `TABLES` WHERE `TABLE_SCHEMA` NOT IN (?) AND 	135403995000
+[<span style="color:#3333FF;">--</span>]  +-- 2: NULL	SELECT ENGINE , SUM ( `DATA_LENGTH` + `INDEX_LENGTH` ) , COUNT ( ENGINE ) , SUM ( `DATA_LENGTH` ) , SUM ( `INDEX_LENGTH`	99511048000
+[<span style="color:#3333FF;">--</span>]  +-- 3: NULL	SELECT `CONCAT` ( `t` . `TABLE_SCHEMA` , ? , `t` . `TABLE_NAME` ) AS ? , `CONCAT` ( `s` . `INDEX_NAME` , ? , `s` . `COLU	68896613000
+[<span style="color:#3333FF;">--</span>]  +-- 4: NULL	SHOW TABLE STATUS FROM `sys` 	67264749000
+[<span style="color:#3333FF;">--</span>]  +-- 5: NULL	SHOW TABLE STATUS FROM `mysql` 	47574261000
+[<span style="color:#3333FF;">--</span>]  +-- 6: NULL	SELECT `table_schema` , TABLE_NAME FROM `sys` . `x$schema_table_statistics_with_buffer` WHERE `innodb_buffer_allocated` 	45537744000
+[<span style="color:#3333FF;">--</span>]  +-- 7: NULL	SELECT `CONCAT` ( `CONCAT` ( `TABLE_SCHEMA` , ? ) , TABLE_NAME ) , CAST ( `DATA_FREE` AS SIGNED ) FROM `information_sche	45407882000
+[<span style="color:#3333FF;">--</span>]  +-- 8: NULL	SELECT `table_schema` , TABLE_NAME , `innodb_buffer_free` FROM `sys` . `x$schema_table_statistics_with_buffer` WHERE `in	42643414000
+[<span style="color:#3333FF;">--</span>]  +-- 9: NULL	SELECT SYSTEM_USER , `Command` AS `PROC` , TIME FROM `sys` . `x$processlist` ORDER BY TIME DESC 	41191317000
+[<span style="color:#3333FF;">--</span>]  +-- 10: NULL	SELECT `COLUMN_TYPE` FROM `information_schema` . `COLUMNS` WHERE `TABLE_SCHEMA` = ? AND TABLE_NAME = ? AND COLUMN_NAME =	38520999000
+[<span style="color:#3333FF;">--</span>]  +-- 11: NULL	SELECT `IS_NULLABLE` FROM `information_schema` . `COLUMNS` WHERE `TABLE_SCHEMA` = ? AND TABLE_NAME = ? AND COLUMN_NAME =	38311213000
+[<span style="color:#3333FF;">--</span>]  +-- 12: NULL	SELECT `object_schema` , `allocated` , DATA , `pages` FROM `sys` . `x$innodb_buffer_stats_by_schema` ORDER BY `pages` DE	36107235000
+[<span style="color:#3333FF;">--</span>]  +-- 13: sys	SELECT `db` , LEFT ( QUERY , ? ) , `avg_latency` AS `search` FROM `sys` . `x$statements_with_runtimes_in_95th_percentile	34786169000
+[<span style="color:#3333FF;">--</span>]  +-- 14: NULL	SELECT `table_schema` , TABLE_NAME , `innodb_buffer_allocated` FROM `sys` . `x$schema_table_statistics_with_buffer` WHER	33783798000
+[<span style="color:#3333FF;">--</span>]  +-- 15: sys	SELECT `db` , LEFT ( QUERY , ? ) , `max_latency` AS `search` FROM `sys` . `x$statements_with_runtimes_in_95th_percentile	33750246000
+ 
+-------- Performance schema: Top 15 queries with temp table to disk --------------------------------
+[<span style="color:#3333FF;">--</span>]  +-- 1: NULL	SELECT `COLUMN_TYPE` FROM `information_schema` . `COLUMNS` WHERE `TABLE_SCHEMA` = ? AND TABLE_NAME = ? AND COLUMN_NAME =	59
+[<span style="color:#3333FF;">--</span>]  +-- 2: NULL	SELECT `IS_NULLABLE` FROM `information_schema` . `COLUMNS` WHERE `TABLE_SCHEMA` = ? AND TABLE_NAME = ? AND COLUMN_NAME =	59
+[<span style="color:#3333FF;">--</span>]  +-- 3: NULL	SELECT `IFNULL` ( SUM ( `INDEX_LENGTH` ) , ? ) FROM `information_schema` . `TABLES` WHERE `TABLE_SCHEMA` NOT IN (?) AND 	28
+[<span style="color:#3333FF;">--</span>]  +-- 4: NULL	SELECT `CONCAT` ( `t` . `TABLE_SCHEMA` , ? , `t` . `TABLE_NAME` ) AS ? , `CONCAT` ( `s` . `INDEX_NAME` , ? , `s` . `COLU	17
+[<span style="color:#3333FF;">--</span>]  +-- 5: NULL	SELECT ENGINE , SUM ( `DATA_LENGTH` + `INDEX_LENGTH` ) , COUNT ( ENGINE ) , SUM ( `DATA_LENGTH` ) , SUM ( `INDEX_LENGTH`	14
+[<span style="color:#3333FF;">--</span>]  +-- 6: NULL	SELECT `CONCAT` ( `CONCAT` ( `TABLE_SCHEMA` , ? ) , TABLE_NAME ) , CAST ( `DATA_FREE` AS SIGNED ) FROM `information_sche	14
+[<span style="color:#3333FF;">--</span>]  +-- 7: NULL	SHOW TABLE STATUS FROM `sys` 	14
+[<span style="color:#3333FF;">--</span>]  +-- 8: NULL	SELECT COUNT ( * ) FROM `information_schema` . `TABLES` WHERE ENGINE = ? 	10
+[<span style="color:#3333FF;">--</span>]  +-- 9: NULL	SELECT `concat` ( TABLE_NAME , ? , `index_name` ) AS `idxname` , GROUP_CONCAT ( COLUMN_NAME ORDER BY `seq_in_index` ) AS	10
+[<span style="color:#3333FF;">--</span>]  +-- 10: NULL	SELECT * FROM `sys` . `schema_unused_indexes` WHERE `object_schema` NOT IN (?) 	10
+[<span style="color:#3333FF;">--</span>]  +-- 11: NULL	SELECT COLUMN_NAME FROM `information_schema` . `COLUMNS` WHERE `TABLE_SCHEMA` = ? AND TABLE_NAME = ? 	8
+[<span style="color:#3333FF;">--</span>]  +-- 12: NULL	SELECT ? FROM `information_schema` . `columns` WHERE `TABLE_SCHEMA` = ? AND TABLE_NAME = ? AND COLUMN_NAME = ? 	4
+[<span style="color:#3333FF;">--</span>]  +-- 13: NULL	SELECT `object_schema` , `allocated` , DATA , `pages` FROM `sys` . `x$innodb_buffer_stats_by_schema` ORDER BY `pages` DE	3
+[<span style="color:#3333FF;">--</span>]  +-- 14: NULL	SELECT `object_schema` , `object_name` , `allocated` , DATA , `pages` FROM `sys` . `x$innodb_buffer_stats_by_table` ORDE	3
+[<span style="color:#3333FF;">--</span>]  +-- 15: sys	SELECT * FROM `schema_redundant_indexes` 	3
+ 
+-------- Performance schema: Top 15 class events by number -----------------------------------------
+[<span style="color:#3333FF;">--</span>]  +-- 1: wait/io/file	9534
+[<span style="color:#3333FF;">--</span>]  +-- 2: wait/io/table	3986
+[<span style="color:#3333FF;">--</span>]  +-- 3: wait/lock/table	9
+ 
+-------- Performance schema: Top 30 events by number -----------------------------------------------
+[<span style="color:#3333FF;">--</span>]  +-- 1: wait/io/file/myisam/dfile	5526
+[<span style="color:#3333FF;">--</span>]  +-- 2: wait/io/table/sql/handler	3986
+[<span style="color:#3333FF;">--</span>]  +-- 3: wait/io/file/sql/FRM	2727
+[<span style="color:#3333FF;">--</span>]  +-- 4: wait/io/file/innodb/innodb_data_file	745
+[<span style="color:#3333FF;">--</span>]  +-- 5: wait/io/file/innodb/innodb_log_file	167
+[<span style="color:#3333FF;">--</span>]  +-- 6: wait/io/file/sql/file_parser	152
+[<span style="color:#3333FF;">--</span>]  +-- 7: wait/io/file/sql/io_cache	47
+[<span style="color:#3333FF;">--</span>]  +-- 8: wait/io/file/myisam/kfile	45
+[<span style="color:#3333FF;">--</span>]  +-- 9: wait/io/file/archive/data	40
+[<span style="color:#3333FF;">--</span>]  +-- 10: wait/io/file/csv/data	22
+[<span style="color:#3333FF;">--</span>]  +-- 11: wait/io/file/sql/dbopt	21
+[<span style="color:#3333FF;">--</span>]  +-- 12: wait/io/file/sql/casetest	15
+[<span style="color:#3333FF;">--</span>]  +-- 13: wait/lock/table/sql/handler	9
+[<span style="color:#3333FF;">--</span>]  +-- 14: wait/io/file/csv/metadata	8
+[<span style="color:#3333FF;">--</span>]  +-- 15: wait/io/file/mysys/cnf	5
+[<span style="color:#3333FF;">--</span>]  +-- 16: wait/io/file/sql/ERRMSG	5
+[<span style="color:#3333FF;">--</span>]  +-- 17: wait/io/file/mysys/charset	3
+[<span style="color:#3333FF;">--</span>]  +-- 18: wait/io/file/sql/pid	3
+[<span style="color:#3333FF;">--</span>]  +-- 19: wait/io/file/sql/global_ddl_log	2
+[<span style="color:#3333FF;">--</span>]  +-- 20: wait/io/file/sql/misc	1
+ 
+-------- Performance schema: Top 15 class events by total latency ----------------------------------
+[<span style="color:#3333FF;">--</span>]  +-- 1: wait/io/file	336272148432
+[<span style="color:#3333FF;">--</span>]  +-- 2: wait/io/table	49703975376
+[<span style="color:#3333FF;">--</span>]  +-- 3: wait/lock/table	15162000
+ 
+-------- Performance schema: Top 30 events by total latency ----------------------------------------
+[<span style="color:#3333FF;">--</span>]  +-- 1: wait/io/file/innodb/innodb_data_file	157805250576
+[<span style="color:#3333FF;">--</span>]  +-- 2: wait/io/file/myisam/dfile	70066761168
+[<span style="color:#3333FF;">--</span>]  +-- 3: wait/io/file/sql/FRM	60449482224
+[<span style="color:#3333FF;">--</span>]  +-- 4: wait/io/table/sql/handler	49703975376
+[<span style="color:#3333FF;">--</span>]  +-- 5: wait/io/file/innodb/innodb_log_file	38563122912
+[<span style="color:#3333FF;">--</span>]  +-- 6: wait/io/file/myisam/kfile	2017533696
+[<span style="color:#3333FF;">--</span>]  +-- 7: wait/io/file/sql/io_cache	1714163280
+[<span style="color:#3333FF;">--</span>]  +-- 8: wait/io/file/sql/casetest	1694817936
+[<span style="color:#3333FF;">--</span>]  +-- 9: wait/io/file/csv/metadata	1327408704
+[<span style="color:#3333FF;">--</span>]  +-- 10: wait/io/file/sql/file_parser	960176400
+[<span style="color:#3333FF;">--</span>]  +-- 11: wait/io/file/sql/dbopt	807812208
+[<span style="color:#3333FF;">--</span>]  +-- 12: wait/io/file/csv/data	352143264
+[<span style="color:#3333FF;">--</span>]  +-- 13: wait/io/file/archive/data	246407808
+[<span style="color:#3333FF;">--</span>]  +-- 14: wait/io/file/mysys/cnf	151792368
+[<span style="color:#3333FF;">--</span>]  +-- 15: wait/io/file/sql/ERRMSG	44232912
+[<span style="color:#3333FF;">--</span>]  +-- 16: wait/io/file/mysys/charset	20398704
+[<span style="color:#3333FF;">--</span>]  +-- 17: wait/io/file/sql/misc	18451584
+[<span style="color:#3333FF;">--</span>]  +-- 18: wait/io/file/sql/global_ddl_log	16537296
+[<span style="color:#3333FF;">--</span>]  +-- 19: wait/io/file/sql/pid	15655392
+[<span style="color:#3333FF;">--</span>]  +-- 20: wait/lock/table/sql/handler	15162000
+ 
+-------- Performance schema: Top 15 class events by max latency ------------------------------------
+[<span style="color:#3333FF;">--</span>]  +-- 1: wait/io/file	31255381824
+[<span style="color:#3333FF;">--</span>]  +-- 2: wait/io/table	2236589712
+[<span style="color:#3333FF;">--</span>]  +-- 3: wait/lock/table	2514384
+ 
+-------- Performance schema: Top 30 events by max latency ------------------------------------------
+[<span style="color:#3333FF;">--</span>]  +-- 1: wait/io/file/myisam/dfile	31255381824
+[<span style="color:#3333FF;">--</span>]  +-- 2: wait/io/file/innodb/innodb_data_file	28778155440
+[<span style="color:#3333FF;">--</span>]  +-- 3: wait/io/table/sql/handler	2236589712
+[<span style="color:#3333FF;">--</span>]  +-- 4: wait/io/file/sql/casetest	1633506000
+[<span style="color:#3333FF;">--</span>]  +-- 5: wait/io/file/innodb/innodb_log_file	1525222416
+[<span style="color:#3333FF;">--</span>]  +-- 6: wait/io/file/sql/FRM	776057280
+[<span style="color:#3333FF;">--</span>]  +-- 7: wait/io/file/csv/metadata	775681536
+[<span style="color:#3333FF;">--</span>]  +-- 8: wait/io/file/sql/dbopt	234404064
+[<span style="color:#3333FF;">--</span>]  +-- 9: wait/io/file/myisam/kfile	200667360
+[<span style="color:#3333FF;">--</span>]  +-- 10: wait/io/file/sql/file_parser	174775680
+[<span style="color:#3333FF;">--</span>]  +-- 11: wait/io/file/mysys/cnf	137666400
+[<span style="color:#3333FF;">--</span>]  +-- 12: wait/io/file/sql/io_cache	87863904
+[<span style="color:#3333FF;">--</span>]  +-- 13: wait/io/file/csv/data	47481456
+[<span style="color:#3333FF;">--</span>]  +-- 14: wait/io/file/sql/ERRMSG	25570656
+[<span style="color:#3333FF;">--</span>]  +-- 15: wait/io/file/sql/misc	18451584
+[<span style="color:#3333FF;">--</span>]  +-- 16: wait/io/file/sql/global_ddl_log	11664480
+[<span style="color:#3333FF;">--</span>]  +-- 17: wait/io/file/sql/pid	10760688
+[<span style="color:#3333FF;">--</span>]  +-- 18: wait/io/file/mysys/charset	10441488
+[<span style="color:#3333FF;">--</span>]  +-- 19: wait/io/file/archive/data	8631168
+[<span style="color:#3333FF;">--</span>]  +-- 20: wait/lock/table/sql/handler	2514384
+ 
+-------- ThreadPool Metrics ------------------------------------------------------------------------
+[<span style="color:#3333FF;">--</span>] ThreadPool stat is disabled.
+ 
+-------- MyISAM Metrics ----------------------------------------------------------------------------
+[<span style="color:red;">!!</span>] Key buffer used: 18.3% (2.9M used / 16.0M cache)
+[<span style="color:lime;">OK</span>] Key buffer size / total MyISAM indexes: 16.0M/43.0K
+[<span style="color:red;">!!</span>] Read Key buffer hit rate: 92.7% (96 cached / 7 reads)
+ 
+-------- InnoDB Metrics ----------------------------------------------------------------------------
+[<span style="color:#3333FF;">--</span>] InnoDB is enabled.
+[<span style="color:#3333FF;">--</span>] InnoDB Buffers
+[<span style="color:#3333FF;">--</span>]  +-- InnoDB Buffer Pool: 128.0M
+[<span style="color:#3333FF;">--</span>]  +-- InnoDB Buffer Pool Instances: 1
+[<span style="color:#3333FF;">--</span>]  +-- InnoDB Buffer Pool Chunk Size: 128.0M
+[<span style="color:#3333FF;">--</span>]  +-- InnoDB Log File Size: 48.0M
+[<span style="color:#3333FF;">--</span>]  +-- InnoDB Log File In Group: 2
+[<span style="color:#3333FF;">--</span>]  +-- InnoDB Total Log File Size: 96.0M(75 % of buffer pool)
+[<span style="color:#3333FF;">--</span>]  +-- InnoDB Log Buffer: 16.0M
+[<span style="color:#3333FF;">--</span>]  +-- InnoDB Log Buffer Free: 7.7K
+[<span style="color:#3333FF;">--</span>]  +-- InnoDB Log Buffer Used: 8.0K
+[<span style="color:#3333FF;">--</span>] InnoDB Thread Concurrency: 0
+[<span style="color:lime;">OK</span>] InnoDB File per table is activated
+[<span style="color:lime;">OK</span>] InnoDB buffer pool / data size: 128.0M / 528.0K
+[<span style="color:red;">!!</span>] Ratio InnoDB log file size / InnoDB Buffer pool size (75%): 48.0M * 2 / 128.0M should be equal to 25%
+[<span style="color:lime;">OK</span>] InnoDB buffer pool instances: 1
+[<span style="color:#3333FF;">--</span>] Number of InnoDB Buffer Pool Chunk: 1 for 1 Buffer Pool Instance(s)
+[<span style="color:lime;">OK</span>] Innodb_buffer_pool_size aligned with Innodb_buffer_pool_chunk_size &amp; Innodb_buffer_pool_instances
+[<span style="color:lime;">OK</span>] InnoDB Read buffer efficiency: 99.32% (35644 hits / 35888 total)
+[<span style="color:lime;">OK</span>] InnoDB Write log efficiency: 95.07% (1234 hits / 1298 total)
+[<span style="color:lime;">OK</span>] InnoDB log waits: 0.00% (0 waits / 64 writes)
+ 
+-------- Aria Metrics ------------------------------------------------------------------------------
+[<span style="color:#3333FF;">--</span>] Aria Storage Engine not available.
+ 
+-------- TokuDB Metrics ----------------------------------------------------------------------------
+[<span style="color:#3333FF;">--</span>] TokuDB is disabled.
+ 
+-------- XtraDB Metrics ----------------------------------------------------------------------------
+[<span style="color:#3333FF;">--</span>] XtraDB is disabled.
+ 
+-------- Galera Metrics ----------------------------------------------------------------------------
+[<span style="color:#3333FF;">--</span>] Galera is disabled.
+ 
+-------- Replication Metrics -----------------------------------------------------------------------
+[<span style="color:#3333FF;">--</span>] Galera Synchronous replication: NO
+[<span style="color:#3333FF;">--</span>] No replication slave(s) for this server.
+[<span style="color:#3333FF;">--</span>] Binlog format: ROW
+[<span style="color:#3333FF;">--</span>] XA support enabled: ON
+[<span style="color:#3333FF;">--</span>] Semi synchronous replication Master: Not Activated
+[<span style="color:#3333FF;">--</span>] Semi synchronous replication Slave: Not Activated
+[<span style="color:#3333FF;">--</span>] This is a standalone server
+ 
+-------- Recommendations ---------------------------------------------------------------------------
+General recommendations:
+    setup swappiness lower or equals to 10
+    setup Max running number events greater than 1M
+    Check warning line(s) in /var/log/mysql/error.log file
+    Remove unused indexes.
+    MySQL was started within the last 24 hours: recommendations may be inaccurate
+    Configure your accounts with ip or subnets only, then update your configuration with skip-name-resolve=1
+    Before changing innodb_log_file_size and/or innodb_log_files_in_group read this: https://bit.ly/2TcGgtU
+Variables to adjust:
+    vm.swappiness &lt;= 10 (echo 10 &gt; /proc/sys/vm/swappiness)
+    fs.aio-max-nr &gt; 1M (echo 1048576 &gt; /proc/sys/fs/aio-max-nr)
+    skip-name-resolve=1
+    key_buffer_size (~ 3M)
+    innodb_log_file_size should be (=16M) if possible, so InnoDB total log files size equals 25% of buffer pool size.
+</pre>
+  </body>
+</html>
